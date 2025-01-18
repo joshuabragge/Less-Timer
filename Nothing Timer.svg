@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Background -->
+  <rect width="1024" height="1024" rx="180" ry="180" fill="#2D3748"/>
+  
+  <!-- Main mascot body -->
+  <circle cx="512" cy="512" r="380" fill="#1A202C"/>
+  
+  <!-- Eyes -->
+  <circle cx="382" cy="462" r="50" fill="white"/>
+  <circle cx="642" cy="462" r="50" fill="white"/>
+  <circle cx="382" cy="462" r="25" fill="black"/>
+  <circle cx="642" cy="462" r="25" fill="black"/>
+  
+  <!-- Rosy cheeks -->
+  <circle cx="332" cy="562" r="40" fill="#FEB2B2" opacity="0.5"/>
+  <circle cx="692" cy="562" r="40" fill="#FEB2B2" opacity="0.5"/>
+  
+  <!-- Smile -->
+  <path d="M412 582 Q512 662 612 582" stroke="white" stroke-width="20" fill="none"/>
+  
+  <!-- Floating stars/sparkles -->
+  <path d="M262 262 L277 247 L292 262 L277 277 Z" fill="#FCD34D" transform="rotate(45, 262, 262)"/>
+  <path d="M762 302 L777 287 L792 302 L777 317 Z" fill="#FCD34D" transform="rotate(30, 762, 302)"/>
+  <path d="M712 712 L727 697 L742 712 L727 727 Z" fill="#FCD34D" transform="rotate(15, 712, 712)"/>
+  <path d="M302 662 L317 647 L332 662 L317 677 Z" fill="#FCD34D" transform="rotate(60, 302, 662)"/>
+  
+  <!-- Void swirls -->
+  <path d="M352 352 Q432 332 512 382 T672 352" stroke="#4A5568" stroke-width="10" fill="none" opacity="0.5"/>
+  <path d="M352 412 Q432 392 512 442 T672 412" stroke="#4A5568" stroke-width="10" fill="none" opacity="0.5"/>
+</svg>
