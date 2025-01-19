@@ -2,9 +2,12 @@ import SwiftUI
 
 struct TimerView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
+    @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
     
     var body: some View {
-        VStack(spacing: 30) {
+        VStack(spacing: 100) {
+            Spacer()
+            
             if !timerManager.isRunning {
                             TimerDisplay(timeInterval: timerManager.elapsedTime)
                                 .transition(.opacity)
@@ -21,14 +24,38 @@ struct TimerView: View {
                 TimerButton(
                     icon: timerManager.wasStopped ? "arrow.counterclockwise.circle.fill" : "stop.circle.fill",
                     color: .gray,
-                    action: stopTimer
-                )
+                    action: stopTimer                )
+            
             }
+            
+            HStack(spacing: 30) {
+                SaveButton(
+                    icon: "heart.circle.fill",
+                    color: meditationTracker.saveSuccess == true ? .red : .gray,
+                    action: saveSession,
+                    isLoading: meditationTracker.isSaving
+                    )
+                    .opacity(shouldShowSaveButton ? 1 : 0)
+                    .disabled(!shouldShowSaveButton)
         }
         .padding()
         .animation(.easeInOut, value: timerManager.isRunning)
+        .animation(.easeInOut, value: shouldShowSaveButton)
+        }
     }
     
+    private var shouldShowSaveButton: Bool {
+            timerManager.wasStopped && !timerManager.wasReset && timerManager.elapsedTime > 0
+        }
+    
+    
+    private func saveSession() {
+        print("SAVING")
+        meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
+        print("RESETING")
+        timerManager.resetTimer()
+    }
+
     private func toggleTimer() {
         if timerManager.isRunning {
             print("PAUSING")

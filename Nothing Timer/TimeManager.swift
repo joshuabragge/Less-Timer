@@ -7,6 +7,7 @@ protocol TimerManaging: ObservableObject {
     var elapsedTime: TimeInterval { get }
     var isRunning: Bool { get }
     var wasStopped: Bool { get }
+    var wasReset: Bool { get }
     func startTimer()
     func pauseTimer()
     func stopTimer()
@@ -18,6 +19,7 @@ class TimerManager: TimerManaging {
     @Published var elapsedTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
+    @Published var wasReset = false
     
     private var timer: Timer?
     private var startTime: Date?
@@ -48,6 +50,7 @@ class TimerManager: TimerManaging {
             // Start the timer immediately
             isRunning = true
             wasStopped = false
+            wasReset = false
             startTime = Date().addingTimeInterval(-elapsedTime)
             
             // Setup timer immediately
@@ -79,6 +82,7 @@ class TimerManager: TimerManaging {
     
     func resetTimer() {
         elapsedTime = 0
+        wasReset = true
         lastMinuteNotification = 0
         wasStopped = true
     }
