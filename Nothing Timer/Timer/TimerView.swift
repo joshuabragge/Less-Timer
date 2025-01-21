@@ -4,17 +4,26 @@ struct TimerView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
     @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
     
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+    
     var body: some View {
         VStack(spacing: 50) {
             Spacer()
+            // show timer if paused or stopped
             if !timerManager.isRunning && timerManager.elapsedTime > 0 {
-                // show timer if paused or stopped
                 TimerDisplay(timeInterval: timerManager.elapsedTime)
                 .transition(.opacity)
                         }
-            else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
-                // hide timer before starting session
+            // Show total time when time limit enabled
+            else if isTimeLimitEnabled && !timerManager.isRunning {
+                TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes*60))
             }
+            // hide timer before starting session
+            else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
+            
+            }
+            // if running partially hide
             else {
                 // if running partially hide
                 TimerDisplay(timeInterval: timerManager.elapsedTime)

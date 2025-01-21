@@ -2,6 +2,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     // Chime settings
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
@@ -16,26 +18,37 @@ struct SettingsView: View {
     
     // Computed properties for picker selections
     private var selectedChimePreset: Binding<Int> {
-        Binding(
-            get: { TimerPreset.preset(for: chimeIntervalMinutes).rawValue },
-            set: { newValue in
-                if newValue == TimerPreset.custom.rawValue {
-                    showingCustomChimeSheet = true
-                } else {
-                    chimeIntervalMinutes = newValue
+            Binding(
+                get: {
+                    let interval = UserDefaults.standard.integer(forKey: "chimeIntervalMinutes")
+                    return TimerPreset.preset(for: interval).rawValue
+                },
+                set: { newValue in
+                    if newValue == TimerPreset.custom.rawValue {
+                        showingCustomChimeSheet = true
+                    } else {
+                        // Save the selected preset value directly to storage
+                        chimeIntervalMinutes = newValue
+                        UserDefaults.standard.set(newValue, forKey: "chimeIntervalMinutes")
+                        print("Saved chimeIntervalMinutes: \(newValue)")
+                    }
                 }
-            }
-        )
-    }
+            )
+        }
     
     private var selectedTimeLimitPreset: Binding<Int> {
         Binding(
-            get: { TimerPreset.preset(for: timeLimitMinutes).rawValue },
+            get: {
+                let limit = UserDefaults.standard.integer(forKey: "timeLimitMinutes")
+                return TimerPreset.preset(for: limit).rawValue
+            },
             set: { newValue in
                 if newValue == TimerPreset.custom.rawValue {
                     showingCustomTimeLimitSheet = true
                 } else {
                     timeLimitMinutes = newValue
+                    UserDefaults.standard.set(newValue, forKey: "timeLimitMinutes")
+                    print("Saved timeLimitMinutes: \(newValue)")
                 }
             }
         )
@@ -44,7 +57,23 @@ struct SettingsView: View {
     var body: some View {
         List {
             Section(header: Text("Sounds")) {
-                Toggle("Recurring Chime", isOn: $isRecurringChimeEnabled)
+                Toggle("Starting Sound", isOn: Binding(
+                    get: { isStartSoundEnabled },
+                    set: { newValue in
+                        isStartSoundEnabled = newValue
+                        UserDefaults.standard.set(isStartSoundEnabled, forKey: "isStartSoundEnabled")
+                        print("Saved Starting Sound: \(newValue)")
+                    }
+                    ))
+                Toggle("Recurring Chime", isOn: Binding(
+                    get: { isRecurringChimeEnabled },
+                    set: { newValue in
+                        isRecurringChimeEnabled = newValue
+                        UserDefaults.standard.set(newValue, forKey: "isRecurringChimeEnabled")
+                        print("Saved Recurring Chime: \(newValue)")
+
+                    }
+                ))
                 
                 if isRecurringChimeEnabled {
                     Picker("Chime Interval", selection: selectedChimePreset) {

@@ -1,6 +1,7 @@
 import Foundation
 import AVFoundation
 import UserNotifications
+import SwiftUI
 
 protocol TimerManaging: ObservableObject {
     
@@ -25,7 +26,14 @@ class TimerManager: TimerManaging {
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
     private let notificationService: NotificationServiceProtocol
-    private var lastMinuteNotification: Int = 0
+    private var lastChimeMinute: Int = 0
+    
+    // init the user settings settings
+    @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
+    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     
     init(audioService: AudioServiceProtocol = AudioService(),
         notificationService: NotificationServiceProtocol = NotificationService()) {
@@ -36,7 +44,6 @@ class TimerManager: TimerManaging {
     }
     
     private func setupServices() {
-        // Move audio setup to be done immediately
         audioService.setupAudioSession()
         audioService.loadSound(named: "bell_ring", withExtension: "mp3")
         // Move notification setup to background
@@ -47,7 +54,8 @@ class TimerManager: TimerManaging {
     
     func startTimer() {
         if !isRunning {
-            // Start the timer immediately
+            
+            // Start the timer and reset parameters
             isRunning = true
             wasStopped = false
             wasReset = false
@@ -59,9 +67,12 @@ class TimerManager: TimerManaging {
             }
             RunLoop.current.add(timer!, forMode: .common)
             
-            // Play sound after timer is set up
-            DispatchQueue.main.async {
-                self.audioService.playSound()
+            print(isStartSoundEnabled)
+            if isStartSoundEnabled {
+                print("Playing starting sound")
+                DispatchQueue.main.async {
+                    self.audioService.playSound()
+                }
             }
         }
     }
@@ -81,10 +92,11 @@ class TimerManager: TimerManaging {
     }
     
     func resetTimer() {
+        //let isStartingSoundEnabled = UserDefaults.standard.bool(forKey: "isStartingSoundEnabled")
         elapsedTime = 0
         wasReset = false
         isRunning = false
-        lastMinuteNotification = 0
+        lastChimeMinute = 0
         wasStopped = false
     }
     
@@ -92,12 +104,18 @@ class TimerManager: TimerManaging {
             guard let startTime = startTime else { return }
             elapsedTime = Date().timeIntervalSince(startTime)
             
-            let currentMinute = Int(elapsedTime / 60)
-            if currentMinute > lastMinuteNotification {
-                DispatchQueue.main.async {
-                    self.audioService.playSound()
+            // Only play chimes if enabled
+            if isRecurringChimeEnabled {
+                let currentMinute = Int(elapsedTime / 60)
+                
+                // Check if we've reached the next interval
+                if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
+                    DispatchQueue.main.async {
+                        self.audioService.playSound()
+                    }
+                    print("Chime played!")
+                    lastChimeMinute = currentMinute
                 }
-                lastMinuteNotification = currentMinute
             }
         }
     }

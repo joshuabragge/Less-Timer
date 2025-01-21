@@ -1,26 +1,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    init() {
+        // Set color for both inline and large title modes
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.gray]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.gray]
+    }
+
+    
     var body: some View {
         NavigationView {
             TimerView()
-                //.navigationTitle("Nothing Timer")
+                .navigationTitle("Nothing Timer")
                 //.navigationBarTitleDisplayMode(.inline)
                 .preferredColorScheme(.dark)
-                .ignoresSafeArea(.container, edges: .top) // Only ignore safe area at the top
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: SettingsView()) {
                             Image(systemName: "gearshape.fill")
                                 .foregroundColor(.gray)
+                                .bold(true)
                         }
                     }
                 }
         }
-        .background(Color.black) // Set navigation view background
+        .background(Color.black)
+        .statusBar(hidden: true)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
-
 
 #Preview {
     ContentView()
