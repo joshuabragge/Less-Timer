@@ -28,7 +28,7 @@ class TimerManager: TimerManaging {
     private var lastMinuteNotification: Int = 0
     
     init(audioService: AudioServiceProtocol = AudioService(),
-         notificationService: NotificationServiceProtocol = NotificationService()) {
+        notificationService: NotificationServiceProtocol = NotificationService()) {
         self.audioService = audioService
         self.notificationService = notificationService
         
@@ -40,9 +40,9 @@ class TimerManager: TimerManaging {
         audioService.setupAudioSession()
         audioService.loadSound(named: "bell_ring", withExtension: "mp3")
         // Move notification setup to background
-        DispatchQueue.global(qos: .background).async {
-            self.notificationService.requestAuthorization()
-        }
+       // DispatchQueue.global(qos: .background).async {
+         //       self.notificationService.requestAuthorization()
+        //}
     }
     
     func startTimer() {
@@ -82,9 +82,10 @@ class TimerManager: TimerManaging {
     
     func resetTimer() {
         elapsedTime = 0
-        wasReset = true
+        wasReset = false
+        isRunning = false
         lastMinuteNotification = 0
-        wasStopped = true
+        wasStopped = false
     }
     
     private func updateTimer() {

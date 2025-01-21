@@ -6,7 +6,16 @@ struct ContentView: View {
             TimerView()
                 //.navigationTitle("Nothing Timer")
                 //.navigationBarTitleDisplayMode(.inline)
-                .preferredColorScheme(.dark) // Force dark mode
+                .preferredColorScheme(.dark)
+                .ignoresSafeArea(.container, edges: .top) // Only ignore safe area at the top
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gearshape.fill")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
         }
         .background(Color.black) // Set navigation view background
     }

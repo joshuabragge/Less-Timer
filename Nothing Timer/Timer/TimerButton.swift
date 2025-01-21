@@ -9,7 +9,7 @@ struct TimerButton: View {
         Button(action: action) {
             Image(systemName: icon)
                 .resizable()
-                .frame(width: 100, height: 100)
+                .frame(width: 50, height: 50)
                 .foregroundColor(color)
                 .opacity(0.8)  // Slightly transparent
         }
@@ -18,7 +18,7 @@ struct TimerButton: View {
 
 #Preview {
     HStack {
-        TimerButton(icon: "play.circle.fill", color: .gray) {}
+        TimerButton(icon: "play.fill", color: .gray) {}
         TimerButton(icon: "arrow.counterclockwise.circle.fill", color: .gray) {}
     }
 }

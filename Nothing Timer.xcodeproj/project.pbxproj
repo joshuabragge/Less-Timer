@@ -401,8 +401,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nothing-Timer-Info.plist";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Save your meditation sessions to track your mindfulness practice";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Save your meditation sessions to track your mindfulness practice";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,8 +432,6 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Nothing-Timer-Info.plist";
-				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Save your meditation sessions to track your mindfulness practice";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Save your meditation sessions to track your mindfulness practice";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -4,9 +4,9 @@ class MeditationTracker: ObservableObject {
     @Published var isSaving = false
     @Published var saveSuccess: Bool?
     
-    private let healthKitService: HealthKitServiceProtocol
+    private let healthKitService: any HealthKitServiceProtocol
     
-    init(healthKitService: HealthKitServiceProtocol = HealthKitService()) {
+    init(healthKitService: any HealthKitServiceProtocol = HealthKitService()) {
         self.healthKitService = healthKitService
         setupHealthKit()
     }

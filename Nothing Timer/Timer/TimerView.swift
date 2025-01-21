@@ -5,32 +5,42 @@ struct TimerView: View {
     @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
     
     var body: some View {
-        VStack(spacing: 100) {
+        VStack(spacing: 50) {
             Spacer()
-            
-            if !timerManager.isRunning {
-                            TimerDisplay(timeInterval: timerManager.elapsedTime)
-                                .transition(.opacity)
+            if !timerManager.isRunning && timerManager.elapsedTime > 0 {
+                // show timer if paused or stopped
+                TimerDisplay(timeInterval: timerManager.elapsedTime)
+                .transition(.opacity)
                         }
+            else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                // hide timer before starting session
+            }
+            else {
+                // if running partially hide
+                TimerDisplay(timeInterval: timerManager.elapsedTime)
+                    .opacity(0.3)
+                    .transition(.opacity)
+            }
             
-            HStack(spacing: 30) {
+            HStack(spacing: 50) {
                 TimerButton(
-                    icon: timerManager.isRunning ? "pause.circle.fill" : "play.circle.fill",
+                    icon: timerManager.isRunning ? "pause.fill" : "play.fill",
                     color: .gray
                 ) {
                     toggleTimer()
-                }
+                }.opacity(1)
                 
                 TimerButton(
-                    icon: timerManager.wasStopped ? "arrow.counterclockwise.circle.fill" : "stop.circle.fill",
+                    icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop.fill",
                     color: .gray,
                     action: stopTimer                )
+                    .opacity(1)
             
             }
             
-            HStack(spacing: 30) {
+            HStack(spacing: 1) {
                 SaveButton(
-                    icon: "heart.circle.fill",
+                    icon: "heart.fill",
                     color: meditationTracker.saveSuccess == true ? .red : .gray,
                     action: saveSession,
                     isLoading: meditationTracker.isSaving
@@ -40,7 +50,7 @@ struct TimerView: View {
         }
         .padding()
         .animation(.easeInOut, value: timerManager.isRunning)
-        .animation(.easeInOut, value: shouldShowSaveButton)
+       // .animation(.easeInOut, value: shouldShowSaveButton)
         }
     }
     
@@ -67,7 +77,9 @@ struct TimerView: View {
     }
     
     private func stopTimer() {
-        if timerManager.wasStopped {
+        if timerManager.elapsedTime < 1 { return }
+        
+        else if timerManager.wasStopped {
             print("RESETING")
             timerManager.resetTimer()
         }

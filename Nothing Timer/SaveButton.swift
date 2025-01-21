@@ -11,13 +11,13 @@ struct SaveButton: View {
             if isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: color))
-                    .frame(width: 100, height: 100)
+                    .frame(width: 50, height: 50)
             } else {
                 Image(systemName: icon)
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 35, height: 30    )
                     .foregroundColor(color)
-                    .opacity(0.8)
+                    .opacity(1)
             }
         }
         .disabled(isLoading)
@@ -27,5 +27,6 @@ struct SaveButton: View {
 #Preview {
     HStack {
         SaveButton(icon: "heart.circle.fill", color: .red) {}
+        SaveButton(icon: "heart.fill", color: .red) {}
     }
 }
