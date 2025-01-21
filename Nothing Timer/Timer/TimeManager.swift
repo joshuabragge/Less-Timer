@@ -18,6 +18,7 @@ protocol TimerManaging: ObservableObject {
 
 class TimerManager: TimerManaging {
     @Published var elapsedTime: TimeInterval = 0
+    @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
     @Published var wasReset = false
@@ -26,9 +27,9 @@ class TimerManager: TimerManaging {
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
     private let notificationService: NotificationServiceProtocol
+    private let hapticService: HapticServiceProtocol
     private var lastChimeMinute: Int = 0
     
-    // init the user settings settings
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
@@ -36,40 +37,43 @@ class TimerManager: TimerManaging {
     @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     
     init(audioService: AudioServiceProtocol = AudioService(),
-        notificationService: NotificationServiceProtocol = NotificationService()) {
+         notificationService: NotificationServiceProtocol = NotificationService(),
+         hapticService: HapticServiceProtocol = HapticService()) {
         self.audioService = audioService
         self.notificationService = notificationService
-        
+        self.hapticService = hapticService
+        self.remainingTime = TimeInterval(timeLimitMinutes * 60)
         setupServices()
-    }
+        }
+
     
     private func setupServices() {
         audioService.setupAudioSession()
         audioService.loadSound(named: "bell_ring", withExtension: "mp3")
-        // Move notification setup to background
-       // DispatchQueue.global(qos: .background).async {
-         //       self.notificationService.requestAuthorization()
-        //}
     }
     
     func startTimer() {
         if !isRunning {
-            
-            // Start the timer and reset parameters
             isRunning = true
             wasStopped = false
             wasReset = false
-            startTime = Date().addingTimeInterval(-elapsedTime)
             
-            // Setup timer immediately
+            if isTimeLimitEnabled {
+                // For countdown mode, initialize remaining time if it's zero
+                if remainingTime == 0 {
+                    remainingTime = TimeInterval(timeLimitMinutes * 60)
+                }
+                startTime = Date()
+            } else {
+                startTime = Date().addingTimeInterval(-elapsedTime)
+            }
+            
             timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
                 self?.updateTimer()
             }
             RunLoop.current.add(timer!, forMode: .common)
             
-            print(isStartSoundEnabled)
             if isStartSoundEnabled {
-                print("Playing starting sound")
                 DispatchQueue.main.async {
                     self.audioService.playSound()
                 }
@@ -81,7 +85,7 @@ class TimerManager: TimerManaging {
         isRunning = false
         timer?.invalidate()
         timer = nil
-        wasStopped = false  // Mark that we're paused, not stopped
+        wasStopped = false
     }
     
     func stopTimer() {
@@ -92,8 +96,8 @@ class TimerManager: TimerManaging {
     }
     
     func resetTimer() {
-        //let isStartingSoundEnabled = UserDefaults.standard.bool(forKey: "isStartingSoundEnabled")
         elapsedTime = 0
+        remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
         wasReset = false
         isRunning = false
         lastChimeMinute = 0
@@ -101,21 +105,39 @@ class TimerManager: TimerManaging {
     }
     
     private func updateTimer() {
-            guard let startTime = startTime else { return }
+        guard let startTime = startTime else { return }
+        
+        if isTimeLimitEnabled {
+            // Update countdown timer
+            let elapsed = Date().timeIntervalSince(startTime)
+            remainingTime = max(TimeInterval(timeLimitMinutes * 60) - elapsed, 0)
+            elapsedTime = elapsed
+            
+            // Check if timer has reached zero
+            if remainingTime == 0 {
+                stopTimer()
+                DispatchQueue.main.async {
+                    self.audioService.playSound()
+                    self.hapticService.vibrate() // Strong vibration for time completion
+                    self.hapticService.playNotificationHaptic(type: .success) // Additional haptic feedback
+                }
+                return
+            }
+        } else {
+            // Update count-up timer
             elapsedTime = Date().timeIntervalSince(startTime)
             
-            // Only play chimes if enabled
+            // Handle recurring chimes
             if isRecurringChimeEnabled {
                 let currentMinute = Int(elapsedTime / 60)
-                
-                // Check if we've reached the next interval
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     DispatchQueue.main.async {
                         self.audioService.playSound()
+                        self.hapticService.playHapticImpact(style: .light)
                     }
-                    print("Chime played!")
                     lastChimeMinute = currentMinute
                 }
             }
         }
     }
+}

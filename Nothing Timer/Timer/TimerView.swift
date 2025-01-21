@@ -10,23 +10,24 @@ struct TimerView: View {
     var body: some View {
         VStack(spacing: 50) {
             Spacer()
-            // show timer if paused or stopped
-            if !timerManager.isRunning && timerManager.elapsedTime > 0 {
-                TimerDisplay(timeInterval: timerManager.elapsedTime)
-                .transition(.opacity)
-                        }
-            // Show total time when time limit enabled
-            else if isTimeLimitEnabled && !timerManager.isRunning {
-                TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes*60))
-            }
-            // hide timer before starting session
-            else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
             
+            // Display logic for different timer states
+            if !timerManager.isRunning && timerManager.elapsedTime > 0 {
+                // Show elapsed time when paused or stopped
+                TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
+                    .transition(.opacity)
             }
-            // if running partially hide
+            // Show initial time limit when enabled and not started
+            else if isTimeLimitEnabled && !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+            }
+            // Hide timer before starting session when no time limit
+            else if !timerManager.isRunning && timerManager.elapsedTime == 0 && !isTimeLimitEnabled {
+                // Empty view
+            }
+            // Show running timer with reduced opacity
             else {
-                // if running partially hide
-                TimerDisplay(timeInterval: timerManager.elapsedTime)
+                TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
                     .opacity(0.3)
                     .transition(.opacity)
             }
@@ -42,9 +43,9 @@ struct TimerView: View {
                 TimerButton(
                     icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop.fill",
                     color: .gray,
-                    action: stopTimer                )
-                    .opacity(1)
-            
+                    action: stopTimer
+                )
+                .opacity(1)
             }
             
             HStack(spacing: 1) {
@@ -53,34 +54,28 @@ struct TimerView: View {
                     color: meditationTracker.saveSuccess == true ? .red : .gray,
                     action: saveSession,
                     isLoading: meditationTracker.isSaving
-                    )
-                    .opacity(shouldShowSaveButton ? 1 : 0)
-                    .disabled(!shouldShowSaveButton)
+                )
+                .opacity(shouldShowSaveButton ? 1 : 0)
+                .disabled(!shouldShowSaveButton)
+            }
         }
         .padding()
         .animation(.easeInOut, value: timerManager.isRunning)
-       // .animation(.easeInOut, value: shouldShowSaveButton)
-        }
     }
     
     private var shouldShowSaveButton: Bool {
-            timerManager.wasStopped && !timerManager.wasReset && timerManager.elapsedTime > 0
-        }
-    
+        timerManager.wasStopped && !timerManager.wasReset && timerManager.elapsedTime > 0
+    }
     
     private func saveSession() {
-        print("SAVING")
         meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
-        print("RESETING")
         timerManager.resetTimer()
     }
-
+    
     private func toggleTimer() {
         if timerManager.isRunning {
-            print("PAUSING")
             timerManager.pauseTimer()
         } else {
-            print("STARTING")
             timerManager.startTimer()
         }
     }
@@ -88,12 +83,9 @@ struct TimerView: View {
     private func stopTimer() {
         if timerManager.elapsedTime < 1 { return }
         
-        else if timerManager.wasStopped {
-            print("RESETING")
+        if timerManager.wasStopped {
             timerManager.resetTimer()
-        }
-        else {
-            print("STOPPING")
+        } else {
             timerManager.stopTimer()
         }
     }

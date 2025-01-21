@@ -5,7 +5,12 @@ enum TimerPreset: Int, CaseIterable {
     case oneMinute = 1
     case fiveMinutes = 5
     case tenMinutes = 10
-    case custom = -1  // Using -1 to represent custom
+    case fifteenMinutes = 15
+    case twentyMinutes = 20
+    case thirtyMinutes = 30
+    case fourtyFiveMinutes = 45
+    case oneHour = 60
+    case custom = -1
     
     var id: Int { self.rawValue }
     
@@ -15,6 +20,11 @@ enum TimerPreset: Int, CaseIterable {
             case .oneMinute: return "1 Minute"
             case .fiveMinutes: return "5 Minutes"
             case .tenMinutes: return "10 Minutes"
+            case .fifteenMinutes: return "15 Minutes"
+            case .twentyMinutes: return "20 Minutes"
+            case .thirtyMinutes: return "30 Minutes"
+            case .fourtyFiveMinutes: return "45 Minutes"
+            case .oneHour: return "1 Hour"
             case .custom: return "Custom"
             }
         }
