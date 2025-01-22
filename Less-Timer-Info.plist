@@ -6,5 +6,9 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Save your meditation sessions to track your mindfulness practice</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Save your meditation sessions to track your mindfulness practice</string>
 </dict>
 </plist>
