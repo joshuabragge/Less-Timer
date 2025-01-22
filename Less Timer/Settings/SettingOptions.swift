@@ -3,6 +3,8 @@ import Foundation
 
 enum TimerPreset: Int, CaseIterable {
     case oneMinute = 1
+    case twoMinute = 2
+    case threeMinute = 3
     case fiveMinutes = 5
     case tenMinutes = 10
     case fifteenMinutes = 15
@@ -18,6 +20,8 @@ enum TimerPreset: Int, CaseIterable {
         if let preset = TimerPreset(rawValue: minutes) {
             switch preset {
             case .oneMinute: return "1 Minute"
+            case .twoMinute: return "2 Minutes"
+            case .threeMinute: return "3 Minutes"
             case .fiveMinutes: return "5 Minutes"
             case .tenMinutes: return "10 Minutes"
             case .fifteenMinutes: return "15 Minutes"

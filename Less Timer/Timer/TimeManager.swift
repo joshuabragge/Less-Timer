@@ -45,9 +45,11 @@ class TimerManager: TimerManaging {
 
     
     private func setupServices() {
-        audioService.setupAudioSession()
-        audioService.loadSound(named: "copper-bell-ding", withExtension: "mp3")
-    }
+            audioService.setupAudioSession()
+            audioService.loadSound(named: "chime-ship-bell-single-ring", withExtension: "mp3", identifier: "chime")
+            audioService.loadSound(named: "session-end-copper-bell-ding", withExtension: "mp3", identifier: "session-end")
+        }
+
     
     func startTimer() {
         if !isRunning {
@@ -55,7 +57,7 @@ class TimerManager: TimerManaging {
             if isStartSoundEnabled && wasReset {
                 print("Play start sound")
                 DispatchQueue.main.async {
-                    self.audioService.playSound()
+                    self.audioService.playSound(identifier: "chime")
                 }
             }
             
@@ -75,7 +77,7 @@ class TimerManager: TimerManaging {
                 startTime = Date().addingTimeInterval(-elapsedTime)
             }
             
-            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true) { [weak self] _ in
                 self?.updateTimer()
             }
             RunLoop.current.add(timer!, forMode: .common)
@@ -119,7 +121,7 @@ class TimerManager: TimerManaging {
             if remainingTime == 0 {
                 stopTimer()
                 DispatchQueue.main.async {
-                    self.audioService.playSound()
+                    self.audioService.playSound(identifier: "session-end")
                 }
                 return
             }
@@ -133,7 +135,7 @@ class TimerManager: TimerManaging {
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     DispatchQueue.main.async {
                         print("Play chime")
-                        self.audioService.playSound()
+                        self.audioService.playSound(identifier: "chime")
                     }
                     lastChimeMinute = currentMinute
                 }
