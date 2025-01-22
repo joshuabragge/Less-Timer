@@ -17,7 +17,7 @@ protocol TimerManaging: ObservableObject {
 
 
 class TimerManager: TimerManaging {
-    @Published var elapsedTime: TimeInterval = 0
+    @Published var elapsedTime: TimeInterval = 59
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
@@ -49,10 +49,26 @@ class TimerManager: TimerManaging {
             audioService.loadSound(named: "chime-ship-bell-single-ring", withExtension: "mp3", identifier: "chime")
             audioService.loadSound(named: "session-end-copper-bell-ding", withExtension: "mp3", identifier: "session-end")
         }
+    
+    func refreshStorageVariables() {
+            // Force refresh from UserDefaults
+            isRecurringChimeEnabled = UserDefaults.standard.bool(forKey: "isRecurringChimeEnabled")
+            chimeIntervalMinutes = UserDefaults.standard.integer(forKey: "chimeIntervalMinutes")
+            isTimeLimitEnabled = UserDefaults.standard.bool(forKey: "isTimeLimitEnabled")
+            timeLimitMinutes = UserDefaults.standard.integer(forKey: "timeLimitMinutes")
+            isStartSoundEnabled = UserDefaults.standard.bool(forKey: "isStartSoundEnabled")
+            
+            // Update remaining time if needed
+            if isTimeLimitEnabled && wasReset {
+                remainingTime = TimeInterval(timeLimitMinutes * 60)
+            }
+        }
+
 
     
     func startTimer() {
         if !isRunning {
+            print("Starting timer")
             //play sound on reset if enabled
             if isStartSoundEnabled && wasReset {
                 print("Play start sound")
@@ -85,7 +101,9 @@ class TimerManager: TimerManaging {
         }
     }
     
+    
     func pauseTimer() {
+        print("Pausing timer")
         isRunning = false
         timer?.invalidate()
         timer = nil
@@ -93,6 +111,7 @@ class TimerManager: TimerManaging {
     }
     
     func stopTimer() {
+        print("Stopping timer")
         isRunning = false
         timer?.invalidate()
         timer = nil
@@ -100,6 +119,7 @@ class TimerManager: TimerManaging {
     }
     
     func resetTimer() {
+        print("Resetting timer")
         elapsedTime = 0
         remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
         wasReset = true

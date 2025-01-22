@@ -8,38 +8,54 @@ struct TimerDisplay: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            // Hours
-            if timeComponents.hours > 0 {
-                Text(TimeFormatter.formatComponent(timeComponents.hours, unit: "hour"))
-                    .transition(.opacity)
+        GeometryReader { geometry in
+            VStack(alignment: .center, spacing: 8) {
+                // Hours - Using fixed height placeholder when hidden
+                Group {
+                    if timeComponents.hours > 0 {
+                        Text(TimeFormatter.formatComponent(timeComponents.hours, unit: "hour"))
+                    } else {
+                        Color.clear
+                    }
+                }
+                .frame(height: 48) // Match font line height
+                
+                // Minutes - Using fixed height placeholder when hidden
+                Group {
+                    if timeComponents.minutes > 0 || timeComponents.hours > 0 {
+                        Text(TimeFormatter.formatComponent(timeComponents.minutes, unit: "minute"))
+                    } else {
+                        Color.clear
+                    }
+                }
+                .frame(height: 48)
+                
+                // Seconds (always shown)
+                Text(TimeFormatter.formatComponent(timeComponents.seconds, unit: "second"))
+                    .frame(height: 48)
             }
-            
-            // Minutes
-            if timeComponents.minutes > 0 || timeComponents.hours > 0 {
-                Text(TimeFormatter.formatComponent(timeComponents.minutes, unit: "minute"))
-                    .transition(.opacity)
-            }
-            
-            // Seconds (always shown)
-            Text(TimeFormatter.formatComponent(timeComponents.seconds, unit: "second"))
+            .font(.system(size: 40, weight: .medium, design: .rounded))
+            .foregroundColor(.gray)
+            .frame(
+                width: geometry.size.width,
+                height: geometry.size.height,
+                alignment: .center
+            )
         }
-        .font(.system(size: 40, weight: .medium, design: .rounded))
-        .foregroundColor(.gray)
-        .frame(minWidth: 200, alignment: .leading)
+        .frame(height: 200)  // Fixed height for the entire component
         .padding()
         .accessibilityLabel("Timer showing \(timeComponents.hours) hours, \(timeComponents.minutes) minutes, and \(timeComponents.seconds) seconds")
         .animation(.easeInOut, value: timeComponents.hours)
         .animation(.easeInOut, value: timeComponents.minutes)
         .transaction { transaction in
-                    // Use direct updates for the timer display
-                    transaction.animation = nil
-                }
+            // Disable animation for seconds to prevent jitter
+            transaction.animation = nil
+        }
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
-        TimerDisplay(timeInterval: 3881) // 1 hour, 1 minute, 1 second
+        TimerDisplay(timeInterval: 60) // 1 hour, 1 minute, 1 second
     }
 }

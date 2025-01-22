@@ -46,7 +46,6 @@ class AudioService: AudioServiceProtocol {
         }
         player.stop()
         player.currentTime = 0
-        print("Playing sound")
         player.play()
     }
 }

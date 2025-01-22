@@ -10,7 +10,7 @@ struct TimerView: View {
     var body: some View {
         VStack(spacing: 50) {
             Spacer()
-            
+            Spacer()
             // Display logic for different timer states
             if !timerManager.isRunning && timerManager.elapsedTime > 0 {
                 // Show elapsed time when paused or stopped
@@ -31,7 +31,7 @@ struct TimerView: View {
                     .opacity(0.3)
                     .transition(.opacity)
             }
-            
+            Spacer()
             HStack(spacing: 50) {
                 TimerButton(
                     icon: timerManager.isRunning ? "pause.fill" : "play.fill",
@@ -61,6 +61,9 @@ struct TimerView: View {
         }
         .padding()
         .animation(.easeInOut, value: timerManager.isRunning)
+        .onAppear {
+            timerManager.refreshStorageVariables()
+        }
     }
     
     private var shouldShowSaveButton: Bool {
