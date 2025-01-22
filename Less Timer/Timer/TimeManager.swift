@@ -21,13 +21,12 @@ class TimerManager: TimerManaging {
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
-    @Published var wasReset = false
+    @Published var wasReset = true
     
     private var timer: Timer?
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
     private let notificationService: NotificationServiceProtocol
-    private let hapticService: HapticServiceProtocol
     private var lastChimeMinute: Int = 0
     
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
@@ -37,11 +36,9 @@ class TimerManager: TimerManaging {
     @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     
     init(audioService: AudioServiceProtocol = AudioService(),
-         notificationService: NotificationServiceProtocol = NotificationService(),
-         hapticService: HapticServiceProtocol = HapticService()) {
+         notificationService: NotificationServiceProtocol = NotificationService()) {
         self.audioService = audioService
         self.notificationService = notificationService
-        self.hapticService = hapticService
         self.remainingTime = TimeInterval(timeLimitMinutes * 60)
         setupServices()
         }
@@ -49,11 +46,19 @@ class TimerManager: TimerManaging {
     
     private func setupServices() {
         audioService.setupAudioSession()
-        audioService.loadSound(named: "bell_ring", withExtension: "mp3")
+        audioService.loadSound(named: "copper-bell-ding", withExtension: "mp3")
     }
     
     func startTimer() {
         if !isRunning {
+            //play sound on reset if enabled
+            if isStartSoundEnabled && wasReset {
+                print("Play start sound")
+                DispatchQueue.main.async {
+                    self.audioService.playSound()
+                }
+            }
+            
             isRunning = true
             wasStopped = false
             wasReset = false
@@ -63,21 +68,18 @@ class TimerManager: TimerManaging {
                 if remainingTime == 0 {
                     remainingTime = TimeInterval(timeLimitMinutes * 60)
                 }
-                startTime = Date()
+                // Calculate how much time has already elapsed
+                let elapsed = TimeInterval(timeLimitMinutes * 60) - remainingTime
+                startTime = Date().addingTimeInterval(-elapsed)
             } else {
                 startTime = Date().addingTimeInterval(-elapsedTime)
             }
             
-            timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
                 self?.updateTimer()
             }
             RunLoop.current.add(timer!, forMode: .common)
-            
-            if isStartSoundEnabled {
-                DispatchQueue.main.async {
-                    self.audioService.playSound()
-                }
-            }
+
         }
     }
     
@@ -98,7 +100,7 @@ class TimerManager: TimerManaging {
     func resetTimer() {
         elapsedTime = 0
         remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
-        wasReset = false
+        wasReset = true
         isRunning = false
         lastChimeMinute = 0
         wasStopped = false
@@ -118,8 +120,6 @@ class TimerManager: TimerManaging {
                 stopTimer()
                 DispatchQueue.main.async {
                     self.audioService.playSound()
-                    self.hapticService.vibrate() // Strong vibration for time completion
-                    self.hapticService.playNotificationHaptic(type: .success) // Additional haptic feedback
                 }
                 return
             }
@@ -132,8 +132,8 @@ class TimerManager: TimerManaging {
                 let currentMinute = Int(elapsedTime / 60)
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     DispatchQueue.main.async {
+                        print("Play chime")
                         self.audioService.playSound()
-                        self.hapticService.playHapticImpact(style: .light)
                     }
                     lastChimeMinute = currentMinute
                 }

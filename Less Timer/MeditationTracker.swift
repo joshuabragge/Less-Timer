@@ -29,7 +29,7 @@ class MeditationTracker: ObservableObject {
             duration: duration,
             date: Date()
         )
-        
+        print("Saving duration:",session.duration as NSNumber)
         healthKitService.saveMeditationSession(session) { success, error in
             self.isSaving = false
             self.saveSuccess = success

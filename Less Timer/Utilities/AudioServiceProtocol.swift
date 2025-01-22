@@ -12,7 +12,7 @@ class AudioService: AudioServiceProtocol {
     func setupAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setCategory(
-                .ambient, // Changed from .playback to .ambient for faster response
+                .playback, // Changed from .playback to .ambient for faster response
                 mode: .default,
                 options: [.mixWithOthers]
             )

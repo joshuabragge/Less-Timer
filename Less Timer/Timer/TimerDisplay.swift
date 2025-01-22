@@ -31,6 +31,10 @@ struct TimerDisplay: View {
         .accessibilityLabel("Timer showing \(timeComponents.hours) hours, \(timeComponents.minutes) minutes, and \(timeComponents.seconds) seconds")
         .animation(.easeInOut, value: timeComponents.hours)
         .animation(.easeInOut, value: timeComponents.minutes)
+        .transaction { transaction in
+                    // Use direct updates for the timer display
+                    transaction.animation = nil
+                }
     }
 }
 
