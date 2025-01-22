@@ -14,7 +14,8 @@ class AudioService: AudioServiceProtocol {
             try AVAudioSession.sharedInstance().setCategory(
                 .playback,
                 mode: .default,
-                options: [.mixWithOthers]
+                options: [.mixWithOthers, .duckOthers]
+
             )
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {

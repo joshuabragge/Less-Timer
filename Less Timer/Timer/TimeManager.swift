@@ -17,7 +17,7 @@ protocol TimerManaging: ObservableObject {
 
 
 class TimerManager: TimerManaging {
-    @Published var elapsedTime: TimeInterval = 59
+    @Published var elapsedTime: TimeInterval = 56
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
@@ -129,28 +129,14 @@ class TimerManager: TimerManaging {
     }
     
     private func updateTimer() {
-        guard let startTime = startTime else { return }
-        
-        if isTimeLimitEnabled {
-            // Update countdown timer
+            guard let startTime = startTime else { return }
+            
+            // Calculate elapsed time for both modes
             let elapsed = Date().timeIntervalSince(startTime)
-            remainingTime = max(TimeInterval(timeLimitMinutes * 60) - elapsed, 0)
             elapsedTime = elapsed
             
-            // Check if timer has reached zero
-            if remainingTime == 0 {
-                stopTimer()
-                DispatchQueue.main.async {
-                    self.audioService.playSound(identifier: "session-end")
-                }
-                return
-            }
-        } else {
-            // Update count-up timer
-            elapsedTime = Date().timeIntervalSince(startTime)
-            
-            // Handle recurring chimes
-            if isRecurringChimeEnabled {
+            // Handle recurring chimes for both timer modes
+            if isRecurringChimeEnabled && remainingTime != 0{
                 let currentMinute = Int(elapsedTime / 60)
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     DispatchQueue.main.async {
@@ -160,6 +146,20 @@ class TimerManager: TimerManaging {
                     lastChimeMinute = currentMinute
                 }
             }
+            
+            // Handle time limit specific logic
+            if isTimeLimitEnabled {
+                remainingTime = max(TimeInterval(timeLimitMinutes * 60) - elapsed, 0)
+                
+                // Check if timer has reached zero
+                if remainingTime == 0 {
+                    stopTimer()
+                    DispatchQueue.main.async {
+                        print("Playing session end")
+                        self.audioService.playSound(identifier: "session-end")
+                    }
+                    return
+                }
+            }
         }
-    }
 }
