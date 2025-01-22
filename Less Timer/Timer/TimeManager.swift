@@ -26,7 +26,6 @@ class TimerManager: TimerManaging {
     private var timer: Timer?
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
-    private let notificationService: NotificationServiceProtocol
     private var lastChimeMinute: Int = 0
     
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
@@ -35,16 +34,9 @@ class TimerManager: TimerManaging {
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
     @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     
-    init(audioService: AudioServiceProtocol = AudioService(),
-         notificationService: NotificationServiceProtocol = NotificationService()) {
-        self.audioService = audioService
-        self.notificationService = notificationService
-        self.remainingTime = TimeInterval(timeLimitMinutes * 60)
-        setupServices()
-        }
-
-    
-    private func setupServices() {
+    init(audioService: AudioServiceProtocol = AudioService()) {
+            self.audioService = audioService
+            self.remainingTime = TimeInterval(timeLimitMinutes * 60)
             audioService.setupAudioSession()
             audioService.loadSound(named: "chime-ship-bell-single-ring", withExtension: "mp3", identifier: "chime")
             audioService.loadSound(named: "session-end-copper-bell-ding", withExtension: "mp3", identifier: "session-end")
@@ -63,11 +55,11 @@ class TimerManager: TimerManaging {
                 remainingTime = TimeInterval(timeLimitMinutes * 60)
             }
         }
-
-
     
     func startTimer() {
         if !isRunning {
+            print("Starting background audio")
+            self.audioService.startBackgroundAudio()
             print("Starting timer")
             //play sound on reset if enabled
             if isStartSoundEnabled && wasReset {
@@ -103,6 +95,8 @@ class TimerManager: TimerManaging {
     
     
     func pauseTimer() {
+        print("Stopping background audio")
+        self.audioService.stopBackgroundAudio()
         print("Pausing timer")
         isRunning = false
         timer?.invalidate()
@@ -111,6 +105,8 @@ class TimerManager: TimerManaging {
     }
     
     func stopTimer() {
+        print("Stopping background audio")
+        self.audioService.stopBackgroundAudio()
         print("Stopping timer")
         isRunning = false
         timer?.invalidate()
@@ -119,6 +115,7 @@ class TimerManager: TimerManaging {
     }
     
     func resetTimer() {
+        print("Stopping background audio")
         print("Resetting timer")
         elapsedTime = 0
         remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
@@ -134,6 +131,17 @@ class TimerManager: TimerManaging {
             // Calculate elapsed time for both modes
             let elapsed = Date().timeIntervalSince(startTime)
             elapsedTime = elapsed
+                
+        if false {
+            let currentSecond = Int(elapsedTime)
+            if currentSecond >= (lastChimeMinute + 10) { // 5 second intervals
+                DispatchQueue.main.async {
+                    print("Play debug chime at \(currentSecond) seconds")
+                    self.audioService.playSound(identifier: "chime")
+                }
+                lastChimeMinute = currentSecond
+            }
+        }
             
             // Handle recurring chimes for both timer modes
             if isRecurringChimeEnabled && remainingTime != 0{
