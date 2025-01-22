@@ -24,25 +24,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		500C65BE2D3C49CA00FDEF0B /* Nothing Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nothing Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		500C65CE2D3C49CC00FDEF0B /* Nothing TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nothing TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		500C65D82D3C49CC00FDEF0B /* Nothing TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Nothing TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65BE2D3C49CA00FDEF0B /* Less Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		500C65C02D3C49CA00FDEF0B /* Nothing Timer */ = {
+		500C65C02D3C49CA00FDEF0B /* Less Timer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Nothing Timer";
+			path = "Less Timer";
 			sourceTree = "<group>";
 		};
-		500C65D12D3C49CC00FDEF0B /* Nothing TimerTests */ = {
+		500C65D12D3C49CC00FDEF0B /* Less TimerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Nothing TimerTests";
+			path = "Less TimerTests";
 			sourceTree = "<group>";
 		};
-		500C65DB2D3C49CC00FDEF0B /* Nothing TimerUITests */ = {
+		500C65DB2D3C49CC00FDEF0B /* Less TimerUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Nothing TimerUITests";
+			path = "Less TimerUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -75,9 +75,9 @@
 		500C65B52D3C49CA00FDEF0B = {
 			isa = PBXGroup;
 			children = (
-				500C65C02D3C49CA00FDEF0B /* Nothing Timer */,
-				500C65D12D3C49CC00FDEF0B /* Nothing TimerTests */,
-				500C65DB2D3C49CC00FDEF0B /* Nothing TimerUITests */,
+				500C65C02D3C49CA00FDEF0B /* Less Timer */,
+				500C65D12D3C49CC00FDEF0B /* Less TimerTests */,
+				500C65DB2D3C49CC00FDEF0B /* Less TimerUITests */,
 				500C65BF2D3C49CA00FDEF0B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 		500C65BF2D3C49CA00FDEF0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				500C65BE2D3C49CA00FDEF0B /* Nothing Timer.app */,
-				500C65CE2D3C49CC00FDEF0B /* Nothing TimerTests.xctest */,
-				500C65D82D3C49CC00FDEF0B /* Nothing TimerUITests.xctest */,
+				500C65BE2D3C49CA00FDEF0B /* Less Timer.app */,
+				500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */,
+				500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		500C65BD2D3C49CA00FDEF0B /* Nothing Timer */ = {
+		500C65BD2D3C49CA00FDEF0B /* Less Timer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing Timer" */;
+			buildConfigurationList = 500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less Timer" */;
 			buildPhases = (
 				500C65BA2D3C49CA00FDEF0B /* Sources */,
 				500C65BB2D3C49CA00FDEF0B /* Frameworks */,
@@ -108,18 +108,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				500C65C02D3C49CA00FDEF0B /* Nothing Timer */,
+				500C65C02D3C49CA00FDEF0B /* Less Timer */,
 			);
-			name = "Nothing Timer";
+			name = "Less Timer";
 			packageProductDependencies = (
 			);
 			productName = "Nothing Timer";
-			productReference = 500C65BE2D3C49CA00FDEF0B /* Nothing Timer.app */;
+			productReference = 500C65BE2D3C49CA00FDEF0B /* Less Timer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		500C65CD2D3C49CC00FDEF0B /* Nothing TimerTests */ = {
+		500C65CD2D3C49CC00FDEF0B /* Less TimerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing TimerTests" */;
+			buildConfigurationList = 500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerTests" */;
 			buildPhases = (
 				500C65CA2D3C49CC00FDEF0B /* Sources */,
 				500C65CB2D3C49CC00FDEF0B /* Frameworks */,
@@ -131,18 +131,18 @@
 				500C65D02D3C49CC00FDEF0B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				500C65D12D3C49CC00FDEF0B /* Nothing TimerTests */,
+				500C65D12D3C49CC00FDEF0B /* Less TimerTests */,
 			);
-			name = "Nothing TimerTests";
+			name = "Less TimerTests";
 			packageProductDependencies = (
 			);
 			productName = "Nothing TimerTests";
-			productReference = 500C65CE2D3C49CC00FDEF0B /* Nothing TimerTests.xctest */;
+			productReference = 500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		500C65D72D3C49CC00FDEF0B /* Nothing TimerUITests */ = {
+		500C65D72D3C49CC00FDEF0B /* Less TimerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing TimerUITests" */;
+			buildConfigurationList = 500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerUITests" */;
 			buildPhases = (
 				500C65D42D3C49CC00FDEF0B /* Sources */,
 				500C65D52D3C49CC00FDEF0B /* Frameworks */,
@@ -154,13 +154,13 @@
 				500C65DA2D3C49CC00FDEF0B /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				500C65DB2D3C49CC00FDEF0B /* Nothing TimerUITests */,
+				500C65DB2D3C49CC00FDEF0B /* Less TimerUITests */,
 			);
-			name = "Nothing TimerUITests";
+			name = "Less TimerUITests";
 			packageProductDependencies = (
 			);
 			productName = "Nothing TimerUITests";
-			productReference = 500C65D82D3C49CC00FDEF0B /* Nothing TimerUITests.xctest */;
+			productReference = 500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 500C65B92D3C49CA00FDEF0B /* Build configuration list for PBXProject "Nothing Timer" */;
+			buildConfigurationList = 500C65B92D3C49CA00FDEF0B /* Build configuration list for PBXProject "Less Timer" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				500C65BD2D3C49CA00FDEF0B /* Nothing Timer */,
-				500C65CD2D3C49CC00FDEF0B /* Nothing TimerTests */,
-				500C65D72D3C49CC00FDEF0B /* Nothing TimerUITests */,
+				500C65BD2D3C49CA00FDEF0B /* Less Timer */,
+				500C65CD2D3C49CC00FDEF0B /* Less TimerTests */,
+				500C65D72D3C49CC00FDEF0B /* Less TimerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		500C65D02D3C49CC00FDEF0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 500C65BD2D3C49CA00FDEF0B /* Nothing Timer */;
+			target = 500C65BD2D3C49CA00FDEF0B /* Less Timer */;
 			targetProxy = 500C65CF2D3C49CC00FDEF0B /* PBXContainerItemProxy */;
 		};
 		500C65DA2D3C49CC00FDEF0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 500C65BD2D3C49CA00FDEF0B /* Nothing Timer */;
+			target = 500C65BD2D3C49CA00FDEF0B /* Less Timer */;
 			targetProxy = 500C65D92D3C49CC00FDEF0B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -393,25 +393,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Nothing Timer/Nothing Timer.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Less Timer/Less Timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Nothing Timer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer/Preview Content\"";
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Nothing-Timer-Info.plist";
+				INFOPLIST_FILE = "Less-Timer-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Nothing-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -424,25 +425,26 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Nothing Timer/Nothing Timer.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Less Timer/Less Timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Nothing Timer/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer/Preview Content\"";
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Nothing-Timer-Info.plist";
+				INFOPLIST_FILE = "Less-Timer-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Nothing-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -465,7 +467,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nothing Timer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nothing Timer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer";
 			};
 			name = Debug;
 		};
@@ -484,7 +486,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nothing Timer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Nothing Timer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer";
 			};
 			name = Release;
 		};
@@ -525,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		500C65B92D3C49CA00FDEF0B /* Build configuration list for PBXProject "Nothing Timer" */ = {
+		500C65B92D3C49CA00FDEF0B /* Build configuration list for PBXProject "Less Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E02D3C49CC00FDEF0B /* Debug */,
@@ -534,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing Timer" */ = {
+		500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less Timer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E32D3C49CC00FDEF0B /* Debug */,
@@ -543,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing TimerTests" */ = {
+		500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E62D3C49CC00FDEF0B /* Debug */,
@@ -552,7 +554,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Nothing TimerUITests" */ = {
+		500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E92D3C49CC00FDEF0B /* Debug */,

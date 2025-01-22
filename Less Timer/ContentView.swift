@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TimerView()
-                .navigationTitle("Nothing Timer")
+                .navigationTitle("Less Timer")
                 //.navigationBarTitleDisplayMode(.inline)
                 .preferredColorScheme(.dark)
                 .toolbar {
