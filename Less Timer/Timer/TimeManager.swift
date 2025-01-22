@@ -1,7 +1,7 @@
 import Foundation
 import AVFoundation
-import UserNotifications
 import SwiftUI
+import OSLog
 
 protocol TimerManaging: ObservableObject {
     
@@ -26,6 +26,7 @@ class TimerManager: TimerManaging {
     private var timer: Timer?
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
+    private let logger = Logger.timer
     private var lastChimeMinute: Int = 0
     
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
@@ -58,12 +59,12 @@ class TimerManager: TimerManaging {
     
     func startTimer() {
         if !isRunning {
-            print("Starting background audio")
+            logger.info("startTimer: starting background audio")
             self.audioService.startBackgroundAudio()
-            print("Starting timer")
+            logger.info("startTimer: starting timer")
             //play sound on reset if enabled
             if isStartSoundEnabled && wasReset {
-                print("Play start sound")
+                logger.info("startTimer: play starting sound")
                 DispatchQueue.main.async {
                     self.audioService.playSound(identifier: "chime")
                 }
@@ -74,6 +75,7 @@ class TimerManager: TimerManaging {
             wasReset = false
             
             if isTimeLimitEnabled {
+                logger.info("startTimer: time limit enabled")
                 // For countdown mode, initialize remaining time if it's zero
                 if remainingTime == 0 {
                     remainingTime = TimeInterval(timeLimitMinutes * 60)
@@ -83,6 +85,7 @@ class TimerManager: TimerManaging {
                 startTime = Date().addingTimeInterval(-elapsed)
             } else {
                 startTime = Date().addingTimeInterval(-elapsedTime)
+                logger.info("startTimer: Open ended medidation")
             }
             
             timer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true) { [weak self] _ in
@@ -95,9 +98,9 @@ class TimerManager: TimerManaging {
     
     
     func pauseTimer() {
-        print("Stopping background audio")
+        logger.info("pauseTimer: stopping background audio")
         self.audioService.stopBackgroundAudio()
-        print("Pausing timer")
+        logger.info("pauseTimer: pausing timer")
         isRunning = false
         timer?.invalidate()
         timer = nil
@@ -105,9 +108,9 @@ class TimerManager: TimerManaging {
     }
     
     func stopTimer() {
-        print("Stopping background audio")
+        logger.info("stopTimer: stopping background audio")
         self.audioService.stopBackgroundAudio()
-        print("Stopping timer")
+        logger.info("stopTimer: stopping timer")
         isRunning = false
         timer?.invalidate()
         timer = nil
@@ -115,8 +118,8 @@ class TimerManager: TimerManaging {
     }
     
     func resetTimer() {
-        print("Stopping background audio")
-        print("Resetting timer")
+        logger.info("resetTimer: stopping background audio")
+        logger.info("resetTimer: resetting timer")
         elapsedTime = 0
         remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
         wasReset = true
@@ -131,24 +134,13 @@ class TimerManager: TimerManaging {
             // Calculate elapsed time for both modes
             let elapsed = Date().timeIntervalSince(startTime)
             elapsedTime = elapsed
-                
-        if false {
-            let currentSecond = Int(elapsedTime)
-            if currentSecond >= (lastChimeMinute + 10) { // 5 second intervals
-                DispatchQueue.main.async {
-                    print("Play debug chime at \(currentSecond) seconds")
-                    self.audioService.playSound(identifier: "chime")
-                }
-                lastChimeMinute = currentSecond
-            }
-        }
             
             // Handle recurring chimes for both timer modes
             if isRecurringChimeEnabled && remainingTime != 0{
                 let currentMinute = Int(elapsedTime / 60)
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
+                    logger.info("updateTimer: playing chime at \(self.chimeIntervalMinutes)")
                     DispatchQueue.main.async {
-                        print("Play chime")
                         self.audioService.playSound(identifier: "chime")
                     }
                     lastChimeMinute = currentMinute
@@ -162,8 +154,8 @@ class TimerManager: TimerManaging {
                 // Check if timer has reached zero
                 if remainingTime == 0 {
                     stopTimer()
+                    logger.info("updateTimer: end of session")
                     DispatchQueue.main.async {
-                        print("Playing session end")
                         self.audioService.playSound(identifier: "session-end")
                     }
                     return
