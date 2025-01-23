@@ -11,9 +11,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TimerView()
+                .background(Color.black)
                 .navigationTitle("Less Timer")
-                //.navigationBarTitleDisplayMode(.inline)
-                .preferredColorScheme(.dark)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         NavigationLink(destination: SettingsView()) {
@@ -24,8 +23,7 @@ struct ContentView: View {
                     }
                 }
         }
-        .background(Color.black)
-        .statusBar(hidden: true)
+
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
