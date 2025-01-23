@@ -1,4 +1,3 @@
-// SettingsView.swift
 import SwiftUI
 
 struct SettingsView: View {
@@ -15,6 +14,9 @@ struct SettingsView: View {
     // State for custom input sheets
     @State private var showingCustomChimeSheet = false
     @State private var showingCustomTimeLimitSheet = false
+    
+    @State private var showingSafariView = false
+    @State private var selectedURL: URL? = nil
     
     // Computed properties for picker selections
     private var selectedChimePreset: Binding<Int> {
@@ -114,20 +116,32 @@ struct SettingsView: View {
             }
             Section(header: Text("Support Our Community!")) {
                 HStack {
-                    Link("Little Bee Gallery", destination: URL(string: "https://www.littlebeegallery.com/")!)
-
+                    Button("Little Bee Gallery") {
+                        if let url = SafariService.shared.validateURL("https://www.littlebeegallery.com/") {
+                            selectedURL = url
+                            showingSafariView = true
+                        }
+                    }
                     Spacer()
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Link("Calgary Food Bank", destination: URL(string: "https://www.calgaryfoodbank.com/")!)
-
+                    Button("Calgary Food Bank") {
+                            if let url = SafariService.shared.validateURL("https://www.calgaryfoodbank.com/") {
+                                selectedURL = url
+                                showingSafariView = true
+                            }
+                        }
                     Spacer()
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Link("Trees Canada", destination: URL(string: "https://treecanada.ca/")!)
-
+                    Button("Trees Canada") {
+                            if let url = SafariService.shared.validateURL("https://treecanada.ca/") {
+                                selectedURL = url
+                                showingSafariView = true
+                            }
+                        }
                     Spacer()
                         .foregroundColor(.gray)
                 }
@@ -153,6 +167,15 @@ struct SettingsView: View {
                 title: "Custom Time Limit",
                 minutes: $timeLimitMinutes
             )
+        }
+        .fullScreenCover(isPresented: Binding(
+            get: { showingSafariView && selectedURL != nil },
+            set: { showingSafariView = $0 }
+        )) {
+            if let url = selectedURL {
+                SafariView(url: url, isPresented: $showingSafariView)
+                    .edgesIgnoringSafeArea(.all)
+            }
         }
     }
 }

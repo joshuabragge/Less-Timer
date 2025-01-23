@@ -8,8 +8,8 @@ protocol HealthKitServiceProtocol: ObservableObject {
     func saveMeditationSession(_ session: MeditationSession, completion: @escaping (Bool, Error?) -> Void)
 }
 
-#if false
-class HealthKitService: ObservableObject, HealthKitServiceProtocol {
+#if true
+class HealthKitService: ObservableObject, HealthKitServiceProtocol, @unchecked Sendable {
     private let healthStore = HKHealthStore()
     private let meditationType = HKObjectType.categoryType(forIdentifier: .mindfulSession)!
     
@@ -29,11 +29,11 @@ class HealthKitService: ObservableObject, HealthKitServiceProtocol {
             return
         }
         
-        let status = healthStore.authorizationStatus(for: meditationType,
+        let status = healthStore.authorizationStatus(for: meditationType)
         DispatchQueue.main.async {
             self.authorizationStatus = status
         }
-    )}
+    }
     
     func requestAuthorization(completion: @escaping (Bool, Error?) -> Void) {
         guard HKHealthStore.isHealthDataAvailable() else {
