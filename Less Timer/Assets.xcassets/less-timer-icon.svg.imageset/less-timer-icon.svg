@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- Background -->
+  <rect width="180" height="180" fill="#1a1a1a" rx="45" ry="45"/>
+  
+  <!-- Asymmetric less than symbol -->
+  <path d="M108,45 L72,90 L100,135" 
+        stroke="#f0f0f0" 
+        stroke-width="12" 
+        stroke-linecap="round"
+        fill="none"/>
+</svg>

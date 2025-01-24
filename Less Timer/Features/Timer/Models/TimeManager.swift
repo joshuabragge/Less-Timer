@@ -66,7 +66,7 @@ class TimerManager: TimerManaging {
             if isStartSoundEnabled && wasReset {
                 logger.info("startTimer: play starting sound")
                 DispatchQueue.main.async {
-                    self.audioService.playSound(identifier: "chime")
+                    self.audioService.playSound(identifier: "session-end")
                 }
             }
             

@@ -7,29 +7,37 @@ struct TimerView: View {
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
     
+    @State private var showIcon = true
+    @State private var firstLaunch = true
+    
     var body: some View {
         VStack(spacing: 50) {
             Spacer()
             Spacer()
-            // Display logic for different timer states
-            if !timerManager.isRunning && timerManager.elapsedTime > 0 {
-                // Show elapsed time when paused or stopped
-                TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
-                    .transition(.opacity)
-            }
-            // Show initial time limit when enabled and not started
-            else if isTimeLimitEnabled && !timerManager.isRunning && timerManager.elapsedTime == 0 {
-                TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
-            }
-            // Hide timer before starting session when no time limit
-            else if !timerManager.isRunning && timerManager.elapsedTime == 0 && !isTimeLimitEnabled {
-                // Empty view
-            }
-            // Show running timer with reduced opacity
-            else {
-                TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
-                    .opacity(0.3)
-                    .transition(.opacity)
+            
+            ZStack {
+                // Icon view
+                if showIcon && firstLaunch {
+                    Image("less-timer-icon-clear.png")
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .foregroundColor(.gray)
+                        .opacity(showIcon ? 1 : 0)
+                        .transition(.opacity)
+                }
+                
+                // Timer display
+                Group {
+                    if !timerManager.isRunning && timerManager.elapsedTime > 0 {
+                        TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
+                    } else if isTimeLimitEnabled && !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                        TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+                    } else if timerManager.isRunning {
+                        TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
+                            .opacity(0.3)
+                    }
+                }
+                .opacity(showIcon ? 0 : 1)
             }
             Spacer()
             HStack(spacing: 50) {
@@ -63,6 +71,12 @@ struct TimerView: View {
         .animation(.easeInOut, value: timerManager.isRunning)
         .onAppear {
             timerManager.refreshStorageVariables()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
+                            withAnimation(.easeOut(duration: 1)) {
+                                showIcon = false
+                                firstLaunch = false
+                            }
+                        }
         }
     }
     
