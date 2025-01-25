@@ -1,0 +1,56 @@
+// WatchSettingsView.swift
+import SwiftUI
+import HealthKit
+
+struct WatchSettingsView: View {
+    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
+    @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
+    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
+    @StateObject private var healthKitService = HealthKitService()
+    
+    var body: some View {
+        List {
+            Section(header: Text("Sounds")) {
+                Toggle("Starting Sound", isOn: $isStartSoundEnabled)
+                Toggle("Recurring Chime", isOn: $isRecurringChimeEnabled)
+                
+                if isRecurringChimeEnabled {
+                    Picker("Interval", selection: $chimeIntervalMinutes) {
+                        Text("1 min").tag(5)
+                        Text("5 min").tag(5)
+                        Text("10 min").tag(10)
+                        Text("15 min").tag(15)
+                    }
+                }
+            }
+            
+            Section(header: Text("Health")) {
+                HStack {
+                    Text("Apple Health")
+                    Spacer()
+                    switch healthKitService.authorizationStatus {
+                    case .notDetermined:
+                        Button("Enable") {
+                            healthKitService.requestAuthorization { success, error in
+                                Task {
+                                    await healthKitService.checkAuthorizationStatus()
+                                }
+                            }
+                        }
+                    case .sharingAuthorized:
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                    case .sharingDenied:
+                        Text("Denied")
+                            .foregroundColor(.red)
+                    @unknown default:
+                        Text("Unknown")
+                    }
+                }
+            }
+        }
+        .task {
+            await healthKitService.checkAuthorizationStatus()
+        }
+    }
+}
