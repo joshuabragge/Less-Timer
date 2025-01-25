@@ -153,6 +153,16 @@ struct SettingsView: View {
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                         .foregroundColor(.gray)
                 }
+                HStack {
+                    Button("Less Timer Source Code") {
+                        if let url = SafariService.shared.validateURL("https://github.com/joshuabragge/Less-Timer") {
+                            selectedURL = url
+                            showingSafariView = true
+                        }
+                    }
+                    Spacer()
+                        .foregroundColor(.gray)
+                }
             }
         }
         .navigationTitle("Settings")
