@@ -26,3 +26,6 @@ struct TimerDisplay: View {
         .foregroundColor(.gray)
     }
 }
+#Preview {
+    ContentView()
+}

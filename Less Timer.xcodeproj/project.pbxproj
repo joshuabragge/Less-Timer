@@ -83,8 +83,20 @@
 				Features/Timer/Models/TimeManager.swift,
 				Features/Timer/Services/AudioServiceProtocol.swift,
 				Features/Timer/Services/Logger.swift,
+				"Resources/Sounds/chime-ship-bell-single-ring.mp3",
+				"Resources/Sounds/session-end-copper-bell-ding.mp3",
+				"Resources/Sounds/silent-background.mp3",
 			);
 			target = 505B3AEC2D4581A1009EAEBD /* Less Timer Watch Watch App */;
+		};
+		505B3B362D458C9B009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Resources/Sounds/chime-ship-bell-single-ring.mp3",
+				"Resources/Sounds/session-end-copper-bell-ding.mp3",
+				"Resources/Sounds/silent-background.mp3",
+			);
+			target = 505B3AE72D4581A1009EAEBD /* Less Timer Watch */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -92,6 +104,7 @@
 		500C65C02D3C49CA00FDEF0B /* Less Timer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				505B3B362D458C9B009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch" target */,
 				505B3B252D45820A009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch Watch App" target */,
 			);
 			path = "Less Timer";
@@ -833,6 +846,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Less Timer Watch Watch App/Less Timer Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Less Timer Watch Watch App/Preview Content\"";
@@ -864,6 +878,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Less Timer Watch Watch App/Less Timer Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Less Timer Watch Watch App/Preview Content\"";

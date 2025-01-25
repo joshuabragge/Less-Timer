@@ -5,6 +5,10 @@ struct WatchTimerView: View {
     @StateObject private var timerManager = TimerManager()
     @StateObject private var meditationTracker = MeditationTracker()
     
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+
+    
     var body: some View {
         TabView {
             // Timer Tab
@@ -14,12 +18,21 @@ struct WatchTimerView: View {
                 // Timer Display
                 ZStack {
                     if !timerManager.isRunning && timerManager.elapsedTime == 0 {
-                        Image(systemName: "infinity")
-                            .font(.system(size: 40))
-                            .foregroundColor(.gray)
+                        if !isTimeLimitEnabled {
+                            // Open-ended meditation display
+                            Image(systemName: "infinity")
+                                .font(.system(size: 40))
+                                .foregroundColor(.gray)
+                        } else {
+                            // Countdown display before starting
+                            TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+                        }
                     } else {
-                        TimerDisplay(timeInterval: timerManager.elapsedTime)
-                            .opacity(timerManager.isRunning ? 0.3 : 1.0)
+                        // Running or paused display
+                        TimerDisplay(
+                            timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime
+                        )
+                        .opacity(timerManager.isRunning ? 0.3 : 1.0)
                     }
                 }
                 
@@ -36,6 +49,8 @@ struct WatchTimerView: View {
                     }) {
                         Image(systemName: timerManager.isRunning ? "pause.circle.fill" : "play.circle.fill")
                             .font(.system(size: 35))
+                            .foregroundColor(.gray)
+                            
                     }
                     
                     Button(action: {
@@ -47,6 +62,7 @@ struct WatchTimerView: View {
                     }) {
                         Image(systemName: timerManager.wasStopped ? "arrow.uturn.left.circle.fill" : "stop.circle.fill")
                             .font(.system(size: 35))
+                            .foregroundColor(.gray)
                     }
                 }
                 
@@ -74,4 +90,7 @@ struct WatchTimerView: View {
                 }
         }
     }
+}
+#Preview {
+    ContentView()
 }

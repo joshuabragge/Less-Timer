@@ -58,15 +58,22 @@ struct SettingsView: View {
     
     var body: some View {
         List {
-            Section(header: Text("Sounds")) {
-                Toggle("Starting Sound", isOn: Binding(
-                    get: { isStartSoundEnabled },
-                    set: { newValue in
-                        isStartSoundEnabled = newValue
-                        UserDefaults.standard.set(isStartSoundEnabled, forKey: "isStartSoundEnabled")
-                        print("Saved Starting Sound: \(newValue)")
+            Section(header: Text("Meditation Settings")) {
+                Toggle("Time Limit", isOn: $isTimeLimitEnabled)
+                
+                if isTimeLimitEnabled {
+                    Picker("Duration", selection: selectedTimeLimitPreset) {
+                        ForEach(TimerPreset.allCases, id: \.rawValue) { preset in
+                            Text(preset == .custom ? "Custom..." : TimerPreset.displayText(for: preset.rawValue))
+                                .tag(preset.rawValue)
+                        }
                     }
-                    ))
+                    
+                    if TimerPreset.preset(for: timeLimitMinutes) == .custom {
+                        Text("\(timeLimitMinutes) Minutes")
+                            .foregroundColor(.gray)
+                    }
+                }
                 Toggle("Recurring Chime", isOn: Binding(
                     get: { isRecurringChimeEnabled },
                     set: { newValue in
@@ -90,24 +97,15 @@ struct SettingsView: View {
                             .foregroundColor(.gray)
                     }
                 }
-            }
-            
-            Section(header: Text("Meditation Style")) {
-                Toggle("Time Limit", isOn: $isTimeLimitEnabled)
-                
-                if isTimeLimitEnabled {
-                    Picker("Duration", selection: selectedTimeLimitPreset) {
-                        ForEach(TimerPreset.allCases, id: \.rawValue) { preset in
-                            Text(preset == .custom ? "Custom..." : TimerPreset.displayText(for: preset.rawValue))
-                                .tag(preset.rawValue)
-                        }
+                Toggle("Starting Sound", isOn: Binding(
+                    get: { isStartSoundEnabled },
+                    set: { newValue in
+                        isStartSoundEnabled = newValue
+                        UserDefaults.standard.set(isStartSoundEnabled, forKey: "isStartSoundEnabled")
+                        print("Saved Starting Sound: \(newValue)")
                     }
-                    
-                    if TimerPreset.preset(for: timeLimitMinutes) == .custom {
-                        Text("\(timeLimitMinutes) Minutes")
-                            .foregroundColor(.gray)
-                    }
-                }
+                    )
+                )
             }
             Section(header: Text("Health")) {
                 NavigationLink(destination: HealthSettingsView()) {

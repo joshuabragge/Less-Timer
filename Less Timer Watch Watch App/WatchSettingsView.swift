@@ -5,23 +5,34 @@ import HealthKit
 struct WatchSettingsView: View {
     @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
-    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
+    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 1
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+    
     @StateObject private var healthKitService = HealthKitService()
     
     var body: some View {
         List {
-            Section(header: Text("Sounds")) {
-                Toggle("Starting Sound", isOn: $isStartSoundEnabled)
-                Toggle("Recurring Chime", isOn: $isRecurringChimeEnabled)
-                
-                if isRecurringChimeEnabled {
-                    Picker("Interval", selection: $chimeIntervalMinutes) {
-                        Text("1 min").tag(5)
+            Section(header: Text("Meditation Settings")) {
+                Toggle("Time Limit", isOn: $isTimeLimitEnabled)
+                if isTimeLimitEnabled {
+                    Picker("Time Limit", selection: $timeLimitMinutes) {
+                        Text("1 min").tag(1)
                         Text("5 min").tag(5)
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)
                     }
                 }
+                Toggle("Recurring Chime", isOn: $isRecurringChimeEnabled)
+                if isRecurringChimeEnabled {
+                    Picker("Chime Interval", selection: $chimeIntervalMinutes) {
+                        Text("1 min").tag(1)
+                        Text("5 min").tag(5)
+                        Text("10 min").tag(10)
+                        Text("15 min").tag(15)
+                    }
+                }
+                Toggle("Starting Sound", isOn: $isStartSoundEnabled)
             }
             
             Section(header: Text("Health")) {
@@ -48,9 +59,19 @@ struct WatchSettingsView: View {
                     }
                 }
             }
+            Section(header: Text("About")) {
+                HStack {
+                    Text("Version")
+                    Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
+                        .foregroundColor(.gray)
+                }
+            }
         }
         .task {
             await healthKitService.checkAuthorizationStatus()
         }
     }
+}
+#Preview {
+    WatchSettingsView()
 }
