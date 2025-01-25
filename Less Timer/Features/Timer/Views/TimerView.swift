@@ -14,25 +14,17 @@ struct TimerView: View {
         VStack(spacing: 50) {
             Spacer()
             Spacer()
-            
             ZStack {
-                // Icon view
-                if showIcon && firstLaunch {
-                    Image("less-timer-icon-clear.png")
-                        .resizable()
-                        .frame(width: 120, height: 120)
-                        .foregroundColor(.gray)
-                        .opacity(showIcon ? 1 : 0)
-                        .transition(.opacity)
-                }
-                
                 // Timer display
                 Group {
                     if !timerManager.isRunning && timerManager.elapsedTime > 0 {
+                        // Paused view
                         TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
                     } else if isTimeLimitEnabled && !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                        // Not started view
                         TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
                     } else if timerManager.isRunning {
+                        // Running view
                         TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
                             .opacity(0.3)
                     }
@@ -71,12 +63,6 @@ struct TimerView: View {
         .animation(.easeInOut, value: timerManager.isRunning)
         .onAppear {
             timerManager.refreshStorageVariables()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
-                            withAnimation(.easeOut(duration: 1)) {
-                                showIcon = false
-                                firstLaunch = false
-                            }
-                        }
         }
     }
     
