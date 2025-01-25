@@ -17,4 +17,8 @@ extension Logger {
     
     /// Logger for settings changes
     static let settings = Logger(subsystem: subsystem, category: "settings")
+    
+    /// Logger for view
+    static let view = Logger(subsystem: subsystem, category: "view")
+
 }

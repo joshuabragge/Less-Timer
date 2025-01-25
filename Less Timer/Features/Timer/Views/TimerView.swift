@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct TimerView: View {
     @StateObject private var timerManager: TimerManager = TimerManager()
@@ -6,9 +7,6 @@ struct TimerView: View {
     
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
-    
-    @State private var showIcon = true
-    @State private var firstLaunch = true
     
     var body: some View {
         VStack(spacing: 50) {
@@ -20,16 +18,26 @@ struct TimerView: View {
                     if !timerManager.isRunning && timerManager.elapsedTime > 0 {
                         // Paused view
                         TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
-                    } else if isTimeLimitEnabled && !timerManager.isRunning && timerManager.elapsedTime == 0 {
-                        // Not started view
-                        TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
-                    } else if timerManager.isRunning {
-                        // Running view
+                        
+                    }
+                    else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                        if !isTimeLimitEnabled {
+                            /// Pending start open ended view
+                            Image(systemName: "infinity")
+                                .font(.system(size: 60))
+                                .foregroundColor(.gray)
+                        }
+                        else {
+                            /// Pending start timed view
+                            TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+                        }
+                    }
+                    else if timerManager.isRunning {
+                        /// Running view
                         TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
                             .opacity(0.3)
                     }
                 }
-                .opacity(showIcon ? 0 : 1)
             }
             Spacer()
             HStack(spacing: 50) {
@@ -45,7 +53,6 @@ struct TimerView: View {
                     color: .gray,
                     action: stopTimer
                 )
-                .opacity(1)
             }
             
             HStack(spacing: 1) {
