@@ -8,7 +8,7 @@ protocol HealthKitServiceProtocol: ObservableObject {
     func saveMeditationSession(_ session: MeditationSession, completion: @escaping (Bool, Error?) -> Void)
 }
 
-#if true
+#if false
 class HealthKitService: ObservableObject, HealthKitServiceProtocol, @unchecked Sendable {
     private let healthStore = HKHealthStore()
     private let meditationType = HKObjectType.categoryType(forIdentifier: .mindfulSession)!
