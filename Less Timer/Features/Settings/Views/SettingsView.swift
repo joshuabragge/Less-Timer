@@ -152,7 +152,7 @@ struct SettingsView: View {
                         .foregroundColor(.gray)
                 }
                 HStack {
-                    Button("Less Timer Source Code") {
+                    Button("Source Code") {
                         if let url = SafariService.shared.validateURL("https://github.com/joshuabragge/Less-Timer") {
                             selectedURL = url
                             showingSafariView = true

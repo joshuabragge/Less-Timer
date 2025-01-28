@@ -25,7 +25,7 @@ struct TimerView: View {
                             /// Pending start open ended view
                             Image(systemName: "infinity")
                                 .font(.system(size: 60))
-                                .foregroundColor(.gray)
+                                .foregroundColor(.white)
                         }
                         else {
                             /// Pending start timed view
@@ -43,14 +43,14 @@ struct TimerView: View {
             HStack(spacing: 50) {
                 TimerButton(
                     icon: timerManager.isRunning ? "pause.fill" : "play.fill",
-                    color: .gray
+                    color: .white
                 ) {
                     toggleTimer()
                 }.opacity(1)
                 
                 TimerButton(
                     icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop.fill",
-                    color: .gray,
+                    color: .white,
                     action: stopTimer
                 )
             }
@@ -58,7 +58,7 @@ struct TimerView: View {
             HStack(spacing: 1) {
                 SaveButton(
                     icon: "heart.fill",
-                    color: meditationTracker.saveSuccess == true ? .red : .gray,
+                    color: meditationTracker.saveSuccess == true ? .red : .white,
                     action: saveSession,
                     isLoading: meditationTracker.isSaving
                 )
