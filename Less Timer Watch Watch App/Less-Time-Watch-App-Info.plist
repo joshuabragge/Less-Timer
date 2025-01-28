@@ -12,5 +12,11 @@
 	<array>
 		<string>audio</string>
 	</array>
+	<key>WKApplication</key>
+    <true/>
+    <key>WKWatchKitApp</key>
+    <true/>
+    <key>WKLaunchImageBackgroundColor</key>
+    <string>black</string>
 </dict>
 </plist>

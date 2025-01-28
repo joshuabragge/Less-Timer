@@ -846,6 +846,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Less Timer Watch Watch App/Less Timer Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -855,8 +856,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Timer-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -878,6 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Less Timer Watch Watch App/Less Timer Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -887,8 +891,10 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Timer-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = YES;
+				INFOPLIST_KEY_WKWatchOnly = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

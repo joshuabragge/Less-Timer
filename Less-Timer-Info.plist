@@ -12,5 +12,16 @@
 	<string>Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>UILaunchScreen</key>
+    <dict>
+        <key>UIColorName</key>
+        <string>launchScreenBackground</string>
+        <key>UIImageName</key>
+        <string>less-timer-icon-clear</string>
+        <key>UIImageRespectsSafeAreaInsets</key>
+        <true/>
+        <key>UILaunchScreen</key>
+        <dict/>
+    </dict>
 </dict>
 </plist>
