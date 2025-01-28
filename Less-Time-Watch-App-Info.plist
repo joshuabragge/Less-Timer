@@ -12,11 +12,13 @@
 	<array>
 		<string>audio</string>
 	</array>
-	<key>WKApplication</key>
-    <true/>
     <key>WKWatchKitApp</key>
     <true/>
     <key>WKLaunchImageBackgroundColor</key>
     <string>black</string>
+	<key>CFBundleIdentifier</key>
+	<string>Breault.Less-Timer.watchkitapp</string>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>Breault.Less-Timer</string>
 </dict>
 </plist>

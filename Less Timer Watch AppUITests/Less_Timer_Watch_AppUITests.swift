@@ -1,13 +1,6 @@
-//
-//  Less_Timer_Watch_Watch_AppUITests.swift
-//  Less Timer Watch Watch AppUITests
-//
-//  Created by Joshua Bragge on 2025-01-25.
-//
-
 import XCTest
 
-final class Less_Timer_Watch_Watch_AppUITests: XCTestCase {
+final class Less_Timer_Watch_AppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

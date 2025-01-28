@@ -1,12 +1,3 @@
-//
-//  CustomDurationPicker.swift
-//  Nothing Timer
-//
-//  Created by Joshua Bragge on 2025-01-20.
-//
-
-
-// CustomDurationPicker.swift
 import SwiftUI
 
 struct CustomDurationPicker: View {

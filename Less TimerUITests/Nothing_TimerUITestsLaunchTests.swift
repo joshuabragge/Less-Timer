@@ -1,6 +1,6 @@
 import XCTest
 
-final class Nothing_TimerUITestsLaunchTests: XCTestCase {
+final class Less_Timer_Watch_App_TimerUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
