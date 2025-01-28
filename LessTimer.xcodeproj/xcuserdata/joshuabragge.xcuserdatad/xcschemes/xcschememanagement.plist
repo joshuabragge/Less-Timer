@@ -6,6 +6,8 @@
 	<dict>
 		<key>Less Timer Watch App.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -14,10 +16,34 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Less Timer for Watch Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Less Timer for Watch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Less Timer.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>LessTimerWatch Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>LessTimerWatch.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Nothing Timer.xcscheme_^#shared#^_</key>
 		<dict>
@@ -58,6 +84,36 @@
 			<true/>
 		</dict>
 		<key>505B3B082D4581A2009EAEBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB41112D48ADFB0053E39A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB41202D48ADFD0053E39A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB412A2D48ADFD0053E39A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB41362D48ADFD0053E39A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB41482D48ADFE0053E39A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50EB41522D48ADFE0053E39A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

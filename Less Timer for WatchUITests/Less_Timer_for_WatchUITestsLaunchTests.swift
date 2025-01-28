@@ -1,6 +1,13 @@
+//
+//  Less_Timer_for_WatchUITestsLaunchTests.swift
+//  Less Timer for WatchUITests
+//
+//  Created by Joshua Bragge on 2025-01-27.
+//
+
 import XCTest
 
-final class Less_Timer_Watch_AppUITestsLaunchTests: XCTestCase {
+final class Less_Timer_for_WatchUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

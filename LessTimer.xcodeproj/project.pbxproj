@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		505B3AEE2D4581A1009EAEBD /* Less Timer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 505B3AED2D4581A1009EAEBD /* Less Timer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		50EB40712D48A1FE0053E39A /* Less Timer Watch.app in Resources */ = {isa = PBXBuildFile; fileRef = 505B3AE82D4581A1009EAEBD /* Less Timer Watch.app */; };
-		50EB40742D48A1FE0053E39A /* Less Timer.app in Resources */ = {isa = PBXBuildFile; fileRef = 500C65BE2D3C49CA00FDEF0B /* Less Timer.app */; };
+		50EB41382D48ADFD0053E39A /* Less Timer for Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 50EB41372D48ADFD0053E39A /* Less Timer for Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,37 +25,51 @@
 			remoteGlobalIDString = 500C65BD2D3C49CA00FDEF0B;
 			remoteInfo = "Nothing Timer";
 		};
-		505B3B002D4581A2009EAEBD /* PBXContainerItemProxy */ = {
+		50EB41222D48ADFD0053E39A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 500C65B62D3C49CA00FDEF0B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 505B3AEC2D4581A1009EAEBD;
-			remoteInfo = "Less Timer Watch Watch App";
+			remoteGlobalIDString = 50EB41112D48ADFB0053E39A;
+			remoteInfo = "Less Timer for Watch";
 		};
-		505B3B0A2D4581A2009EAEBD /* PBXContainerItemProxy */ = {
+		50EB412C2D48ADFD0053E39A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 500C65B62D3C49CA00FDEF0B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 505B3AEC2D4581A1009EAEBD;
-			remoteInfo = "Less Timer Watch Watch App";
+			remoteGlobalIDString = 50EB41112D48ADFB0053E39A;
+			remoteInfo = "Less Timer for Watch";
 		};
-		50EB407B2D48A48A0053E39A /* PBXContainerItemProxy */ = {
+		50EB41392D48ADFD0053E39A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 500C65B62D3C49CA00FDEF0B /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 500C65BD2D3C49CA00FDEF0B;
-			remoteInfo = "Less Timer";
+			remoteGlobalIDString = 50EB41362D48ADFD0053E39A;
+			remoteInfo = "Less Timer for Watch Watch App";
+		};
+		50EB414A2D48ADFE0053E39A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 500C65B62D3C49CA00FDEF0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50EB41362D48ADFD0053E39A;
+			remoteInfo = "Less Timer for Watch Watch App";
+		};
+		50EB41542D48ADFE0053E39A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 500C65B62D3C49CA00FDEF0B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 50EB41362D48ADFD0053E39A;
+			remoteInfo = "Less Timer for Watch Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		505B3B132D4581A2009EAEBD /* Embed Watch Content */ = {
+		50EB415E2D48ADFE0053E39A /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				505B3AEE2D4581A1009EAEBD /* Less Timer Watch App.app in Embed Watch Content */,
+				50EB41382D48ADFD0053E39A /* Less Timer for Watch Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,50 +77,36 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		500C65BE2D3C49CA00FDEF0B /* Less Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less TimerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less TimerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		505B3AE82D4581A1009EAEBD /* Less Timer Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		505B3AED2D4581A1009EAEBD /* Less Timer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		505B3AFF2D4581A2009EAEBD /* Less Timer Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		505B3B092D4581A2009EAEBD /* Less Timer Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65BE2D3C49CA00FDEF0B /* LessTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LessTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65CE2D3C49CC00FDEF0B /* LessTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LessTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		500C65D82D3C49CC00FDEF0B /* LestTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LestTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB41122D48ADFB0053E39A /* Less Timer for Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer for Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB41212D48ADFD0053E39A /* Less Timer for WatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer for WatchTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB412B2D48ADFD0053E39A /* Less Timer for WatchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer for WatchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB41372D48ADFD0053E39A /* Less Timer for Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Less Timer for Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB41492D48ADFE0053E39A /* Less Timer for Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer for Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		50EB41532D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Less Timer for Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		505B3B252D45820A009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch App" target */ = {
+		50EB416F2D48AE3B0053E39A /* Exceptions for "Less Timer for Watch Watch App" folder in "Less Timer for Watch Watch App" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Features/Health/Models/MeditationSession.swift,
-				Features/Health/Models/MeditationTracker.swift,
-				Features/Health/Services/HealthKitService.swift,
-				Features/Timer/Models/TimeFormatter.swift,
-				Features/Timer/Models/TimeManager.swift,
-				Features/Timer/Services/AudioServiceProtocol.swift,
-				Features/Timer/Services/Logger.swift,
-				"Resources/Sounds/chime-ship-bell-single-ring.mp3",
-				"Resources/Sounds/session-end-copper-bell-ding.mp3",
-				"Resources/Sounds/silent-background.mp3",
+				Assets.xcassets,
+				ContentView.swift,
+				Less_Timer_WatchApp.swift,
+				"Preview Content/Preview Assets.xcassets",
+				TimerDisplay.swift,
+				WatchSettingsView.swift,
+				WatchTimerView.swift,
 			);
-			target = 505B3AEC2D4581A1009EAEBD /* Less Timer Watch App */;
-		};
-		505B3B362D458C9B009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"Resources/Sounds/chime-ship-bell-single-ring.mp3",
-				"Resources/Sounds/session-end-copper-bell-ding.mp3",
-				"Resources/Sounds/silent-background.mp3",
-			);
-			target = 505B3AE72D4581A1009EAEBD /* Less Timer Watch */;
+			target = 50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		500C65C02D3C49CA00FDEF0B /* Less Timer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				505B3B362D458C9B009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch" target */,
-				505B3B252D45820A009EAEBD /* Exceptions for "Less Timer" folder in "Less Timer Watch App" target */,
-			);
 			path = "Less Timer";
 			sourceTree = "<group>";
 		};
@@ -122,19 +120,37 @@
 			path = "Less TimerUITests";
 			sourceTree = "<group>";
 		};
-		505B3AF12D4581A1009EAEBD /* Less Timer Watch App */ = {
+		50EB41132D48ADFB0053E39A /* Less Timer for Watch */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Less Timer Watch App";
+			path = "Less Timer for Watch";
 			sourceTree = "<group>";
 		};
-		505B3B022D4581A2009EAEBD /* Less Timer Watch AppTests */ = {
+		50EB41242D48ADFD0053E39A /* Less Timer for WatchTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Less Timer Watch AppTests";
+			path = "Less Timer for WatchTests";
 			sourceTree = "<group>";
 		};
-		505B3B0C2D4581A2009EAEBD /* Less Timer Watch AppUITests */ = {
+		50EB412E2D48ADFD0053E39A /* Less Timer for WatchUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Less Timer Watch AppUITests";
+			path = "Less Timer for WatchUITests";
+			sourceTree = "<group>";
+		};
+		50EB413B2D48ADFD0053E39A /* Less Timer for Watch Watch App */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				50EB416F2D48AE3B0053E39A /* Exceptions for "Less Timer for Watch Watch App" folder in "Less Timer for Watch Watch App" target */,
+			);
+			path = "Less Timer for Watch Watch App";
+			sourceTree = "<group>";
+		};
+		50EB414C2D48ADFE0053E39A /* Less Timer for Watch Watch AppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Less Timer for Watch Watch AppTests";
+			sourceTree = "<group>";
+		};
+		50EB41562D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Less Timer for Watch Watch AppUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -161,21 +177,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AEA2D4581A1009EAEBD /* Frameworks */ = {
+		50EB410F2D48ADFB0053E39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AFC2D4581A2009EAEBD /* Frameworks */ = {
+		50EB411E2D48ADFD0053E39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3B062D4581A2009EAEBD /* Frameworks */ = {
+		50EB41282D48ADFD0053E39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41342D48ADFD0053E39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41462D48ADFE0053E39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41502D48ADFE0053E39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -191,9 +228,12 @@
 				500C65C02D3C49CA00FDEF0B /* Less Timer */,
 				500C65D12D3C49CC00FDEF0B /* Less TimerTests */,
 				500C65DB2D3C49CC00FDEF0B /* Less TimerUITests */,
-				505B3AF12D4581A1009EAEBD /* Less Timer Watch App */,
-				505B3B022D4581A2009EAEBD /* Less Timer Watch AppTests */,
-				505B3B0C2D4581A2009EAEBD /* Less Timer Watch AppUITests */,
+				50EB41132D48ADFB0053E39A /* Less Timer for Watch */,
+				50EB41242D48ADFD0053E39A /* Less Timer for WatchTests */,
+				50EB412E2D48ADFD0053E39A /* Less Timer for WatchUITests */,
+				50EB413B2D48ADFD0053E39A /* Less Timer for Watch Watch App */,
+				50EB414C2D48ADFE0053E39A /* Less Timer for Watch Watch AppTests */,
+				50EB41562D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests */,
 				50EB40702D48A1FE0053E39A /* Frameworks */,
 				500C65BF2D3C49CA00FDEF0B /* Products */,
 			);
@@ -202,13 +242,15 @@
 		500C65BF2D3C49CA00FDEF0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				500C65BE2D3C49CA00FDEF0B /* Less Timer.app */,
-				500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */,
-				500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */,
-				505B3AE82D4581A1009EAEBD /* Less Timer Watch.app */,
-				505B3AED2D4581A1009EAEBD /* Less Timer Watch App.app */,
-				505B3AFF2D4581A2009EAEBD /* Less Timer Watch AppTests.xctest */,
-				505B3B092D4581A2009EAEBD /* Less Timer Watch AppUITests.xctest */,
+				500C65BE2D3C49CA00FDEF0B /* LessTimer.app */,
+				500C65CE2D3C49CC00FDEF0B /* LessTimerTests.xctest */,
+				500C65D82D3C49CC00FDEF0B /* LestTimerUITests.xctest */,
+				50EB41122D48ADFB0053E39A /* Less Timer for Watch.app */,
+				50EB41212D48ADFD0053E39A /* Less Timer for WatchTests.xctest */,
+				50EB412B2D48ADFD0053E39A /* Less Timer for WatchUITests.xctest */,
+				50EB41372D48ADFD0053E39A /* Less Timer for Watch Watch App.app */,
+				50EB41492D48ADFE0053E39A /* Less Timer for Watch Watch AppTests.xctest */,
+				50EB41532D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -223,9 +265,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		500C65BD2D3C49CA00FDEF0B /* Less Timer */ = {
+		500C65BD2D3C49CA00FDEF0B /* LessTimer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less Timer" */;
+			buildConfigurationList = 500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LessTimer" */;
 			buildPhases = (
 				500C65BA2D3C49CA00FDEF0B /* Sources */,
 				500C65BB2D3C49CA00FDEF0B /* Frameworks */,
@@ -238,16 +280,16 @@
 			fileSystemSynchronizedGroups = (
 				500C65C02D3C49CA00FDEF0B /* Less Timer */,
 			);
-			name = "Less Timer";
+			name = LessTimer;
 			packageProductDependencies = (
 			);
 			productName = "Nothing Timer";
-			productReference = 500C65BE2D3C49CA00FDEF0B /* Less Timer.app */;
+			productReference = 500C65BE2D3C49CA00FDEF0B /* LessTimer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		500C65CD2D3C49CC00FDEF0B /* Less TimerTests */ = {
+		500C65CD2D3C49CC00FDEF0B /* LessTimerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerTests" */;
+			buildConfigurationList = 500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LessTimerTests" */;
 			buildPhases = (
 				500C65CA2D3C49CC00FDEF0B /* Sources */,
 				500C65CB2D3C49CC00FDEF0B /* Frameworks */,
@@ -261,16 +303,16 @@
 			fileSystemSynchronizedGroups = (
 				500C65D12D3C49CC00FDEF0B /* Less TimerTests */,
 			);
-			name = "Less TimerTests";
+			name = LessTimerTests;
 			packageProductDependencies = (
 			);
 			productName = "Nothing TimerTests";
-			productReference = 500C65CE2D3C49CC00FDEF0B /* Less TimerTests.xctest */;
+			productReference = 500C65CE2D3C49CC00FDEF0B /* LessTimerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		500C65D72D3C49CC00FDEF0B /* Less TimerUITests */ = {
+		500C65D72D3C49CC00FDEF0B /* LestTimerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerUITests" */;
+			buildConfigurationList = 500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LestTimerUITests" */;
 			buildPhases = (
 				500C65D42D3C49CC00FDEF0B /* Sources */,
 				500C65D52D3C49CC00FDEF0B /* Frameworks */,
@@ -284,98 +326,149 @@
 			fileSystemSynchronizedGroups = (
 				500C65DB2D3C49CC00FDEF0B /* Less TimerUITests */,
 			);
-			name = "Less TimerUITests";
+			name = LestTimerUITests;
 			packageProductDependencies = (
 			);
 			productName = "Nothing TimerUITests";
-			productReference = 500C65D82D3C49CC00FDEF0B /* Less TimerUITests.xctest */;
+			productReference = 500C65D82D3C49CC00FDEF0B /* LestTimerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		505B3AE72D4581A1009EAEBD /* Less Timer Watch */ = {
+		50EB41112D48ADFB0053E39A /* Less Timer for Watch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 505B3B1B2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch" */;
+			buildConfigurationList = 50EB415F2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch" */;
 			buildPhases = (
-				505B3AE62D4581A1009EAEBD /* Resources */,
-				505B3B132D4581A2009EAEBD /* Embed Watch Content */,
+				50EB410E2D48ADFB0053E39A /* Sources */,
+				50EB410F2D48ADFB0053E39A /* Frameworks */,
+				50EB41102D48ADFB0053E39A /* Resources */,
+				50EB415E2D48ADFE0053E39A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = "Less Timer Watch";
-			packageProductDependencies = (
-			);
-			productName = "Less Timer Watch";
-			productReference = 505B3AE82D4581A1009EAEBD /* Less Timer Watch.app */;
-			productType = "com.apple.product-type.application.watchapp2-container";
-		};
-		505B3AEC2D4581A1009EAEBD /* Less Timer Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 505B3B1A2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch App" */;
-			buildPhases = (
-				505B3AE92D4581A1009EAEBD /* Sources */,
-				505B3AEA2D4581A1009EAEBD /* Frameworks */,
-				505B3AEB2D4581A1009EAEBD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				50EB407C2D48A48A0053E39A /* PBXTargetDependency */,
+				50EB413A2D48ADFD0053E39A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				505B3AF12D4581A1009EAEBD /* Less Timer Watch App */,
+				50EB41132D48ADFB0053E39A /* Less Timer for Watch */,
 			);
-			name = "Less Timer Watch App";
+			name = "Less Timer for Watch";
 			packageProductDependencies = (
 			);
-			productName = "Less Timer Watch Watch App";
-			productReference = 505B3AED2D4581A1009EAEBD /* Less Timer Watch App.app */;
+			productName = "Less Timer for Watch";
+			productReference = 50EB41122D48ADFB0053E39A /* Less Timer for Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		505B3AFE2D4581A2009EAEBD /* Less Timer Watch AppTests */ = {
+		50EB41202D48ADFD0053E39A /* Less Timer for WatchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 505B3B1C2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch AppTests" */;
+			buildConfigurationList = 50EB41622D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for WatchTests" */;
 			buildPhases = (
-				505B3AFB2D4581A2009EAEBD /* Sources */,
-				505B3AFC2D4581A2009EAEBD /* Frameworks */,
-				505B3AFD2D4581A2009EAEBD /* Resources */,
+				50EB411D2D48ADFD0053E39A /* Sources */,
+				50EB411E2D48ADFD0053E39A /* Frameworks */,
+				50EB411F2D48ADFD0053E39A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				505B3B012D4581A2009EAEBD /* PBXTargetDependency */,
+				50EB41232D48ADFD0053E39A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				505B3B022D4581A2009EAEBD /* Less Timer Watch AppTests */,
+				50EB41242D48ADFD0053E39A /* Less Timer for WatchTests */,
 			);
-			name = "Less Timer Watch AppTests";
+			name = "Less Timer for WatchTests";
 			packageProductDependencies = (
 			);
-			productName = "Less Timer Watch Watch AppTests";
-			productReference = 505B3AFF2D4581A2009EAEBD /* Less Timer Watch AppTests.xctest */;
+			productName = "Less Timer for WatchTests";
+			productReference = 50EB41212D48ADFD0053E39A /* Less Timer for WatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		505B3B082D4581A2009EAEBD /* Less Timer Watch AppUITests */ = {
+		50EB412A2D48ADFD0053E39A /* Less Timer for WatchUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 505B3B1D2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch AppUITests" */;
+			buildConfigurationList = 50EB41652D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for WatchUITests" */;
 			buildPhases = (
-				505B3B052D4581A2009EAEBD /* Sources */,
-				505B3B062D4581A2009EAEBD /* Frameworks */,
-				505B3B072D4581A2009EAEBD /* Resources */,
+				50EB41272D48ADFD0053E39A /* Sources */,
+				50EB41282D48ADFD0053E39A /* Frameworks */,
+				50EB41292D48ADFD0053E39A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				505B3B0B2D4581A2009EAEBD /* PBXTargetDependency */,
+				50EB412D2D48ADFD0053E39A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				505B3B0C2D4581A2009EAEBD /* Less Timer Watch AppUITests */,
+				50EB412E2D48ADFD0053E39A /* Less Timer for WatchUITests */,
 			);
-			name = "Less Timer Watch AppUITests";
+			name = "Less Timer for WatchUITests";
 			packageProductDependencies = (
 			);
-			productName = "Less Timer Watch Watch AppUITests";
-			productReference = 505B3B092D4581A2009EAEBD /* Less Timer Watch AppUITests.xctest */;
+			productName = "Less Timer for WatchUITests";
+			productReference = 50EB412B2D48ADFD0053E39A /* Less Timer for WatchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50EB415B2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch App" */;
+			buildPhases = (
+				50EB41332D48ADFD0053E39A /* Sources */,
+				50EB41342D48ADFD0053E39A /* Frameworks */,
+				50EB41352D48ADFD0053E39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				50EB413B2D48ADFD0053E39A /* Less Timer for Watch Watch App */,
+			);
+			name = "Less Timer for Watch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "Less Timer for Watch Watch App";
+			productReference = 50EB41372D48ADFD0053E39A /* Less Timer for Watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		50EB41482D48ADFE0053E39A /* Less Timer for Watch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50EB41682D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch AppTests" */;
+			buildPhases = (
+				50EB41452D48ADFE0053E39A /* Sources */,
+				50EB41462D48ADFE0053E39A /* Frameworks */,
+				50EB41472D48ADFE0053E39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50EB414B2D48ADFE0053E39A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				50EB414C2D48ADFE0053E39A /* Less Timer for Watch Watch AppTests */,
+			);
+			name = "Less Timer for Watch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "Less Timer for Watch Watch AppTests";
+			productReference = 50EB41492D48ADFE0053E39A /* Less Timer for Watch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		50EB41522D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50EB416B2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch AppUITests" */;
+			buildPhases = (
+				50EB414F2D48ADFE0053E39A /* Sources */,
+				50EB41502D48ADFE0053E39A /* Frameworks */,
+				50EB41512D48ADFE0053E39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				50EB41552D48ADFE0053E39A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				50EB41562D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests */,
+			);
+			name = "Less Timer for Watch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "Less Timer for Watch Watch AppUITests";
+			productReference = 50EB41532D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -399,19 +492,27 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 500C65BD2D3C49CA00FDEF0B;
 					};
-					505B3AE72D4581A1009EAEBD = {
+					50EB41112D48ADFB0053E39A = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					505B3AEC2D4581A1009EAEBD = {
+					50EB41202D48ADFD0053E39A = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 50EB41112D48ADFB0053E39A;
+					};
+					50EB412A2D48ADFD0053E39A = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 50EB41112D48ADFB0053E39A;
+					};
+					50EB41362D48ADFD0053E39A = {
 						CreatedOnToolsVersion = 16.2;
 					};
-					505B3AFE2D4581A2009EAEBD = {
+					50EB41482D48ADFE0053E39A = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 505B3AEC2D4581A1009EAEBD;
+						TestTargetID = 50EB41362D48ADFD0053E39A;
 					};
-					505B3B082D4581A2009EAEBD = {
+					50EB41522D48ADFE0053E39A = {
 						CreatedOnToolsVersion = 16.2;
-						TestTargetID = 505B3AEC2D4581A1009EAEBD;
+						TestTargetID = 50EB41362D48ADFD0053E39A;
 					};
 				};
 			};
@@ -429,13 +530,15 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				500C65BD2D3C49CA00FDEF0B /* Less Timer */,
-				500C65CD2D3C49CC00FDEF0B /* Less TimerTests */,
-				500C65D72D3C49CC00FDEF0B /* Less TimerUITests */,
-				505B3AE72D4581A1009EAEBD /* Less Timer Watch */,
-				505B3AEC2D4581A1009EAEBD /* Less Timer Watch App */,
-				505B3AFE2D4581A2009EAEBD /* Less Timer Watch AppTests */,
-				505B3B082D4581A2009EAEBD /* Less Timer Watch AppUITests */,
+				500C65BD2D3C49CA00FDEF0B /* LessTimer */,
+				500C65CD2D3C49CC00FDEF0B /* LessTimerTests */,
+				500C65D72D3C49CC00FDEF0B /* LestTimerUITests */,
+				50EB41112D48ADFB0053E39A /* Less Timer for Watch */,
+				50EB41202D48ADFD0053E39A /* Less Timer for WatchTests */,
+				50EB412A2D48ADFD0053E39A /* Less Timer for WatchUITests */,
+				50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */,
+				50EB41482D48ADFE0053E39A /* Less Timer for Watch Watch AppTests */,
+				50EB41522D48ADFE0053E39A /* Less Timer for Watch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -462,30 +565,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AE62D4581A1009EAEBD /* Resources */ = {
+		50EB41102D48ADFB0053E39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AEB2D4581A1009EAEBD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50EB40712D48A1FE0053E39A /* Less Timer Watch.app in Resources */,
-				50EB40742D48A1FE0053E39A /* Less Timer.app in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		505B3AFD2D4581A2009EAEBD /* Resources */ = {
+		50EB411F2D48ADFD0053E39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3B072D4581A2009EAEBD /* Resources */ = {
+		50EB41292D48ADFD0053E39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41352D48ADFD0053E39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41472D48ADFE0053E39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41512D48ADFE0053E39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -516,21 +631,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AE92D4581A1009EAEBD /* Sources */ = {
+		50EB410E2D48ADFB0053E39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3AFB2D4581A2009EAEBD /* Sources */ = {
+		50EB411D2D48ADFD0053E39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505B3B052D4581A2009EAEBD /* Sources */ = {
+		50EB41272D48ADFD0053E39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41332D48ADFD0053E39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB41452D48ADFE0053E39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		50EB414F2D48ADFE0053E39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -542,28 +678,38 @@
 /* Begin PBXTargetDependency section */
 		500C65D02D3C49CC00FDEF0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 500C65BD2D3C49CA00FDEF0B /* Less Timer */;
+			target = 500C65BD2D3C49CA00FDEF0B /* LessTimer */;
 			targetProxy = 500C65CF2D3C49CC00FDEF0B /* PBXContainerItemProxy */;
 		};
 		500C65DA2D3C49CC00FDEF0B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 500C65BD2D3C49CA00FDEF0B /* Less Timer */;
+			target = 500C65BD2D3C49CA00FDEF0B /* LessTimer */;
 			targetProxy = 500C65D92D3C49CC00FDEF0B /* PBXContainerItemProxy */;
 		};
-		505B3B012D4581A2009EAEBD /* PBXTargetDependency */ = {
+		50EB41232D48ADFD0053E39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 505B3AEC2D4581A1009EAEBD /* Less Timer Watch App */;
-			targetProxy = 505B3B002D4581A2009EAEBD /* PBXContainerItemProxy */;
+			target = 50EB41112D48ADFB0053E39A /* Less Timer for Watch */;
+			targetProxy = 50EB41222D48ADFD0053E39A /* PBXContainerItemProxy */;
 		};
-		505B3B0B2D4581A2009EAEBD /* PBXTargetDependency */ = {
+		50EB412D2D48ADFD0053E39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 505B3AEC2D4581A1009EAEBD /* Less Timer Watch App */;
-			targetProxy = 505B3B0A2D4581A2009EAEBD /* PBXContainerItemProxy */;
+			target = 50EB41112D48ADFB0053E39A /* Less Timer for Watch */;
+			targetProxy = 50EB412C2D48ADFD0053E39A /* PBXContainerItemProxy */;
 		};
-		50EB407C2D48A48A0053E39A /* PBXTargetDependency */ = {
+		50EB413A2D48ADFD0053E39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 500C65BD2D3C49CA00FDEF0B /* Less Timer */;
-			targetProxy = 50EB407B2D48A48A0053E39A /* PBXContainerItemProxy */;
+			target = 50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */;
+			targetProxy = 50EB41392D48ADFD0053E39A /* PBXContainerItemProxy */;
+		};
+		50EB414B2D48ADFE0053E39A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */;
+			targetProxy = 50EB414A2D48ADFE0053E39A /* PBXContainerItemProxy */;
+		};
+		50EB41552D48ADFE0053E39A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 50EB41362D48ADFD0053E39A /* Less Timer for Watch Watch App */;
+			targetProxy = 50EB41542D48ADFE0053E39A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -823,66 +969,31 @@
 			};
 			name = Release;
 		};
-		505B3B112D4581A2009EAEBD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8AMJTDV2FM;
-				INFOPLIST_FILE = "Less-Time-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
-				MARKETING_VERSION = 1.0;
-				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		505B3B122D4581A2009EAEBD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8AMJTDV2FM;
-				INFOPLIST_FILE = "Less-Time-Watch-App-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
-				MARKETING_VERSION = 1.0;
-				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		505B3B142D4581A2009EAEBD /* Debug */ = {
+		50EB415C2D48ADFE0053E39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = LessTimerWatchApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Less Timer for Watch Watch App/Less Timer for Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Less Timer Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer for Watch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Time-Watch-Watchkit-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer for Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = NO;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Breault.Less-Timer-for-Watch";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -890,34 +1001,31 @@
 			};
 			name = Debug;
 		};
-		505B3B152D4581A2009EAEBD /* Release */ = {
+		50EB415D2D48ADFE0053E39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = LessTimerWatchApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Less Timer for Watch Watch App/Less Timer for Watch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Less Timer Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer for Watch Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Time-Watch-Watchkit-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer Watch";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer for Watch";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKWatchOnly = NO;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Breault.Less-Timer-for-Watch";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
-				SKIP_INSTALL = NO;
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -925,7 +1033,141 @@
 			};
 			name = Release;
 		};
-		505B3B162D4581A2009EAEBD /* Debug */ = {
+		50EB41602D48ADFE0053E39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer for Watch/Preview Content\"";
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Less-Time-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer for Watch";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		50EB41612D48ADFE0053E39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Less Timer for Watch/Preview Content\"";
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Less-Time-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer for Watch";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		50EB41632D48ADFE0053E39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-WatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer for Watch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer for Watch";
+			};
+			name = Debug;
+		};
+		50EB41642D48ADFE0053E39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-WatchTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer for Watch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer for Watch";
+			};
+			name = Release;
+		};
+		50EB41662D48ADFE0053E39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-WatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Less Timer for Watch";
+			};
+			name = Debug;
+		};
+		50EB41672D48ADFE0053E39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8AMJTDV2FM;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-WatchUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Less Timer for Watch";
+			};
+			name = Release;
+		};
+		50EB41692D48ADFE0053E39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -934,18 +1176,18 @@
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer Watch Watch App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer for Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer for Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 11.2;
 			};
 			name = Debug;
 		};
-		505B3B172D4581A2009EAEBD /* Release */ = {
+		50EB416A2D48ADFE0053E39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -954,18 +1196,18 @@
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer Watch Watch App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Less Timer for Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Less Timer for Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 11.2;
 			};
 			name = Release;
 		};
-		505B3B182D4581A2009EAEBD /* Debug */ = {
+		50EB416C2D48ADFE0053E39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -973,18 +1215,18 @@
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Less Timer Watch Watch App";
+				TEST_TARGET_NAME = "Less Timer for Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 11.2;
 			};
 			name = Debug;
 		};
-		505B3B192D4581A2009EAEBD /* Release */ = {
+		50EB416D2D48ADFE0053E39A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -992,13 +1234,13 @@
 				DEVELOPMENT_TEAM = 8AMJTDV2FM;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-Watch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Breault.Less-Timer-for-Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_TARGET_NAME = "Less Timer Watch Watch App";
+				TEST_TARGET_NAME = "Less Timer for Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 11.2;
 			};
 			name = Release;
@@ -1015,7 +1257,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less Timer" */ = {
+		500C65E22D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LessTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E32D3C49CC00FDEF0B /* Debug */,
@@ -1024,7 +1266,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerTests" */ = {
+		500C65E52D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LessTimerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E62D3C49CC00FDEF0B /* Debug */,
@@ -1033,7 +1275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "Less TimerUITests" */ = {
+		500C65E82D3C49CC00FDEF0B /* Build configuration list for PBXNativeTarget "LestTimerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				500C65E92D3C49CC00FDEF0B /* Debug */,
@@ -1042,38 +1284,56 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		505B3B1A2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch App" */ = {
+		50EB415B2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				505B3B142D4581A2009EAEBD /* Debug */,
-				505B3B152D4581A2009EAEBD /* Release */,
+				50EB415C2D48ADFE0053E39A /* Debug */,
+				50EB415D2D48ADFE0053E39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		505B3B1B2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch" */ = {
+		50EB415F2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				505B3B112D4581A2009EAEBD /* Debug */,
-				505B3B122D4581A2009EAEBD /* Release */,
+				50EB41602D48ADFE0053E39A /* Debug */,
+				50EB41612D48ADFE0053E39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		505B3B1C2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch AppTests" */ = {
+		50EB41622D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for WatchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				505B3B162D4581A2009EAEBD /* Debug */,
-				505B3B172D4581A2009EAEBD /* Release */,
+				50EB41632D48ADFE0053E39A /* Debug */,
+				50EB41642D48ADFE0053E39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		505B3B1D2D4581A2009EAEBD /* Build configuration list for PBXNativeTarget "Less Timer Watch AppUITests" */ = {
+		50EB41652D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for WatchUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				505B3B182D4581A2009EAEBD /* Debug */,
-				505B3B192D4581A2009EAEBD /* Release */,
+				50EB41662D48ADFE0053E39A /* Debug */,
+				50EB41672D48ADFE0053E39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50EB41682D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50EB41692D48ADFE0053E39A /* Debug */,
+				50EB416A2D48ADFE0053E39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50EB416B2D48ADFE0053E39A /* Build configuration list for PBXNativeTarget "Less Timer for Watch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50EB416C2D48ADFE0053E39A /* Debug */,
+				50EB416D2D48ADFE0053E39A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

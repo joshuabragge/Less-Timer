@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "505B3AEC2D4581A1009EAEBD"
-               BuildableName = "LessTimerWatchAppBackup.app"
-               BlueprintName = "LessTimerWatchAppBackup"
+               BlueprintIdentifier = "50EB40D62D48AD330053E39A"
+               BuildableName = "LessTimerWatch Watch App.app"
+               BlueprintName = "LessTimerWatch Watch App"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,9 +29,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "505B3AE72D4581A1009EAEBD"
-               BuildableName = "LessTimerWatchBackup.app"
-               BlueprintName = "LessTimerWatchBackup"
+               BlueprintIdentifier = "50EB40B12D48AD320053E39A"
+               BuildableName = "LessTimerWatch.app"
+               BlueprintName = "LessTimerWatch"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,9 +49,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "505B3AFE2D4581A2009EAEBD"
-               BuildableName = "LessTimerWatchAppTests.xctest"
-               BlueprintName = "LessTimerWatchAppTests"
+               BlueprintIdentifier = "50EB40E82D48AD340053E39A"
+               BuildableName = "LessTimerWatch Watch AppTests.xctest"
+               BlueprintName = "LessTimerWatch Watch AppTests"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -60,9 +60,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "505B3B082D4581A2009EAEBD"
-               BuildableName = "LessTimerWatchAppUITests.xctest"
-               BlueprintName = "LessTimerWatchAppUITests"
+               BlueprintIdentifier = "50EB40F22D48AD340053E39A"
+               BuildableName = "LessTimerWatch Watch AppUITests.xctest"
+               BlueprintName = "LessTimerWatch Watch AppUITests"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -82,9 +82,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "505B3AEC2D4581A1009EAEBD"
-            BuildableName = "LessTimerWatchAppBackup.app"
-            BlueprintName = "LessTimerWatchAppBackup"
+            BlueprintIdentifier = "50EB40D62D48AD330053E39A"
+            BuildableName = "LessTimerWatch Watch App.app"
+            BlueprintName = "LessTimerWatch Watch App"
             ReferencedContainer = "container:LessTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -99,18 +99,18 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "505B3AEC2D4581A1009EAEBD"
-            BuildableName = "LessTimerWatchAppBackup.app"
-            BlueprintName = "LessTimerWatchAppBackup"
+            BlueprintIdentifier = "50EB40D62D48AD330053E39A"
+            BuildableName = "LessTimerWatch Watch App.app"
+            BlueprintName = "LessTimerWatch Watch App"
             ReferencedContainer = "container:LessTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "505B3AEC2D4581A1009EAEBD"
-            BuildableName = "LessTimerWatchAppBackup.app"
-            BlueprintName = "LessTimerWatchAppBackup"
+            BlueprintIdentifier = "50EB40D62D48AD330053E39A"
+            BuildableName = "LessTimerWatch Watch App.app"
+            BlueprintName = "LessTimerWatch Watch App"
             ReferencedContainer = "container:LessTimer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

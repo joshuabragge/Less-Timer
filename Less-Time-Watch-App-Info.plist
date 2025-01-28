@@ -17,7 +17,7 @@
     <key>WKLaunchImageBackgroundColor</key>
     <string>black</string>
 	<key>CFBundleIdentifier</key>
-	<string>Breault.Less-Timer.watchkitapp</string>
+	<string>Breault.Less-Timer-for-Watch</string>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>Breault.Less-Timer</string>
 </dict>

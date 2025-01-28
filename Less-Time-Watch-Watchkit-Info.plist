@@ -3,21 +3,19 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>Breault.Less-Timer.watchkitapp</string>
+    <string>Breault.Less-Timer-for-Watch.watchkitapp</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>WKCompanionAppBundleIdentifier</key>
     <string>Breault.Less-Timer</string>
-    <key>WKLaunchImageBackgroundColor</key>
-    <string>black</string>
+    <key>WKWatchKitApp</key>
+    <true/>
     <key>UILaunchScreen</key>
     <dict>
-        <key>UIColorName</key>
-        <string>launchScreenBackground</string>
-        <key>UIImageName</key>
+        <key>WKLaunchImageBackgroundColor</key>
+        <string>black</string>
+        <key>WKImageName</key>
         <string>less-timer-icon-clear</string>
-        <key>UIImageRespectsSafeAreaInsets</key>
-        <true/>
     </dict>
 </dict>
 </plist>

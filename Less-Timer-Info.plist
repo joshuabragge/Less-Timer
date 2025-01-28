@@ -23,6 +23,9 @@
         <key>UILaunchScreen</key>
         <dict/>
     </dict>
-
+	<key>CFBundleIdentifier</key>
+	<string>Breault.Less-Timer</string>
+	<key>WKApplication</key>
+	<true/>
 </dict>
 </plist>
