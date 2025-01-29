@@ -17,8 +17,10 @@
     <key>WKLaunchImageBackgroundColor</key>
     <string>black</string>
 	<key>CFBundleIdentifier</key>
-	<string>Breault.Less-Timer-for-Watch</string>
+    <string>Breault.Less-Timer.watchkitapp.watchkitextension</string>
 	<key>WKCompanionAppBundleIdentifier</key>
 	<string>Breault.Less-Timer</string>
+	<key>NSExtensionPointIdentifier</key>
+	<string>com.apple.watchkit</string>
 </dict>
 </plist>

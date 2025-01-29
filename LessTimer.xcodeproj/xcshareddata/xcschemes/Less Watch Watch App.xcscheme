@@ -15,9 +15,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50EB41112D48ADFB0053E39A"
-               BuildableName = "Less Timer for Watch Extension.app"
-               BlueprintName = "Less Timer for Watch Extension"
+               BlueprintIdentifier = "509EDD622D49A7670054AB0D"
+               BuildableName = "Less Timer Watch App.app"
+               BlueprintName = "Less Timer Watch App"
+               ReferencedContainer = "container:LessTimer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "500C65BD2D3C49CA00FDEF0B"
+               BuildableName = "LessTimer.app"
+               BlueprintName = "LessTimer"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,30 +43,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50EB412A2D48ADFD0053E39A"
-               BuildableName = "Less Timer for WatchUITests.xctest"
-               BlueprintName = "Less Timer for WatchUITests"
-               ReferencedContainer = "container:LessTimer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50EB41202D48ADFD0053E39A"
-               BuildableName = "Less Timer for WatchTests.xctest"
-               BlueprintName = "Less Timer for WatchTests"
-               ReferencedContainer = "container:LessTimer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -68,9 +58,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "50EB41112D48ADFB0053E39A"
-            BuildableName = "Less Timer for Watch Extension.app"
-            BlueprintName = "Less Timer for Watch Extension"
+            BlueprintIdentifier = "509EDD622D49A7670054AB0D"
+            BuildableName = "Less Timer Watch App.app"
+            BlueprintName = "Less Timer Watch App"
             ReferencedContainer = "container:LessTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -85,9 +75,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "50EB41112D48ADFB0053E39A"
-            BuildableName = "Less Timer for Watch Extension.app"
-            BlueprintName = "Less Timer for Watch Extension"
+            BlueprintIdentifier = "509EDD622D49A7670054AB0D"
+            BuildableName = "Less Timer Watch App.app"
+            BlueprintName = "Less Timer Watch App"
             ReferencedContainer = "container:LessTimer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

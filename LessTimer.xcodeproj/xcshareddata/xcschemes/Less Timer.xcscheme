@@ -38,9 +38,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "50EB41362D48ADFD0053E39A"
-               BuildableName = "Less Timer for Watch Watch App.app"
-               BlueprintName = "Less Timer for Watch Watch App"
+               BlueprintIdentifier = "509EDD622D49A7670054AB0D"
+               BuildableName = "Less Timer Watch App.app"
+               BlueprintName = "Less Timer Watch App"
                ReferencedContainer = "container:LessTimer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

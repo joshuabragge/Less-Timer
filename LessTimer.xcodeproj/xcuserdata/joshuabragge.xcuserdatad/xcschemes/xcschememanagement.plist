@@ -31,6 +31,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>Less Watch Watch App.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>LessTimerWatch Watch App.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
@@ -84,6 +89,11 @@
 			<true/>
 		</dict>
 		<key>505B3B082D4581A2009EAEBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>509EDD622D49A7670054AB0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -27,5 +27,7 @@
 	<string>Breault.Less-Timer</string>
 	<key>WKApplication</key>
 	<true/>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>Breault.Less-Timer.watchkitapp</string>
 </dict>
 </plist>
