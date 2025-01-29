@@ -1,24 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>CFBundleIdentifier</key>
-    <string>Breault.Less-Timer.watchkitapp</string>
-    <key>WKCompanionAppBundleIdentifier</key>
-    <string>Breault.Less-Timer</string>
-    <key>UILaunchScreen</key>
-    <dict>
-        <key>UIColorName</key>
-        <string>black</string>
-        <key>UIImageName</key>
-        <string>less-timer-icon-clear</string>
-    </dict>
-    <key>NSHealthShareUsageDescription</key>
-    <string>Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.</string>
-    <key>NSHealthUpdateUsageDescription</key>
-    <string>Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.</string>
-    <key>UIBackgroundModes</key>
-    <array>
-        <string>audio</string>
-    </array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>black</string>
+		<key>UIImageName</key>
+		<string>less-timer-icon-clear</string>
+	</dict>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>self-care</string>
+	</array>
 </dict>
 </plist>

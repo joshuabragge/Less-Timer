@@ -449,6 +449,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Time-Watch-Watchkit-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Breault.Less-Timer";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -481,6 +483,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Less-Time-Watch-Watchkit-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Less Timer";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Less Timer saves your meditation sessions to track your mindfulness minutes in Apple Health.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "Breault.Less-Timer";
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -88,6 +88,8 @@ struct WatchTimerView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
+        }.onAppear {
+            timerManager.refreshStorageVariables()
         }
     }
 }

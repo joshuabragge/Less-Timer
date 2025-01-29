@@ -23,7 +23,7 @@ struct TimerDisplay: View {
             Text(TimeFormatter.formatComponent(timeComponents.seconds, unit: "second"))
                 .font(.system(.title3, design: .rounded))
         }
-        .foregroundColor(.gray)
+        .foregroundColor(.white)
     }
 }
 #Preview {
