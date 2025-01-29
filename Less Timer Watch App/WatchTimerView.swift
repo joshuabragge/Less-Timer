@@ -5,7 +5,7 @@ struct WatchTimerView: View {
     @StateObject private var timerManager = TimerManager()
     @StateObject private var meditationTracker = MeditationTracker()
     
-    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = true
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
 
     
@@ -89,7 +89,7 @@ struct WatchTimerView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }.onAppear {
-            timerManager.refreshStorageVariables()
+            //timerManager.refreshStorageVariables()
         }
     }
 }
