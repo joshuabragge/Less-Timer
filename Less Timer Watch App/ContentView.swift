@@ -8,7 +8,7 @@ struct ContentView: View {
             WatchTimerView()
                 .tabItem {
                     Label("Timer", systemImage: "timer")
-                }
+                }.navigationTitle("Less Timer")
             
             // Settings Tab
             WatchSettingsView()
