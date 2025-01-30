@@ -11,6 +11,10 @@ struct WatchSettingsView: View {
     
     @StateObject private var healthKitService = HealthKitService()
     
+    init() {
+        print("Current value:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
+    }
+    
     var body: some View {
         List {
             Section(header: Text("Meditation Settings")) {
@@ -33,6 +37,14 @@ struct WatchSettingsView: View {
                     }
                 }
                 Toggle("Starting Sound", isOn: $isStartSoundEnabled)
+                #if DEBUG
+                Button("Debug") {
+                    print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
+                    print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
+                    print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
+                    
+                }
+                #endif
             }
             
             Section(header: Text("Health")) {

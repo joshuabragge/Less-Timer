@@ -17,7 +17,7 @@ protocol TimerManaging: ObservableObject {
 
 
 class TimerManager: TimerManaging {
-    @Published var elapsedTime: TimeInterval = 0
+    @Published var elapsedTime: TimeInterval = 56
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
@@ -58,6 +58,9 @@ class TimerManager: TimerManaging {
         }
     
     func startTimer() {
+        print(isRecurringChimeEnabled)
+        print(isTimeLimitEnabled)
+        print(timeLimitMinutes)
         if !isRunning {
             logger.info("startTimer: starting background audio")
             self.audioService.startBackgroundAudio()

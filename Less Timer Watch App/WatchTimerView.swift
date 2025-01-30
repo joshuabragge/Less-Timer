@@ -7,7 +7,6 @@ struct WatchTimerView: View {
     
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = true
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
-
     
     var body: some View {
         TabView {
