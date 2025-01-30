@@ -35,7 +35,7 @@ struct WatchSettingsView: View {
                     }
                 ))
                 Picker("Duration", selection: $chimeIntervalMinutes) {
-                    if !isRecurringChimeEnabled {
+                    if !isTimeLimitEnabled {
                         Text("Off").tag(0)
                     } else {
                         Text("1 min").tag(1)
@@ -45,7 +45,7 @@ struct WatchSettingsView: View {
                         Text("20 min").tag(20)
                         Text("30 min").tag(30)
                     }
-                }
+                }.disabled(!isTimeLimitEnabled)
             }
             Section(header: Text("Sounds and Haptics")) {
                 Toggle("Sounds", isOn: $isSoundsEnabled)
@@ -72,7 +72,7 @@ struct WatchSettingsView: View {
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)
                     }
-                }
+                }.disabled(!isRecurringChimeEnabled)
                 
             }
             
