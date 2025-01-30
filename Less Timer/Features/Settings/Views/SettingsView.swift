@@ -1,4 +1,5 @@
 import SwiftUI
+import HealthKit
 
 struct SettingsView: View {
     
@@ -17,6 +18,8 @@ struct SettingsView: View {
     
     @State private var showingSafariView = false
     @State private var selectedURL: URL? = nil
+    
+    @StateObject private var healthKitService = HealthKitService()
     
     // Computed properties for picker selections
     private var selectedChimePreset: Binding<Int> {
@@ -108,9 +111,31 @@ struct SettingsView: View {
                 )
             }
             Section(header: Text("Health")) {
-                NavigationLink(destination: HealthSettingsView()) {
-                    Label("Apple Health", systemImage: "heart.fill")
+                HStack {
+                    Text("Apple Health")
+                    Spacer()
+                    switch healthKitService.authorizationStatus {
+                    case .notDetermined:
+                        Button("Enable") {
+                            healthKitService.requestAuthorization { success, error in
+                                Task {
+                                    await healthKitService.checkAuthorizationStatus()
+                                }
+                            }
+                        }
+                    case .sharingAuthorized:
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                    case .sharingDenied:
+                        Text("Denied")
+                            .foregroundColor(.red)
+                    @unknown default:
+                        Text("Unknown")
+                    }
                 }
+               // NavigationLink(destination: HealthSettingsView()) {
+                 //   Label("Apple Health", systemImage: "heart.fill")
+                //}
             }
             Section(header: Text("Support Our Community!")) {
                 HStack {
