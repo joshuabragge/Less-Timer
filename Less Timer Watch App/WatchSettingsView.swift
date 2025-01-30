@@ -3,11 +3,16 @@ import SwiftUI
 import HealthKit
 
 struct WatchSettingsView: View {
-    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
-    @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
-    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 1
+    
+    
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+    
+    @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
+    @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
+    @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 1
+    
+    @AppStorage("isVibrationEnabled") private var isVibrationEnabled = true
     
     @StateObject private var healthKitService = HealthKitService()
     
@@ -18,33 +23,57 @@ struct WatchSettingsView: View {
     var body: some View {
         List {
             Section(header: Text("Meditation Settings")) {
-                Toggle("Time Limit", isOn: $isTimeLimitEnabled)
-                if isTimeLimitEnabled {
-                    Picker("Time Limit", selection: $timeLimitMinutes) {
+                Toggle("Time Limit", isOn: Binding(
+                    get: { isTimeLimitEnabled },
+                    set: { newValue in
+                        isTimeLimitEnabled = newValue
+                        if !newValue {
+                            timeLimitMinutes = 0
+                        } else if timeLimitMinutes == 0 {
+                            timeLimitMinutes = 10
+                        }
+                    }
+                ))
+                Picker("Duration", selection: $chimeIntervalMinutes) {
+                    if !isRecurringChimeEnabled {
+                        Text("Off").tag(0)
+                    } else {
                         Text("1 min").tag(1)
+                        Text("5 min").tag(5)
+                        Text("10 min").tag(10)
+                        Text("15 min").tag(15)
+                        Text("20 min").tag(20)
+                        Text("30 min").tag(30)
+                    }
+                }
+            }
+            Section(header: Text("Sounds and Haptics")) {
+                Toggle("Sounds", isOn: $isSoundsEnabled)
+                Toggle("Vibration", isOn: $isVibrationEnabled)
+
+                Toggle("Recurring Chime", isOn: Binding(
+                    get: { isRecurringChimeEnabled },
+                    set: { newValue in
+                        isRecurringChimeEnabled = newValue
+                        if !newValue {
+                            chimeIntervalMinutes = 0  // Set to Off when disabled
+                        } else if chimeIntervalMinutes == 0 {
+                            chimeIntervalMinutes = 1  // Set to 1 min if it was Off
+                        }
+                    }
+                ))
+                Picker("Chime Interval", selection: $chimeIntervalMinutes) {
+                    if !isRecurringChimeEnabled {
+                        Text("Off").tag(0)
+                    } else {
+                        Text("1 min").tag(1)
+                        Text("2 min").tag(2)
                         Text("5 min").tag(5)
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)
                     }
                 }
-                Toggle("Recurring Chime", isOn: $isRecurringChimeEnabled)
-                if isRecurringChimeEnabled {
-                    Picker("Chime Interval", selection: $chimeIntervalMinutes) {
-                        Text("1 min").tag(1)
-                        Text("5 min").tag(5)
-                        Text("10 min").tag(10)
-                        Text("15 min").tag(15)
-                    }
-                }
-                Toggle("Starting Sound", isOn: $isStartSoundEnabled)
-                #if DEBUG
-                Button("Debug") {
-                    print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
-                    print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
-                    print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
-                    
-                }
-                #endif
+                
             }
             
             Section(header: Text("Health")) {
@@ -77,6 +106,14 @@ struct WatchSettingsView: View {
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                         .foregroundColor(.gray)
                 }
+                #if DEBUG
+                Button("Debug") {
+                    print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
+                    print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
+                    print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
+                    
+                }
+                #endif
             }
         }
         .task {

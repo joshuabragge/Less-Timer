@@ -33,7 +33,7 @@ class TimerManager: TimerManaging {
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
-    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
+    @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
     
     init(audioService: AudioServiceProtocol = AudioService()) {
             self.audioService = audioService
@@ -49,7 +49,7 @@ class TimerManager: TimerManaging {
             chimeIntervalMinutes = UserDefaults.standard.integer(forKey: "chimeIntervalMinutes")
             isTimeLimitEnabled = UserDefaults.standard.bool(forKey: "isTimeLimitEnabled")
             timeLimitMinutes = UserDefaults.standard.integer(forKey: "timeLimitMinutes")
-            isStartSoundEnabled = UserDefaults.standard.bool(forKey: "isStartSoundEnabled")
+            isSoundsEnabled = UserDefaults.standard.bool(forKey: "isSoundsEnabled")
             
             // Update remaining time if needed
             if isTimeLimitEnabled && wasReset {
@@ -66,7 +66,7 @@ class TimerManager: TimerManaging {
             self.audioService.startBackgroundAudio()
             logger.info("startTimer: starting timer")
             //play sound on reset if enabled
-            if isStartSoundEnabled && wasReset {
+            if isSoundsEnabled && wasReset {
                 logger.info("startTimer: play starting sound")
                 DispatchQueue.main.async {
                     self.audioService.playSound(identifier: "session-end")

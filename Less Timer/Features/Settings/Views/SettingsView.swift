@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @AppStorage("isStartSoundEnabled") private var isStartSoundEnabled = true
+    @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
     // Chime settings
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
@@ -98,10 +98,10 @@ struct SettingsView: View {
                     }
                 }
                 Toggle("Starting Sound", isOn: Binding(
-                    get: { isStartSoundEnabled },
+                    get: { isSoundsEnabled },
                     set: { newValue in
-                        isStartSoundEnabled = newValue
-                        UserDefaults.standard.set(isStartSoundEnabled, forKey: "isStartSoundEnabled")
+                        isSoundsEnabled = newValue
+                        UserDefaults.standard.set(isSoundsEnabled, forKey: "isSoundsEnabled")
                         print("Saved Starting Sound: \(newValue)")
                     }
                     )
