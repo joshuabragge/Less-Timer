@@ -34,7 +34,7 @@ struct WatchSettingsView: View {
                         }
                     }
                 ))
-                Picker("Duration", selection: $chimeIntervalMinutes) {
+                Picker("Duration", selection: $isTimeLimitEnabled) {
                     if !isTimeLimitEnabled {
                         Text("Off").tag(0)
                     } else {

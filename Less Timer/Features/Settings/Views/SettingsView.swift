@@ -11,104 +11,63 @@ struct SettingsView: View {
     // Time limit settings
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
-    
-    // State for custom input sheets
-    @State private var showingCustomChimeSheet = false
-    @State private var showingCustomTimeLimitSheet = false
+    @AppStorage("isVibrationEnabled") private var isVibrationEnabled = false
     
     @State private var showingSafariView = false
     @State private var selectedURL: URL? = nil
     
     @StateObject private var healthKitService = HealthKitService()
     
-    // Computed properties for picker selections
-    private var selectedChimePreset: Binding<Int> {
-            Binding(
-                get: {
-                    let interval = UserDefaults.standard.integer(forKey: "chimeIntervalMinutes")
-                    return TimerPreset.preset(for: interval).rawValue
-                },
-                set: { newValue in
-                    if newValue == TimerPreset.custom.rawValue {
-                        showingCustomChimeSheet = true
-                    } else {
-                        // Save the selected preset value directly to storage
-                        chimeIntervalMinutes = newValue
-                        UserDefaults.standard.set(newValue, forKey: "chimeIntervalMinutes")
-                        print("Saved chimeIntervalMinutes: \(newValue)")
-                    }
-                }
-            )
-        }
-    
-    private var selectedTimeLimitPreset: Binding<Int> {
-        Binding(
-            get: {
-                let limit = UserDefaults.standard.integer(forKey: "timeLimitMinutes")
-                return TimerPreset.preset(for: limit).rawValue
-            },
-            set: { newValue in
-                if newValue == TimerPreset.custom.rawValue {
-                    showingCustomTimeLimitSheet = true
-                } else {
-                    timeLimitMinutes = newValue
-                    UserDefaults.standard.set(newValue, forKey: "timeLimitMinutes")
-                    print("Saved timeLimitMinutes: \(newValue)")
-                }
-            }
-        )
-    }
-    
     var body: some View {
         List {
             Section(header: Text("Meditation Settings")) {
-                Toggle("Time Limit", isOn: $isTimeLimitEnabled)
-                
-                if isTimeLimitEnabled {
-                    Picker("Duration", selection: selectedTimeLimitPreset) {
-                        ForEach(TimerPreset.allCases, id: \.rawValue) { preset in
-                            Text(preset == .custom ? "Custom..." : TimerPreset.displayText(for: preset.rawValue))
-                                .tag(preset.rawValue)
+                Toggle("Time Limit", isOn: Binding(
+                    get: { isTimeLimitEnabled },
+                    set: { newValue in
+                        isTimeLimitEnabled = newValue
+                        if !newValue {
+                            timeLimitMinutes = 0
+                        } else if timeLimitMinutes == 0 {
+                            timeLimitMinutes = 10
                         }
                     }
-                    
-                    if TimerPreset.preset(for: timeLimitMinutes) == .custom {
-                        Text("\(timeLimitMinutes) Minutes")
-                            .foregroundColor(.gray)
+                ))
+               
+                Picker("Duration", selection: $timeLimitMinutes) {
+                        ForEach(1...60, id: \.self) { minute in
+                            Text("\(minute) min").tag(minute)
+                        }
                     }
-                }
+                    .pickerStyle(.menu)
+                    .disabled(!isTimeLimitEnabled)
+            }
+            
+            Section(header: Text("Sounds and Haptics")) {
+                Toggle("Sounds", isOn: $isSoundsEnabled)
+                Toggle("Vibration", isOn: $isVibrationEnabled)
+
                 Toggle("Recurring Chime", isOn: Binding(
                     get: { isRecurringChimeEnabled },
                     set: { newValue in
                         isRecurringChimeEnabled = newValue
-                        UserDefaults.standard.set(newValue, forKey: "isRecurringChimeEnabled")
-                        print("Saved Recurring Chime: \(newValue)")
-
-                    }
-                ))
-                
-                if isRecurringChimeEnabled {
-                    Picker("Chime Interval", selection: selectedChimePreset) {
-                        ForEach(TimerPreset.allCases, id: \.rawValue) { preset in
-                            Text(preset == .custom ? "Custom..." : TimerPreset.displayText(for: preset.rawValue))
-                                .tag(preset.rawValue)
+                        if !newValue {
+                            chimeIntervalMinutes = 0  // Set to Off when disabled
+                        } else if chimeIntervalMinutes == 0 {
+                            chimeIntervalMinutes = 1  // Set to 1 min if it was Off
                         }
                     }
-                    
-                    if TimerPreset.preset(for: chimeIntervalMinutes) == .custom {
-                        Text("\(chimeIntervalMinutes) Minutes")
-                            .foregroundColor(.gray)
+                ))
+
+                Picker("Chime Interval", selection: $chimeIntervalMinutes) {
+                        Text("1 min").tag(1)
+                        Text("2 min").tag(2)
+                        Text("5 min").tag(5)
+                        Text("10 min").tag(10)
+                        Text("15 min").tag(15)
                     }
-                }
-                Toggle("Starting Sound", isOn: Binding(
-                    get: { isSoundsEnabled },
-                    set: { newValue in
-                        isSoundsEnabled = newValue
-                        UserDefaults.standard.set(isSoundsEnabled, forKey: "isSoundsEnabled")
-                        print("Saved Starting Sound: \(newValue)")
-                    }
-                    )
-                )
+                    .pickerStyle(.menu)
+                    .disabled(!isRecurringChimeEnabled)
+                
             }
             Section(header: Text("Health")) {
                 HStack {
@@ -189,18 +148,6 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
-        .sheet(isPresented: $showingCustomChimeSheet) {
-            CustomDurationPicker(
-                title: "Custom Chime Interval",
-                minutes: $chimeIntervalMinutes
-            )
-        }
-        .sheet(isPresented: $showingCustomTimeLimitSheet) {
-            CustomDurationPicker(
-                title: "Custom Time Limit",
-                minutes: $timeLimitMinutes
-            )
-        }
         .fullScreenCover(isPresented: Binding(
             get: { showingSafariView && selectedURL != nil },
             set: { showingSafariView = $0 }

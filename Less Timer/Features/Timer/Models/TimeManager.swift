@@ -158,9 +158,13 @@ class TimerManager: TimerManaging {
                 if remainingTime == 0 {
                     stopTimer()
                     logger.info("updateTimer: end of session")
-                    DispatchQueue.main.async {
-                        self.audioService.playSound(identifier: "session-end")
+                    if isSoundsEnabled {
+                        logger.info("endOfSession: play finish sound")
+                        DispatchQueue.main.async {
+                            self.audioService.playSound(identifier: "session-end")
+                        }
                     }
+                    
                     return
                 }
             }
