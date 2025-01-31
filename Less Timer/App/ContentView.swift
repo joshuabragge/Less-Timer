@@ -4,7 +4,7 @@ import SwiftUI
 struct ContentView: View {
     init() {
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithTransparentBackground()
+            //appearance.configureWithTransparentBackground()
             appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             
@@ -14,8 +14,8 @@ struct ContentView: View {
             
             // Apply the appearance to all navigation bars
             UINavigationBar.appearance().standardAppearance = appearance
-            UINavigationBar.appearance().compactAppearance = appearance
-            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            //UINavigationBar.appearance().compactAppearance = appearance
+            //UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
     
     @State private var showIcon = true
