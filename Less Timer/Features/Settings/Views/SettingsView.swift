@@ -19,12 +19,10 @@ struct SettingsView: View {
     @StateObject private var healthKitService = HealthKitService()
     
     init() {
-        // Your existing title color settings
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBarAppearance().backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
+        let appearance = UINavigationBarAppearance()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().standardAppearance = appearance
     }
     
     var body: some View {
@@ -165,7 +163,7 @@ struct SettingsView: View {
                 SafariView(url: url, isPresented: $showingSafariView)
                     .edgesIgnoringSafeArea(.all)
             }
-        }.tint(.white)
+        }
     }
 }
 

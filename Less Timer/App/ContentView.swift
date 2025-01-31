@@ -3,20 +3,11 @@ import SwiftUI
 
 struct ContentView: View {
     init() {
-            let appearance = UINavigationBarAppearance()
-            //appearance.configureWithTransparentBackground()
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            
-            // This is crucial for the back button color
-            appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
-            UINavigationBar.appearance().tintColor = .white
-            
-            // Apply the appearance to all navigation bars
-            UINavigationBar.appearance().standardAppearance = appearance
-            //UINavigationBar.appearance().compactAppearance = appearance
-            //UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        }
+        let appearance = UINavigationBarAppearance()
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
+    }
     
     @State private var showIcon = true
     @State private var firstLaunch = true
@@ -54,7 +45,7 @@ struct ContentView: View {
                     .ignoresSafeArea()
                     
                     TimerView()
-                        .navigationTitle("Less Timer").foregroundColor(.white)
+                        .navigationTitle("Less Timer")
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {
                                 NavigationLink(destination: SettingsView()) {
