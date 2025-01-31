@@ -15,7 +15,6 @@ protocol TimerManaging: ObservableObject {
     func resetTimer()
 }
 
-
 class TimerManager: TimerManaging {
     @Published var elapsedTime: TimeInterval = 0
     @Published var remainingTime: TimeInterval = 0
@@ -24,7 +23,7 @@ class TimerManager: TimerManaging {
     @Published var wasReset = true
     
     /// Keep screen on for watch
-    @StateObject private var runtimeManager = ExtendedRuntimeSessionManager()
+    @MainActor private let sessionManager = SessionManager()
     
     private var timer: Timer?
     private var startTime: Date?
@@ -61,13 +60,12 @@ class TimerManager: TimerManaging {
         }
     
     func startTimer() {
-        print(isRecurringChimeEnabled)
-        print(isTimeLimitEnabled)
-        print(timeLimitMinutes)
         if !isRunning {
             
-            /// Keep watch OS screen on
-            runtimeManager.startSession()
+            // Keep watch OS screen on
+            DispatchQueue.main.async {
+                self.sessionManager.startSession()
+            }
             
             logger.info("startTimer: starting background audio")
             self.audioService.startBackgroundAudio()
@@ -126,8 +124,11 @@ class TimerManager: TimerManaging {
         timer = nil
         wasStopped = true
         
-        /// Disable watch screen always on
-        runtimeManager.stopSession()
+        // Disable watch screen always on
+        DispatchQueue.main.async {
+            self.sessionManager.stopSession()
+        }
+        
     }
     
     func resetTimer() {

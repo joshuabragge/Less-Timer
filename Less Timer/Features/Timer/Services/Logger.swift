@@ -20,5 +20,8 @@ extension Logger {
     
     /// Logger for view
     static let view = Logger(subsystem: subsystem, category: "view")
+    
+    ///session logs for watch os
+    static let session = Logger(subsystem: subsystem, category: "session")
 
 }

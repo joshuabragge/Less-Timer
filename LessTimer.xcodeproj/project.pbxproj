@@ -60,7 +60,7 @@
 		50FC08F22D4C9AE60038887B /* Exceptions for "Less Timer Watch App" folder in "LessTimer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				ExtendedRuntimeSessionManager.swift,
+				SessionManager.swift,
 			);
 			target = 500C65BD2D3C49CA00FDEF0B /* LessTimer */;
 		};

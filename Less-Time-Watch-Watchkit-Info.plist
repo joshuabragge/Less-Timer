@@ -15,7 +15,8 @@
 	</dict>
 	<key>WKBackgroundModes</key>
 	<array>
-		<string>self-care</string>
+		<string>mindfulness</string>
+		<string>workout-processing</string>
 	</array>
 </dict>
 </plist>
