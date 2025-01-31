@@ -24,6 +24,7 @@ struct SettingsView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         
         UINavigationBar.appearance().tintColor = .white
+        UINavigationBarAppearance().backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     
     var body: some View {
