@@ -23,6 +23,9 @@ class TimerManager: TimerManaging {
     @Published var wasStopped = false
     @Published var wasReset = true
     
+    /// Keep screen on for watch
+    @StateObject private var runtimeManager = ExtendedRuntimeSessionManager()
+    
     private var timer: Timer?
     private var startTime: Date?
     private let audioService: AudioServiceProtocol
@@ -62,6 +65,10 @@ class TimerManager: TimerManaging {
         print(isTimeLimitEnabled)
         print(timeLimitMinutes)
         if !isRunning {
+            
+            /// Keep watch OS screen on
+            runtimeManager.startSession()
+            
             logger.info("startTimer: starting background audio")
             self.audioService.startBackgroundAudio()
             logger.info("startTimer: starting timer")
@@ -118,6 +125,9 @@ class TimerManager: TimerManaging {
         timer?.invalidate()
         timer = nil
         wasStopped = true
+        
+        /// Disable watch screen always on
+        runtimeManager.stopSession()
     }
     
     func resetTimer() {

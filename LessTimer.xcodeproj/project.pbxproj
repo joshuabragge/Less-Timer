@@ -57,6 +57,13 @@
 			);
 			target = 509EDD622D49A7670054AB0D /* Less Timer Watch App */;
 		};
+		50FC08F22D4C9AE60038887B /* Exceptions for "Less Timer Watch App" folder in "LessTimer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ExtendedRuntimeSessionManager.swift,
+			);
+			target = 500C65BD2D3C49CA00FDEF0B /* LessTimer */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -70,6 +77,9 @@
 		};
 		509EDD642D49A7670054AB0D /* Less Timer Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				50FC08F22D4C9AE60038887B /* Exceptions for "Less Timer Watch App" folder in "LessTimer" target */,
+			);
 			path = "Less Timer Watch App";
 			sourceTree = "<group>";
 		};

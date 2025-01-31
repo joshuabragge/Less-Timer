@@ -17,7 +17,6 @@ struct WatchSettingsView: View {
     @StateObject private var healthKitService = HealthKitService()
     
     init() {
-        print("Current value:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
     }
     
     var body: some View {
@@ -34,7 +33,7 @@ struct WatchSettingsView: View {
                         }
                     }
                 ))
-                Picker("Duration", selection: $isTimeLimitEnabled) {
+                Picker("Duration", selection: $timeLimitMinutes) {
                     if !isTimeLimitEnabled {
                         Text("Off").tag(0)
                     } else {

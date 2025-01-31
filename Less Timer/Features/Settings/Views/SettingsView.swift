@@ -103,7 +103,7 @@ struct SettingsView: View {
                             selectedURL = url
                             showingSafariView = true
                         }
-                    }
+                    }.foregroundColor(.blue)
                     Spacer()
                         .foregroundColor(.gray)
                 }
@@ -113,7 +113,7 @@ struct SettingsView: View {
                                 selectedURL = url
                                 showingSafariView = true
                             }
-                        }
+                        }.foregroundColor(.blue)
                     Spacer()
                         .foregroundColor(.gray)
                 }
@@ -123,7 +123,7 @@ struct SettingsView: View {
                                 selectedURL = url
                                 showingSafariView = true
                             }
-                        }
+                        }.foregroundColor(.blue)
                     Spacer()
                         .foregroundColor(.gray)
                 }
