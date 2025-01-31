@@ -2,7 +2,7 @@
 
 A minimalist meditation timer focused on simplicity and mindfulness.
 
-![Less Timer Icon](assets/less-timer-icon-clear.png)
+![Less Timer Icon](assets/less-timer-icon.svg)
 
 ## Features
 
