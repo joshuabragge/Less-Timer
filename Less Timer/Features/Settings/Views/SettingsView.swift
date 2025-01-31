@@ -18,6 +18,14 @@ struct SettingsView: View {
     
     @StateObject private var healthKitService = HealthKitService()
     
+    init() {
+        // Your existing title color settings
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        UINavigationBar.appearance().tintColor = .white
+    }
+    
     var body: some View {
         List {
             Section(header: Text("Meditation Settings")) {
@@ -141,7 +149,7 @@ struct SettingsView: View {
                             selectedURL = url
                             showingSafariView = true
                         }
-                    }
+                    }.foregroundColor(.blue)
                     Spacer()
                         .foregroundColor(.gray)
                 }
@@ -156,7 +164,7 @@ struct SettingsView: View {
                 SafariView(url: url, isPresented: $showingSafariView)
                     .edgesIgnoringSafeArea(.all)
             }
-        }
+        }.tint(.white)
     }
 }
 

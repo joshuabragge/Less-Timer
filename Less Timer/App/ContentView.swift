@@ -3,9 +3,9 @@ import SwiftUI
 
 struct ContentView: View {
     init() {
-        // Set color for both inline and large title modes
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white  // Add this line
     }
     
     @State private var showIcon = true
@@ -44,7 +44,7 @@ struct ContentView: View {
                     .ignoresSafeArea()
                     
                     TimerView()
-                        .navigationTitle("Less Timer")
+                        .navigationTitle("Less Timer").foregroundColor(.white)
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {
                                 NavigationLink(destination: SettingsView()) {
