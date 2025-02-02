@@ -16,7 +16,7 @@ protocol TimerManaging: ObservableObject {
 }
 
 class TimerManager: TimerManaging {
-    @Published var elapsedTime: TimeInterval = 50
+    @Published var elapsedTime: TimeInterval = 0
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false

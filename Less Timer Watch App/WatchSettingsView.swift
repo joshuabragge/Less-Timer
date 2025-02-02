@@ -8,7 +8,7 @@ struct WatchSettingsView: View {
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
     
-    @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
+    @AppStorage("isSoundsEnabled") private var isSoundsEnabled = false
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 1
     
@@ -47,8 +47,8 @@ struct WatchSettingsView: View {
                 }.disabled(!isTimeLimitEnabled)
             }
             Section(header: Text("Sounds and Haptics")) {
-                Toggle("Sounds", isOn: $isSoundsEnabled)
-                Toggle("Vibration", isOn: $isVibrationEnabled)
+                //Toggle("Sounds", isOn: $isSoundsEnabled)
+                Toggle("Vibrations", isOn: $isVibrationEnabled)
 
                 Toggle("Recurring Chime", isOn: Binding(
                     get: { isRecurringChimeEnabled },
@@ -107,6 +107,7 @@ struct WatchSettingsView: View {
                 }
                 #if DEBUG
                 Button("Debug") {
+                    print("isSoundsEnabled:", UserDefaults.standard.integer(forKey: "isSoundsEnabled"))
                     print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
                     print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
                     print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))

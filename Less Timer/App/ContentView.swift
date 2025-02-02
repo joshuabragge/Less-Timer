@@ -2,15 +2,17 @@ import SwiftUI
 
 
 struct ContentView: View {
-    init() {
+    init(haptics: HapticServiceProtocol = HapticManager.shared) {
         let appearance = UINavigationBarAppearance()
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = appearance
+        self.haptics = haptics
     }
     
     @State private var showIcon = true
     @State private var firstLaunch = true
+    private let haptics: HapticServiceProtocol
     
     var body: some View {
         if showIcon && firstLaunch {
@@ -52,6 +54,9 @@ struct ContentView: View {
                                     Image(systemName: "gearshape.fill")
                                         .foregroundColor(.white)
                                         .bold(true)
+                                        .simultaneousGesture(TapGesture().onEnded {
+                                            self.haptics.playTap()
+                                        })
                                 }
                             }
                         }

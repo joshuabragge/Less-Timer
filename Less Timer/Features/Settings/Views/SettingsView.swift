@@ -137,7 +137,7 @@ struct SettingsView: View {
             }
             Section(header: Text("About")) {
                 HStack {
-                    Text("Version")
+                    Text("Less Timer Version")
                     Spacer()
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                         .foregroundColor(.gray)

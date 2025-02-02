@@ -2,11 +2,16 @@ import SwiftUI
 import OSLog
 
 struct TimerView: View {
+    init(haptics: HapticServiceProtocol = HapticManager.shared) {
+        self.haptics = haptics
+    }
     @StateObject private var timerManager: TimerManager = TimerManager()
     @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
     
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
+    
+    private let haptics: HapticServiceProtocol
     
     var body: some View {
         VStack(spacing: 50) {
@@ -59,7 +64,10 @@ struct TimerView: View {
                 SaveButton(
                     icon: "heart.fill",
                     color: meditationTracker.saveSuccess == true ? .red : .white,
-                    action: saveSession,
+                    action: {
+                        HapticManager.shared.playSuccess()
+                        saveSession()
+                    },
                     isLoading: meditationTracker.isSaving
                 )
                 .opacity(shouldShowSaveButton ? 1 : 0)
