@@ -71,23 +71,3 @@ struct ContentView: View {
     ContentView()
 }
 
-#Preview {
-    AppStorePreview(
-        title: "Mindful Meditation",
-        subtitle: "Track your meditation time effortlessly"
-    ) {
-        ContentView()  // Your existing view
-    }
-}
-
-
-#Preview {
-    AppStorePreview(
-        title: "Customize Your Practice",
-        subtitle: "Personalize sounds and intervals"
-    ) {
-        NavigationView {
-            SettingsView()
-        }
-    }
-}

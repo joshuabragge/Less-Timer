@@ -157,7 +157,7 @@ class TimerManager: TimerManaging {
         
         DispatchQueue.main.async {
             self.sessionManager.stopSession()
-            self.haptics.playStop()
+            self.haptics.playSuccess()
         }
     }
     
@@ -173,8 +173,10 @@ class TimerManager: TimerManaging {
                 let currentMinute = Int(elapsedTime / 60)
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     logger.info("updateTimer: playing chime at \(self.chimeIntervalMinutes)")
-                    DispatchQueue.main.async {
-                        self.audioService.playSound(identifier: "chime")
+                    if isSoundsEnabled {
+                        DispatchQueue.main.async {
+                            self.audioService.playSound(identifier: "chime")
+                        }
                     }
                     if isVibrationEnabled {
                         DispatchQueue.main.async{
