@@ -72,7 +72,7 @@ Read our full [Privacy Policy](privacy-policy.md) for more details.
 
 ## License
 
-This project is licensed under the CC BY-NC 4.0 - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the CC BY-NC 4.0 - see the [LICENSE.md](license.md) file for details.
 
 ## Acknowledgments
 
