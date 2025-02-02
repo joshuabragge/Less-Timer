@@ -16,7 +16,7 @@ protocol TimerManaging: ObservableObject {
 }
 
 class TimerManager: TimerManaging {
-    @Published var elapsedTime: TimeInterval = 0
+    @Published var elapsedTime: TimeInterval = 50
     @Published var remainingTime: TimeInterval = 0
     @Published var isRunning = false
     @Published var wasStopped = false
@@ -30,20 +30,24 @@ class TimerManager: TimerManaging {
     private let audioService: AudioServiceProtocol
     private let logger = Logger.timer
     private var lastChimeMinute: Int = 0
+    private let haptics: HapticServiceProtocol
     
     @AppStorage("isRecurringChimeEnabled") private var isRecurringChimeEnabled = true
     @AppStorage("chimeIntervalMinutes") private var chimeIntervalMinutes = 5
     @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
     @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
+    @AppStorage("isVibrationEnabled") private var isVibrationEnabled = true
     
-    init(audioService: AudioServiceProtocol = AudioService()) {
-            self.audioService = audioService
-            self.remainingTime = TimeInterval(timeLimitMinutes * 60)
-            audioService.setupAudioSession()
-            audioService.loadSound(named: "chime-ship-bell-single-ring", withExtension: "mp3", identifier: "chime")
-            audioService.loadSound(named: "session-end-copper-bell-ding", withExtension: "mp3", identifier: "session-end")
-        }
+    init(audioService: AudioServiceProtocol = AudioService(),
+         haptics: HapticServiceProtocol = HapticManager.shared) {
+        self.audioService = audioService
+        self.haptics = haptics
+        self.remainingTime = TimeInterval(timeLimitMinutes * 60)
+        audioService.setupAudioSession()
+        audioService.loadSound(named: "chime-ship-bell-single-ring", withExtension: "mp3", identifier: "chime")
+        audioService.loadSound(named: "session-end-copper-bell-ding", withExtension: "mp3", identifier: "session-end")
+    }
     
     func refreshStorageVariables() {
             // Force refresh from UserDefaults
@@ -52,6 +56,7 @@ class TimerManager: TimerManaging {
             isTimeLimitEnabled = UserDefaults.standard.bool(forKey: "isTimeLimitEnabled")
             timeLimitMinutes = UserDefaults.standard.integer(forKey: "timeLimitMinutes")
             isSoundsEnabled = UserDefaults.standard.bool(forKey: "isSoundsEnabled")
+            isVibrationEnabled = UserDefaults.standard.bool(forKey: "isVibrationEnabled")
             
             // Update remaining time if needed
             if isTimeLimitEnabled && wasReset {
@@ -61,8 +66,6 @@ class TimerManager: TimerManaging {
     
     func startTimer() {
         if !isRunning {
-            
-            // Keep watch OS screen on
             DispatchQueue.main.async {
                 self.sessionManager.startSession()
             }
@@ -76,6 +79,11 @@ class TimerManager: TimerManaging {
                 DispatchQueue.main.async {
                     self.audioService.playSound(identifier: "session-end")
                 }
+            }
+
+            logger.info("startTimer: playing start vibration")
+            DispatchQueue.main.async {
+                self.haptics.playStart()
             }
             
             isRunning = true
@@ -113,6 +121,11 @@ class TimerManager: TimerManaging {
         timer?.invalidate()
         timer = nil
         wasStopped = false
+        
+        DispatchQueue.main.async {
+            self.sessionManager.stopSession()
+            self.haptics.playStop()
+        }
     }
     
     func stopTimer() {
@@ -127,6 +140,7 @@ class TimerManager: TimerManaging {
         // Disable watch screen always on
         DispatchQueue.main.async {
             self.sessionManager.stopSession()
+            self.haptics.playStop()
         }
         
     }
@@ -140,6 +154,11 @@ class TimerManager: TimerManaging {
         isRunning = false
         lastChimeMinute = 0
         wasStopped = false
+        
+        DispatchQueue.main.async {
+            self.sessionManager.stopSession()
+            self.haptics.playStop()
+        }
     }
     
     private func updateTimer() {
@@ -157,6 +176,11 @@ class TimerManager: TimerManaging {
                     DispatchQueue.main.async {
                         self.audioService.playSound(identifier: "chime")
                     }
+                    if isVibrationEnabled {
+                        DispatchQueue.main.async{
+                            self.haptics.playCustomPattern(intensity: 1.0, sharpness: 0.7)
+                        }
+                    }
                     lastChimeMinute = currentMinute
                 }
             }
@@ -173,6 +197,12 @@ class TimerManager: TimerManaging {
                         logger.info("endOfSession: play finish sound")
                         DispatchQueue.main.async {
                             self.audioService.playSound(identifier: "session-end")
+                        }
+                    if isVibrationEnabled {
+                        logger.info( "endOfSession: play success haptics")
+                            DispatchQueue.main.async {
+                            self.haptics.playSuccess()
+                        }
                         }
                     }
                     
