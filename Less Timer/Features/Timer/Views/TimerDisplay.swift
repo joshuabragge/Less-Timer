@@ -52,7 +52,7 @@ struct TimerDisplay: View {
                     .frame(height: config.textHeight)
                 }
                 .font(.system(size: config.fontSize, weight: .medium, design: .rounded))
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
@@ -75,7 +75,7 @@ struct ProgressCircle: View {
             Circle()
                 .stroke(lineWidth: 4)
                 .opacity(0.3)
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             
             Circle()
                 .trim(from: 0, to: progress)
@@ -83,7 +83,7 @@ struct ProgressCircle: View {
                     lineWidth: 4,
                     lineCap: .round
                 ))
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
                 .rotationEffect(.degrees(-90))
         }
     }
