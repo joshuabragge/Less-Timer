@@ -52,6 +52,7 @@
 				Features/Timer/Services/AudioServiceProtocol.swift,
 				Features/Timer/Services/Logger.swift,
 				Features/Timer/Services/VibrationServiceProtocol.swift,
+				Features/Timer/Views/TimerDisplay.swift,
 				"Resources/Sounds/chime-ship-bell-single-ring.mp3",
 				"Resources/Sounds/session-end-copper-bell-ding.mp3",
 				"Resources/Sounds/silent-background.mp3",

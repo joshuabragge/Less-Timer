@@ -22,8 +22,10 @@ struct TimerView: View {
                 Group {
                     if !timerManager.isRunning && timerManager.elapsedTime > 0 {
                         // Paused view
-                        TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
-                        
+                        TimerDisplay(
+                            timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
+                            totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
+                        )
                     }
                     else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
                         if !isTimeLimitEnabled {
@@ -34,20 +36,26 @@ struct TimerView: View {
                         }
                         else {
                             /// Pending start timed view
-                            TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+                            TimerDisplay(
+                                timeInterval: TimeInterval(timeLimitMinutes * 60),
+                                totalTime: TimeInterval(timeLimitMinutes * 60)
+                            )
                         }
                     }
                     else if timerManager.isRunning {
                         /// Running view
-                        TimerDisplay(timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime)
-                            .opacity(0.3)
+                        TimerDisplay(
+                            timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
+                            totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
+                        )
+                        .opacity(0.3)
                     }
                 }
             }
             Spacer()
             HStack(spacing: 50) {
                 TimerButton(
-                    icon: timerManager.isRunning ? "pause.fill" : "play",
+                    icon: timerManager.isRunning ? "pause" : "play",
                     color: .white
                 ) {
                     toggleTimer()

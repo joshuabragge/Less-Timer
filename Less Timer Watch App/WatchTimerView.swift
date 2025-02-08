@@ -16,22 +16,38 @@ struct WatchTimerView: View {
                 
                 // Timer Display
                 ZStack {
-                    if !timerManager.isRunning && timerManager.elapsedTime == 0 {
-                        if !isTimeLimitEnabled {
-                            // Open-ended meditation display
-                            Image(systemName: "infinity")
-                                .font(.system(size: 40))
-                                .foregroundColor(.gray)
-                        } else {
-                            // Countdown display before starting
-                            TimerDisplay(timeInterval: TimeInterval(timeLimitMinutes * 60))
+                    // Timer display
+                    Group {
+                        if !timerManager.isRunning && timerManager.elapsedTime > 0 {
+                            // Paused view
+                            TimerDisplay(
+                                timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
+                                totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
+                            )
                         }
-                    } else {
-                        // Running or paused display
-                        TimerDisplay(
-                            timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime
-                        )
-                        .opacity(timerManager.isRunning ? 0.3 : 1.0)
+                        else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
+                            if !isTimeLimitEnabled {
+                                /// Pending start open ended view
+                                Image(systemName: "infinity")
+                                    .font(.system(size: 60))
+                                    .foregroundColor(.white)
+                            }
+                            else {
+                                /// Pending start timed view
+                                TimerDisplay(
+                                    timeInterval: TimeInterval(timeLimitMinutes * 60),
+                                    totalTime: TimeInterval(timeLimitMinutes * 60)
+                                )
+                            }
+                        }
+                        else if timerManager.isRunning {
+                            /// Running view
+                            TimerDisplay(
+                                timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
+                                totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
+                            )
+                            .opacity(0.3)
+                        }
                     }
                 }
                 
@@ -43,13 +59,13 @@ struct WatchTimerView: View {
                         if timerManager.isRunning {
                             timerManager.pauseTimer()
                         } else {
+                            timerManager.refreshStorageVariables()
                             timerManager.startTimer()
                         }
                     }) {
-                        Image(systemName: timerManager.isRunning ? "pause.circle.fill" : "play.circle.fill")
+                        Image(systemName: timerManager.isRunning ? "pause.circle" : "play.circle")
                             .font(.system(size: 35))
-                            .foregroundColor(.gray)
-                            
+                            .foregroundColor(.white)
                     }
                     
                     Button(action: {
@@ -59,9 +75,10 @@ struct WatchTimerView: View {
                             timerManager.stopTimer()
                         }
                     }) {
-                        Image(systemName: timerManager.wasStopped ? "arrow.uturn.left.circle.fill" : "stop.circle.fill")
+                        Image(systemName: timerManager.wasStopped ? "arrow.uturn.left.circle" : "stop.circle")
                             .font(.system(size: 35))
-                            .foregroundColor(.gray)
+                            .foregroundColor(.white)
+                            
                     }
                 }
                 
@@ -73,7 +90,7 @@ struct WatchTimerView: View {
                     }) {
                         Image(systemName: "heart.circle.fill")
                             .font(.system(size: 35))
-                            .foregroundColor(meditationTracker.saveSuccess == true ? .red : .gray)
+                            .foregroundColor(meditationTracker.saveSuccess == true ? .red : .white)
                     }
                     .disabled(meditationTracker.isSaving)
                 }
