@@ -54,7 +54,8 @@ struct WatchTimerView: View {
                 Spacer()
                 
                 // Control Buttons
-                HStack {
+                HStack(spacing: 35) {
+                    Spacer()
                     Button(action: {
                         if timerManager.isRunning {
                             timerManager.pauseTimer()
@@ -62,12 +63,30 @@ struct WatchTimerView: View {
                             timerManager.refreshStorageVariables()
                             timerManager.startTimer()
                         }
-                    }) {
+                    })
+                    {
                         Image(systemName: timerManager.isRunning ? "pause.circle" : "play.circle")
                             .font(.system(size: 35))
                             .foregroundColor(.white)
                     }
-                    
+                    .buttonStyle(.borderless)
+                    // Save Button
+                    if timerManager.wasStopped && timerManager.wasReset {
+                        Button(action: {
+                            meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
+                            timerManager.resetTimer()
+                        }) {
+                            Image(systemName: "heart.circle")
+                                .font(.system(size: 35))
+                                .foregroundColor(meditationTracker.saveSuccess == true ? .red : .white)
+                        }
+                        .disabled(meditationTracker.isSaving)
+                        .buttonStyle(.borderless)
+                    }
+                    else {
+                        Color.clear
+                        .frame(width: 35, height: 35) // Match icon size
+                    }
                     Button(action: {
                         if timerManager.wasStopped {
                             timerManager.resetTimer()
@@ -80,19 +99,8 @@ struct WatchTimerView: View {
                             .foregroundColor(.white)
                             
                     }
-                }
-                
-                // Save Button
-                if timerManager.wasStopped && !timerManager.wasReset {
-                    Button(action: {
-                        meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
-                        timerManager.resetTimer()
-                    }) {
-                        Image(systemName: "heart.circle.fill")
-                            .font(.system(size: 35))
-                            .foregroundColor(meditationTracker.saveSuccess == true ? .red : .white)
-                    }
-                    .disabled(meditationTracker.isSaving)
+                    .buttonStyle(.borderless)
+                    Spacer()
                 }
             }
             .tabItem {

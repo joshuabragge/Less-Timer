@@ -8,7 +8,7 @@ struct Less_Timer_Watch_Watch_App: App {
             "chimeIntervalMinutes": 1,
             "isSoundsEnabled": false,
             "isRecurringChimeEnabled": true,
-            "isTimeLimitEnabled": false,
+            "isTimeLimitEnabled": true,
             "timeLimitMinutes": 5,
             "isVibrationEnabled": true
         ])

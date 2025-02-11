@@ -5,7 +5,7 @@ import HealthKit
 struct WatchSettingsView: View {
     
     
-    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = false
+    @AppStorage("isTimeLimitEnabled") private var isTimeLimitEnabled = true
     @AppStorage("timeLimitMinutes") private var timeLimitMinutes = 10
     
     @AppStorage("isSoundsEnabled") private var isSoundsEnabled = false
@@ -38,6 +38,9 @@ struct WatchSettingsView: View {
                         Text("Off").tag(0)
                     } else {
                         Text("1 min").tag(1)
+                        Text("2 min").tag(2)
+                        Text("3 min").tag(3)
+                        Text("4 min").tag(4)
                         Text("5 min").tag(5)
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)
@@ -103,7 +106,7 @@ struct WatchSettingsView: View {
                 HStack {
                     Text("Version")
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                 }
                 #if DEBUG
                 Button("Debug") {

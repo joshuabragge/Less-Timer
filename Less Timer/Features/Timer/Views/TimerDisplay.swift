@@ -107,11 +107,11 @@ private struct TimerConfig {
     )
     
     static let watch = TimerConfig(
-        frameHeight: 120,
+        frameHeight: 150,
         fontSize: 22,
-        textHeight: 28,
-        spacing: 2,
-        viewPadding: 0,
+        textHeight: 35,
+        spacing: 5,
+        viewPadding: 5,
         circlePadding: 0
     )
 }
