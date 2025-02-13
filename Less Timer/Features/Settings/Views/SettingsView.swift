@@ -2,6 +2,7 @@ import SwiftUI
 import HealthKit
 
 struct SettingsView: View {
+    @Environment(\.colorScheme) var colorScheme
     
     @AppStorage("isSoundsEnabled") private var isSoundsEnabled = true
     // Chime settings
@@ -19,11 +20,8 @@ struct SettingsView: View {
     @StateObject private var healthKitService = HealthKitService()
     
     init() {
-        let appearance = UINavigationBarAppearance()
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-        UINavigationBar.appearance().standardAppearance = appearance
-    }
+        
+}
     
     var body: some View {
         List {
@@ -39,14 +37,17 @@ struct SettingsView: View {
                         }
                     }
                 ))
-               
+                
                 Picker("Duration", selection: $timeLimitMinutes) {
-                        ForEach(1...60, id: \.self) { minute in
-                            Text("\(minute) min").tag(minute)
-                        }
+                    ForEach(1...60, id: \.self) { minute in
+                        Text("\(minute) min")
+                            .tag(minute)
+                            .foregroundColor(colorScheme == .dark ? .white : .white)
                     }
-                    .pickerStyle(.menu)
-                    .disabled(!isTimeLimitEnabled)
+                }
+                .pickerStyle(.menu)
+                .disabled(!isTimeLimitEnabled)
+                .accentColor(.white)
             }
             
             Section(header: Text("Sounds and Haptics")) {
@@ -64,20 +65,28 @@ struct SettingsView: View {
                         }
                     }
                 ))
-
-                Picker("Chime Interval", selection: $chimeIntervalMinutes) {
-                        Text("1 min").tag(1)
-                        Text("2 min").tag(2)
-                        Text("5 min").tag(5)
-                        Text("10 min").tag(10)
-                        Text("15 min").tag(15)
-                        Text("20 min").tag(20)
-                        Text("30 min").tag(30)
-                    }
-                    .pickerStyle(.menu)
-                    .disabled(!isRecurringChimeEnabled)
                 
+                Picker("Chime Interval", selection: $chimeIntervalMinutes) {
+                    Text("1 min").tag(1)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("2 min").tag(2)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("5 min").tag(5)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("10 min").tag(10)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("15 min").tag(15)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("20 min").tag(20)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                    Text("30 min").tag(30)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                }
+                .pickerStyle(.menu)
+                .disabled(!isRecurringChimeEnabled)
+                .accentColor(colorScheme == .dark ? .white : .black)
             }
+            
             Section(header: Text("Health")) {
                 HStack {
                     Text("Apple Health")
@@ -168,6 +177,14 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .toolbarColorScheme(colorScheme, for: .navigationBar) // This ensures proper color scheme
+                .toolbarBackground(.clear, for: .navigationBar)
+        .onAppear {
+            updateNavigationBarAppearance()
+         }
+         .onChange(of: colorScheme) { oldValue, newValue in
+             updateNavigationBarAppearance()
+         }
         .fullScreenCover(isPresented: Binding(
             get: { showingSafariView && selectedURL != nil },
             set: { showingSafariView = $0 }
@@ -178,6 +195,18 @@ struct SettingsView: View {
             }
         }
     }
+    private func updateNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .clear
+            
+            let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
+            appearance.largeTitleTextAttributes = [.foregroundColor: titleColor]
+            appearance.titleTextAttributes = [.foregroundColor: titleColor]
+            
+            let navigationBar = UINavigationBar.appearance()
+            navigationBar.standardAppearance = appearance
+        }
 }
 
 #Preview {
