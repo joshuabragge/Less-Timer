@@ -71,6 +71,8 @@ struct SettingsView: View {
                         Text("5 min").tag(5)
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)
+                        Text("20 min").tag(20)
+                        Text("30 min").tag(30)
                     }
                     .pickerStyle(.menu)
                     .disabled(!isRecurringChimeEnabled)
