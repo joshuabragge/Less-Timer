@@ -46,9 +46,8 @@ struct WatchTimerView: View {
                                 timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
                                 totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
                             )
-                            .opacity(0.3)
                         }
-                    }
+                    }.opacity(timerManager.isRunning ? 0.7 : 1.0)
                 }
                 
                 Spacer()
@@ -100,7 +99,7 @@ struct WatchTimerView: View {
                     }
                     .buttonStyle(.borderless)
                     Spacer()
-                }
+                }.opacity(timerManager.isRunning ? 0.7 : 1.0)
             }
             .tabItem {
                 Label("Timer", systemImage: "timer")

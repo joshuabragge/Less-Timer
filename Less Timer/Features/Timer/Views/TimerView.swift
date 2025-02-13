@@ -40,6 +40,7 @@ struct TimerView: View {
                                 timeInterval: TimeInterval(timeLimitMinutes * 60),
                                 totalTime: TimeInterval(timeLimitMinutes * 60)
                             )
+
                         }
                     }
                     else if timerManager.isRunning {
@@ -48,9 +49,9 @@ struct TimerView: View {
                             timeInterval: isTimeLimitEnabled ? timerManager.remainingTime : timerManager.elapsedTime,
                             totalTime: isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : nil
                         )
-                        .opacity(0.3)
+                       
                     }
-                }
+                }.opacity(timerManager.isRunning ? 0.7 : 1.0)
             }
             Spacer()
             HStack(spacing: 50) {
@@ -78,7 +79,7 @@ struct TimerView: View {
                     action: stopTimer
                 )
                 Spacer()
-            }
+            }.opacity(timerManager.isRunning ? 0.7 : 1.0)
             
             HStack(spacing: 1) {
                 
