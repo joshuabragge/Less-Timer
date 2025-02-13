@@ -65,7 +65,7 @@ struct WatchTimerView: View {
                         }
                     })
                     {
-                        Image(systemName: timerManager.isRunning ? "pause.circle" : "play.circle")
+                        Image(systemName: timerManager.isRunning ? "pause" : "play")
                             .font(.system(size: 35))
                             .foregroundColor(.white)
                     }
@@ -94,7 +94,7 @@ struct WatchTimerView: View {
                             timerManager.stopTimer()
                         }
                     }) {
-                        Image(systemName: timerManager.wasStopped ? "arrow.uturn.left.circle" : "stop.circle")
+                        Image(systemName: timerManager.wasStopped ? "arrow.uturn.left" : "stop")
                             .font(.system(size: 35))
                             .foregroundColor(.white)
                             
