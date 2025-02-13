@@ -54,18 +54,20 @@ struct TimerView: View {
             }
             Spacer()
             HStack(spacing: 50) {
+                Spacer()
                 TimerButton(
                     icon: timerManager.isRunning ? "pause" : "play",
                     color: .white
                 ) {
                     toggleTimer()
                 }.opacity(1)
-                
+                Spacer()
                 TimerButton(
                     icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop",
                     color: .white,
                     action: stopTimer
                 )
+                Spacer()
             }
             
             HStack(spacing: 1) {
