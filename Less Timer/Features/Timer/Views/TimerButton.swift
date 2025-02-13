@@ -11,7 +11,7 @@ struct TimerButton: View {
                 .resizable()
                 .frame(width: 50, height: 50)
                 .foregroundColor(color)
-                .opacity(0.8)  // Slightly transparent
+                .opacity(1)  // Slightly transparent
         }
     }
 }

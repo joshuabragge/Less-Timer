@@ -15,7 +15,7 @@ struct SaveButton: View {
             } else {
                 Image(systemName: icon)
                     .resizable()
-                    .frame(width: 35, height: 30    )
+                    .frame(width: 50, height: 45    )
                     .foregroundColor(color)
                     .opacity(1)
             }

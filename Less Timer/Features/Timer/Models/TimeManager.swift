@@ -24,6 +24,7 @@ class TimerManager: TimerManaging {
     
     /// Keep screen on for watch
     @MainActor private let sessionManager = SessionManager()
+    @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
     
     private var timer: Timer?
     private var startTime: Date?
@@ -194,6 +195,10 @@ class TimerManager: TimerManaging {
                 // Check if timer has reached zero
                 if remainingTime == 0 {
                     stopTimer()
+                    // Save meditation session
+                    logger.info("updateTimer: saving session to Health and resetting")
+                    meditationTracker.saveMeditationSession(duration: elapsedTime)
+                    resetTimer()
                     logger.info("updateTimer: end of session")
                     if isSoundsEnabled {
                         logger.info("endOfSession: play finish sound")
@@ -202,8 +207,12 @@ class TimerManager: TimerManaging {
                         }
                     if isVibrationEnabled {
                         logger.info( "endOfSession: play success haptics")
-                            DispatchQueue.main.async {
-                            self.haptics.playSuccess()
+                        Task {
+                            haptics.playSuccess()
+                            try? await Task.sleep(nanoseconds: 1_000_000_000)
+                            haptics.playSuccess()
+                            try? await Task.sleep(nanoseconds: 1_000_000_000)
+                            haptics.playSuccess()
                         }
                         }
                     }

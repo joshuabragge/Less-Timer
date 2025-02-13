@@ -71,12 +71,11 @@ struct WatchTimerView: View {
                     }
                     .buttonStyle(.borderless)
                     // Save Button
-                    if timerManager.wasStopped && timerManager.wasReset {
+                    if timerManager.wasStopped && !timerManager.wasReset && timerManager.elapsedTime > 0 {
                         Button(action: {
-                            meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
-                            timerManager.resetTimer()
+                            saveSession()
                         }) {
-                            Image(systemName: "heart.circle")
+                            Image(systemName: "heart")
                                 .font(.system(size: 35))
                                 .foregroundColor(meditationTracker.saveSuccess == true ? .red : .white)
                         }
@@ -94,7 +93,7 @@ struct WatchTimerView: View {
                             timerManager.stopTimer()
                         }
                     }) {
-                        Image(systemName: timerManager.wasStopped ? "arrow.uturn.left" : "stop")
+                        Image(systemName: timerManager.wasStopped && !timerManager.wasReset ? "arrow.uturn.left" : "stop")
                             .font(.system(size: 35))
                             .foregroundColor(.white)
                             
@@ -115,6 +114,10 @@ struct WatchTimerView: View {
         }.onAppear {
             //timerManager.refreshStorageVariables()
         }
+    }
+    private func saveSession() {
+        meditationTracker.saveMeditationSession(duration: timerManager.elapsedTime)
+        timerManager.resetTimer()
     }
 }
 #Preview {

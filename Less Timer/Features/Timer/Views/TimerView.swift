@@ -61,16 +61,6 @@ struct TimerView: View {
                 ) {
                     toggleTimer()
                 }.opacity(1)
-                Spacer()
-                TimerButton(
-                    icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop",
-                    color: .white,
-                    action: stopTimer
-                )
-                Spacer()
-            }
-            
-            HStack(spacing: 1) {
                 SaveButton(
                     icon: "heart.fill",
                     color: meditationTracker.saveSuccess == true ? .red : .white,
@@ -82,6 +72,16 @@ struct TimerView: View {
                 )
                 .opacity(shouldShowSaveButton ? 1 : 0)
                 .disabled(!shouldShowSaveButton)
+                TimerButton(
+                    icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop",
+                    color: .white,
+                    action: stopTimer
+                )
+                Spacer()
+            }
+            
+            HStack(spacing: 1) {
+                
             }
         }
         .padding()
