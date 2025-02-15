@@ -24,7 +24,7 @@ class TimerManager: TimerManaging {
     
     /// Keep screen on for watch
     @MainActor private let sessionManager = SessionManager()
-    @StateObject private var meditationTracker: MeditationTracker = MeditationTracker()
+    private var meditationTracker: MeditationTracker = MeditationTracker()
     
     private var timer: Timer?
     private var startTime: Date?
@@ -195,9 +195,11 @@ class TimerManager: TimerManaging {
                 // Check if timer has reached zero
                 if remainingTime == 0 {
                     stopTimer()
-                    // Save meditation session
+                    let finalDuration = self.elapsedTime // Store duration
                     logger.info("updateTimer: saving session to Health and resetting")
-                    meditationTracker.saveMeditationSession(duration: elapsedTime)
+                    DispatchQueue.main.async {
+                        self.meditationTracker.saveMeditationSession(duration: finalDuration)
+                    }
                     resetTimer()
                     logger.info("updateTimer: end of session")
                     if isSoundsEnabled {

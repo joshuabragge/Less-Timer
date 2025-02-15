@@ -197,16 +197,17 @@ struct SettingsView: View {
     }
     private func updateNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = .clear
-            
-            let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
-            appearance.largeTitleTextAttributes = [.foregroundColor: titleColor]
-            appearance.titleTextAttributes = [.foregroundColor: titleColor]
-            
-            let navigationBar = UINavigationBar.appearance()
-            navigationBar.standardAppearance = appearance
-        }
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .clear
+        
+        let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
+        appearance.largeTitleTextAttributes = [.foregroundColor: titleColor]
+        appearance.titleTextAttributes = [.foregroundColor: titleColor]
+        
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.standardAppearance = appearance
+        navigationBar.tintColor = titleColor  // Add this line to set the back button color
+    }
 }
 
 #Preview {
