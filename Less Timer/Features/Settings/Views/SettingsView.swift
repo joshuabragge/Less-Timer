@@ -60,6 +60,7 @@ struct SettingsView: View {
                     Text("…").tag(-1)
                 }
                 .pickerStyle(.segmented)
+                .disabled(!isTimeLimitEnabled)
                 .sheet(isPresented: $isCustomSelected, onDismiss: {
                     timeLimitMinutes = temporaryCustomValue
                 }) {
@@ -70,12 +71,14 @@ struct SettingsView: View {
                             }
                         }
                         .pickerStyle(.wheel)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
                         .navigationTitle("Choose Duration")
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Done") {
                                     isCustomSelected = false
                                 }
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                             }
                         }
                     }
