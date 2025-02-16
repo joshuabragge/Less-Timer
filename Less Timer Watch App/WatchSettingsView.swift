@@ -70,6 +70,7 @@ struct WatchSettingsView: View {
                     } else {
                         Text("1 min").tag(1)
                         Text("2 min").tag(2)
+                        Text("3 min").tag(3)
                         Text("5 min").tag(5)
                         Text("10 min").tag(10)
                         Text("15 min").tag(15)

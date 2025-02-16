@@ -20,11 +20,11 @@ struct SettingsView: View {
     @StateObject private var healthKitService = HealthKitService()
     
 
-    private let presetChimeInterval = [1, 2, 3, 5, 10]
-    @State private var temporaryCustomChimeInterval = 10
+    private let presetChimeInterval = [1, 2, 3, 5, 10, 15]
+    @State private var temporaryCustomChimeInterval = 20
     @State private var isCustomChimeIntervalSelected = false
     
-    private let presetTimeLimits = [1, 3, 5, 10, 15]
+    private let presetTimeLimits = [1, 2, 3, 5, 10, 15]
     @State private var temporaryCustomTimeLimit = 20
     @State private var isCustomTimeLimitSelected = false
 
