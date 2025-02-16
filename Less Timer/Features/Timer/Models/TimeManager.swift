@@ -194,14 +194,6 @@ class TimerManager: TimerManaging {
                 
                 // Check if timer has reached zero
                 if remainingTime == 0 {
-                    stopTimer()
-                    let finalDuration = self.elapsedTime // Store duration
-                    logger.info("updateTimer: saving session to Health and resetting")
-                    DispatchQueue.main.async {
-                        self.meditationTracker.saveMeditationSession(duration: finalDuration)
-                    }
-                    resetTimer()
-                    logger.info("updateTimer: end of session")
                     if isSoundsEnabled {
                         logger.info("endOfSession: play finish sound")
                         DispatchQueue.main.async {
@@ -218,6 +210,14 @@ class TimerManager: TimerManaging {
                         }
                         }
                     }
+                    let finalDuration = self.elapsedTime // Store duration
+                    logger.info("updateTimer: saving session to Health and resetting")
+                    DispatchQueue.main.async {
+                        self.meditationTracker.saveMeditationSession(duration: finalDuration)
+                    }
+                    stopTimer()
+                    resetTimer()
+                    logger.info("updateTimer: end of session")
                     
                     return
                 }

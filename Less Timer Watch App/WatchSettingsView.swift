@@ -50,7 +50,7 @@ struct WatchSettingsView: View {
                 }.disabled(!isTimeLimitEnabled)
             }
             Section(header: Text("Sounds and Haptics")) {
-                //Toggle("Sounds", isOn: $isSoundsEnabled)
+                Toggle("Sounds", isOn: $isSoundsEnabled)
                 Toggle("Vibrations", isOn: $isVibrationEnabled)
 
                 Toggle("Recurring Chime", isOn: Binding(
