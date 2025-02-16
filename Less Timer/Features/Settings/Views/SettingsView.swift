@@ -19,13 +19,15 @@ struct SettingsView: View {
     
     @StateObject private var healthKitService = HealthKitService()
     
-    private let presetDurations = [1, 3, 5, 10, 15]
-    @State private var temporaryCustomValue = 20
-    @State private var isCustomSelected = false
 
-    private var isCustomDuration: Bool {
-        !presetDurations.contains(timeLimitMinutes)
-    }
+    private let presetChimeInterval = [1, 2, 3, 5, 15]
+    @State private var temporaryCustomChimeInterval = 10
+    @State private var isCustomChimeIntervalSelected = false
+    
+    private let presetTimeLimits = [1, 3, 5, 10, 15]
+    @State private var temporaryCustomTimeLimit = 20
+    @State private var isCustomTimeLimitSelected = false
+
 
     init() {
     }
@@ -45,27 +47,27 @@ struct SettingsView: View {
                     }
                 ))
                 Picker("Duration", selection: Binding(
-                    get: { presetDurations.contains(timeLimitMinutes) ? timeLimitMinutes : -1 },
+                    get: { presetTimeLimits.contains(timeLimitMinutes) ? timeLimitMinutes : -1 },
                     set: { newValue in
                         if newValue == -1 {
-                            isCustomSelected = true
+                            isCustomTimeLimitSelected = true
                         } else {
                             timeLimitMinutes = newValue
                         }
                     }
                 )) {
-                    ForEach(presetDurations, id: \.self) { duration in
+                    ForEach(presetTimeLimits, id: \.self) { duration in
                         Text("\(duration)m").tag(duration)
                     }
                     Text("…").tag(-1)
                 }
                 .pickerStyle(.segmented)
                 .disabled(!isTimeLimitEnabled)
-                .sheet(isPresented: $isCustomSelected, onDismiss: {
-                    timeLimitMinutes = temporaryCustomValue
+                .sheet(isPresented: $isCustomTimeLimitSelected, onDismiss: {
+                    timeLimitMinutes = temporaryCustomTimeLimit
                 }) {
                     NavigationView {
-                        Picker("Minutes", selection: $temporaryCustomValue) {
+                        Picker("Minutes", selection: $temporaryCustomTimeLimit) {
                             ForEach(1...180, id: \.self) { minute in
                                 Text("\(minute) minutes").tag(minute)
                             }
@@ -76,7 +78,7 @@ struct SettingsView: View {
                         .toolbar {
                             ToolbarItem(placement: .confirmationAction) {
                                 Button("Done") {
-                                    isCustomSelected = false
+                                    isCustomTimeLimitSelected = false
                                 }
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                             }
@@ -101,25 +103,47 @@ struct SettingsView: View {
                     }
                 ))
                 
-                Picker("Chime Interval", selection: $chimeIntervalMinutes) {
-                    Text("1 min").tag(1)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("2 min").tag(2)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("5 min").tag(5)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("10 min").tag(10)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("15 min").tag(15)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("20 min").tag(20)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                    Text("30 min").tag(30)
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                Picker("Chime Interval", selection: Binding(
+                    get: { presetChimeInterval.contains(chimeIntervalMinutes) ? chimeIntervalMinutes : -1 },
+                    set: { newValue in
+                        if newValue == -1 {
+                            isCustomChimeIntervalSelected = true
+                        } else {
+                            chimeIntervalMinutes = newValue
+                        }
+                    }
+                )) {
+                    ForEach(presetChimeInterval, id: \.self) { duration in
+                        Text("\(duration)m").tag(duration)
+                    }
+                    Text("…").tag(-1)
                 }
-                .pickerStyle(.menu)
+                .pickerStyle(.segmented)
                 .disabled(!isRecurringChimeEnabled)
-                .accentColor(colorScheme == .dark ? .white : .black)
+                .sheet(isPresented: $isCustomChimeIntervalSelected, onDismiss: {
+                    chimeIntervalMinutes = temporaryCustomChimeInterval
+                }) {
+                    NavigationView {
+                        Picker("Minutes", selection: $temporaryCustomChimeInterval) {
+                            ForEach(1...180, id: \.self) { minute in
+                                Text("\(minute) minutes").tag(minute)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .navigationTitle("Choose Chime Inverval")
+                        .toolbar {
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Done") {
+                                    isCustomChimeIntervalSelected = false
+                                }
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            }
+                        }
+                    }
+                    .presentationDetents([.height(300)])
+                }
+                
             }
             
             Section(header: Text("Health")) {
@@ -207,6 +231,7 @@ struct SettingsView: View {
                         print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
                         
                     }
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
                     #endif
                 }
             }
