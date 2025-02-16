@@ -19,10 +19,17 @@ struct SettingsView: View {
     
     @StateObject private var healthKitService = HealthKitService()
     
+    private let presetDurations = [1, 3, 5, 10, 15]
+    @State private var temporaryCustomValue = 20
+    @State private var isCustomSelected = false
+
+    private var isCustomDuration: Bool {
+        !presetDurations.contains(timeLimitMinutes)
+    }
+
     init() {
-        
-}
-    
+    }
+
     var body: some View {
         List {
             Section(header: Text("Meditation Settings")) {
@@ -37,19 +44,46 @@ struct SettingsView: View {
                         }
                     }
                 ))
-                
-                Picker("Duration", selection: $timeLimitMinutes) {
-                    ForEach(1...60, id: \.self) { minute in
-                        Text("\(minute) min")
-                            .tag(minute)
-                            .foregroundColor(colorScheme == .dark ? .white : .white)
+                Picker("Duration", selection: Binding(
+                    get: { isCustomDuration ? -1 : timeLimitMinutes },
+                    set: { newValue in
+                        if newValue == -1 {
+                            isCustomSelected = true
+                        } else {
+                            timeLimitMinutes = newValue
+                        }
                     }
+                )) {
+                    ForEach(presetDurations, id: \.self) { duration in
+                        Text("\(duration)m").tag(duration)
+                    }
+                    Text("Other").tag(-1)
                 }
-                .pickerStyle(.menu)
-                .disabled(!isTimeLimitEnabled)
-                .accentColor(.white)
+                .pickerStyle(.segmented)
+                .sheet(isPresented: $isCustomSelected, onDismiss: {
+                    if timeLimitMinutes == -1 {
+                        timeLimitMinutes = temporaryCustomValue
+                    }
+                }) {
+                    NavigationView {
+                        Picker("Minutes", selection: $temporaryCustomValue) {
+                            ForEach(1...180, id: \.self) { minute in
+                                Text("\(minute) minutes").tag(minute)
+                            }
+                        }
+                        .pickerStyle(.wheel)
+                        .navigationTitle("Choose Duration")
+                        .toolbar {
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Done") {
+                                    isCustomSelected = false
+                                }
+                            }
+                        }
+                    }
+                    .presentationDetents([.height(300)])
+                }
             }
-            
             Section(header: Text("Sounds and Haptics")) {
                 Toggle("Sounds", isOn: $isSoundsEnabled)
                 Toggle("Vibration", isOn: $isVibrationEnabled)
