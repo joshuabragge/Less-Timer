@@ -45,7 +45,7 @@ struct SettingsView: View {
                     }
                 ))
                 Picker("Duration", selection: Binding(
-                    get: { isCustomDuration ? -1 : timeLimitMinutes },
+                    get: { presetDurations.contains(timeLimitMinutes) ? timeLimitMinutes : -1 },
                     set: { newValue in
                         if newValue == -1 {
                             isCustomSelected = true
@@ -57,13 +57,11 @@ struct SettingsView: View {
                     ForEach(presetDurations, id: \.self) { duration in
                         Text("\(duration)m").tag(duration)
                     }
-                    Text("Other").tag(-1)
+                    Text("…").tag(-1)
                 }
                 .pickerStyle(.segmented)
                 .sheet(isPresented: $isCustomSelected, onDismiss: {
-                    if timeLimitMinutes == -1 {
-                        timeLimitMinutes = temporaryCustomValue
-                    }
+                    timeLimitMinutes = temporaryCustomValue
                 }) {
                     NavigationView {
                         Picker("Minutes", selection: $temporaryCustomValue) {
