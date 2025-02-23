@@ -223,8 +223,8 @@ struct SettingsView: View {
                     Spacer()
                         .foregroundColor(.gray)
                 }
-                HStack{
-                    #if DEBUG
+                //HStack{
+                  //  #if DEBUG
                     //Button("Debug") {
                       //  print("isSoundsEnabled:", UserDefaults.standard.integer(forKey: "isSoundsEnabled"))
                         //print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
@@ -233,8 +233,8 @@ struct SettingsView: View {
                         
                     //}
                     //.foregroundColor(colorScheme == .dark ? .white : .black)
-                    #endif
-                }
+                 //   #endif
+                //}
             }
         }
         .navigationTitle("Settings")

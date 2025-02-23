@@ -109,14 +109,14 @@ struct WatchSettingsView: View {
                     Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0.0")
                         .foregroundColor(.white)
                 }
-                #if DEBUG
+                //#if DEBUG
                 //Button("Debug") {
                   //  print("isSoundsEnabled:", UserDefaults.standard.integer(forKey: "isSoundsEnabled"))
                    // print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
                    // print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
                    // print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
                 //}
-                #endif
+               // #endif
             }
         }
         .task {
