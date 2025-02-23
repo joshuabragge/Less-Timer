@@ -225,14 +225,14 @@ struct SettingsView: View {
                 }
                 HStack{
                     #if DEBUG
-                    Button("Debug") {
-                        print("isSoundsEnabled:", UserDefaults.standard.integer(forKey: "isSoundsEnabled"))
-                        print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
-                        print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
-                        print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
+                    //Button("Debug") {
+                      //  print("isSoundsEnabled:", UserDefaults.standard.integer(forKey: "isSoundsEnabled"))
+                        //print("chimeIntervalMinutes:", UserDefaults.standard.integer(forKey: "chimeIntervalMinutes"))
+                        //print("isTimeLimitEnabled:", UserDefaults.standard.bool(forKey: "isTimeLimitEnabled"))
+                        //print("timeLimitMinutes:", UserDefaults.standard.integer(forKey: "timeLimitMinutes"))
                         
-                    }
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    //}
+                    //.foregroundColor(colorScheme == .dark ? .white : .black)
                     #endif
                 }
             }
