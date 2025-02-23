@@ -238,7 +238,6 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
-        .preferredColorScheme(.dark)
         //.toolbarColorScheme(colorScheme == .dark ? .dark : .light, for: .navigationBar)
         .onAppear {
             updateNavigationBarAppearance()

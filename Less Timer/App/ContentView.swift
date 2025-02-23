@@ -21,12 +21,11 @@ struct ContentView: View {
                 Image("less-timer-icon-clear.png")
                     .resizable()
                     .frame(width: 120, height: 120)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .opacity(showIcon ? 1 : 0)
                     .transition(.opacity)
                 Spacer()
             }
-            .preferredColorScheme(.dark)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                     withAnimation(.easeOut(duration: 1)) {
@@ -41,7 +40,7 @@ struct ContentView: View {
         else {
             NavigationView {
                 ZStack {
-                    Color.black
+                    Color.primaryBackground
                     .ignoresSafeArea()
                     
                     TimerView()
@@ -50,7 +49,7 @@ struct ContentView: View {
                             ToolbarItem(placement: .topBarTrailing) {
                                 NavigationLink(destination: SettingsView()) {
                                     Image(systemName: "gearshape.fill")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.primaryFont)
                                         .bold(true)
                                         .simultaneousGesture(TapGesture().onEnded {
                                             self.haptics.playTap()
@@ -61,7 +60,6 @@ struct ContentView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-            .preferredColorScheme(.dark)
             .onAppear {
                 updateNavigationBarAppearance()
              }
@@ -75,8 +73,8 @@ struct ContentView: View {
         let appearance = UINavigationBarAppearance()
         let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
         
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.primaryFont]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.primaryFont]
         
         let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
         backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: titleColor]

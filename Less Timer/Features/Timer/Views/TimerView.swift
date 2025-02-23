@@ -32,7 +32,7 @@ struct TimerView: View {
                             /// Pending start open ended view
                             Image(systemName: "infinity")
                                 .font(.system(size: 60))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("primaryFont"))
                         }
                         else {
                             /// Pending start timed view
@@ -58,13 +58,13 @@ struct TimerView: View {
                 Spacer()
                 TimerButton(
                     icon: timerManager.isRunning ? "pause" : "play",
-                    color: .white
+                    color:  (Color("primaryFont"))
                 ) {
                     toggleTimer()
                 }.opacity(1)
                 SaveButton(
                     icon: "heart.fill",
-                    color: meditationTracker.saveSuccess == true ? .red : .white,
+                    color: meditationTracker.saveSuccess == true ? .red : (Color("primaryFont")),
                     action: {
                         HapticManager.shared.playSuccess()
                         saveSession()
@@ -75,7 +75,7 @@ struct TimerView: View {
                 .disabled(!shouldShowSaveButton)
                 TimerButton(
                     icon: timerManager.wasStopped ? "arrow.uturn.left" : "stop",
-                    color: .white,
+                    color: (Color("primaryFont")),
                     action: stopTimer
                 )
                 Spacer()
