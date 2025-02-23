@@ -1,17 +1,14 @@
 import SwiftUI
 
-
 struct ContentView: View {
     init(haptics: HapticServiceProtocol = HapticManager.shared) {
-        let appearance = UINavigationBarAppearance()
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().standardAppearance = appearance
         self.haptics = haptics
+        updateNavigationBarAppearance()
     }
     
     @State private var showIcon = true
     @State private var firstLaunch = true
+    @Environment(\.colorScheme) var colorScheme
     private let haptics: HapticServiceProtocol
     
     var body: some View {
@@ -29,6 +26,7 @@ struct ContentView: View {
                     .transition(.opacity)
                 Spacer()
             }
+            .preferredColorScheme(.dark)
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) {
                     withAnimation(.easeOut(duration: 1)) {
@@ -63,7 +61,34 @@ struct ContentView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
+            .preferredColorScheme(.dark)
+            .onAppear {
+                updateNavigationBarAppearance()
+             }
+             .onChange(of: colorScheme) { oldValue, newValue in
+                 updateNavigationBarAppearance()
+             }
         }
+    }
+    
+    private func updateNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
+        
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        let backButtonAppearance = UIBarButtonItemAppearance(style: .plain)
+        backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: titleColor]
+        appearance.buttonAppearance = backButtonAppearance
+        appearance.backButtonAppearance = backButtonAppearance
+        
+        let image = UIImage(systemName: "chevron.backward")?.withTintColor(titleColor, renderingMode: .alwaysOriginal)
+        appearance.setBackIndicatorImage(image, transitionMaskImage: image)
+
+        UINavigationBar.appearance().tintColor = titleColor
+        UINavigationBar.appearance().standardAppearance = appearance
+
     }
 }
 

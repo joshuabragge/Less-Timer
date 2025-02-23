@@ -67,24 +67,24 @@ class TimerManager: TimerManaging {
     
     func startTimer() {
         if !isRunning {
-            DispatchQueue.main.async {
-                self.sessionManager.startSession()
+            Task { @MainActor in
+                sessionManager.startSession()
             }
             
             logger.info("startTimer: starting background audio")
-            self.audioService.startBackgroundAudio()
+            audioService.startBackgroundAudio()
             logger.info("startTimer: starting timer")
             //play sound on reset if enabled
             if isSoundsEnabled && wasReset {
                 logger.info("startTimer: play starting sound")
-                DispatchQueue.main.async {
-                    self.audioService.playSound(identifier: "session-end")
+                Task { @MainActor in
+                    audioService.playSound(identifier: "session-end")
                 }
             }
 
             logger.info("startTimer: playing start vibration")
-            DispatchQueue.main.async {
-                self.haptics.playStart()
+            Task { @MainActor in
+                haptics.playStart()
             }
             
             isRunning = true
@@ -116,22 +116,23 @@ class TimerManager: TimerManaging {
     
     func pauseTimer() {
         logger.info("pauseTimer: stopping background audio")
-        self.audioService.stopBackgroundAudio()
+        audioService.stopBackgroundAudio()
         logger.info("pauseTimer: pausing timer")
         isRunning = false
         timer?.invalidate()
         timer = nil
         wasStopped = false
         
-        DispatchQueue.main.async {
-            self.sessionManager.stopSession()
-            self.haptics.playStop()
+        Task { @MainActor in
+            haptics.playStop()
+            try? await Task.sleep(for: .seconds(0.5))
+            sessionManager.stopSession()
         }
     }
     
     func stopTimer() {
         logger.info("stopTimer: stopping background audio")
-        self.audioService.stopBackgroundAudio()
+        audioService.stopBackgroundAudio()
         logger.info("stopTimer: stopping timer")
         isRunning = false
         timer?.invalidate()
@@ -139,9 +140,10 @@ class TimerManager: TimerManaging {
         wasStopped = true
         
         // Disable watch screen always on
-        DispatchQueue.main.async {
-            self.sessionManager.stopSession()
-            self.haptics.playStop()
+        Task { @MainActor in
+            haptics.playStop()
+            try? await Task.sleep(for: .seconds(0.5))
+            sessionManager.stopSession()
         }
         
     }
@@ -156,9 +158,10 @@ class TimerManager: TimerManaging {
         lastChimeMinute = 0
         wasStopped = false
         
-        DispatchQueue.main.async {
-            self.sessionManager.stopSession()
-            self.haptics.playSuccess()
+        Task { @MainActor in
+            haptics.playSuccess()
+            try? await Task.sleep(for: .seconds(0.5))
+            sessionManager.stopSession()
         }
     }
     
@@ -175,13 +178,13 @@ class TimerManager: TimerManaging {
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     logger.info("updateTimer: playing chime at \(self.chimeIntervalMinutes)")
                     if isSoundsEnabled {
-                        DispatchQueue.main.async {
-                            self.audioService.playSound(identifier: "chime")
+                        Task { @MainActor in
+                            audioService.playSound(identifier: "chime")
                         }
                     }
                     if isVibrationEnabled {
-                        DispatchQueue.main.async{
-                            self.haptics.playCustomPattern(intensity: 1.0, sharpness: 0.7)
+                        Task { @MainActor in
+                            haptics.playSuccess()
                         }
                     }
                     lastChimeMinute = currentMinute
@@ -196,24 +199,24 @@ class TimerManager: TimerManaging {
                 if remainingTime == 0 {
                     if isSoundsEnabled {
                         logger.info("endOfSession: play finish sound")
-                        DispatchQueue.main.async {
-                            self.audioService.playSound(identifier: "session-end")
+                        Task { @MainActor in
+                            audioService.playSound(identifier: "session-end")
                         }
                     if isVibrationEnabled {
                         logger.info( "endOfSession: play success haptics")
                         Task {
                             haptics.playSuccess()
-                            try? await Task.sleep(nanoseconds: 1_000_000_000)
+                            try? await Task.sleep(nanoseconds: 0_500_000_000)
                             haptics.playSuccess()
-                            try? await Task.sleep(nanoseconds: 1_000_000_000)
+                            try? await Task.sleep(nanoseconds: 0_500_000_000)
                             haptics.playSuccess()
                         }
                         }
                     }
                     let finalDuration = self.elapsedTime // Store duration
                     logger.info("updateTimer: saving session to Health and resetting")
-                    DispatchQueue.main.async {
-                        self.meditationTracker.saveMeditationSession(duration: finalDuration)
+                    Task { @MainActor in
+                        meditationTracker.saveMeditationSession(duration: finalDuration)
                     }
                     stopTimer()
                     resetTimer()

@@ -30,6 +30,7 @@ struct SettingsView: View {
 
 
     init() {
+        updateNavigationBarAppearance()
     }
 
     var body: some View {
@@ -237,8 +238,8 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
-        .toolbarColorScheme(colorScheme, for: .navigationBar) // This ensures proper color scheme
-                .toolbarBackground(.clear, for: .navigationBar)
+        .preferredColorScheme(.dark)
+        //.toolbarColorScheme(colorScheme == .dark ? .dark : .light, for: .navigationBar)
         .onAppear {
             updateNavigationBarAppearance()
          }
@@ -256,17 +257,6 @@ struct SettingsView: View {
         }
     }
     private func updateNavigationBarAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = .clear
-        
-        let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
-        appearance.largeTitleTextAttributes = [.foregroundColor: titleColor]
-        appearance.titleTextAttributes = [.foregroundColor: titleColor]
-        
-        let navigationBar = UINavigationBar.appearance()
-        navigationBar.standardAppearance = appearance
-        navigationBar.tintColor = titleColor  // Add this line to set the back button color
     }
 }
 
