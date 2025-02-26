@@ -139,7 +139,6 @@ class TimerManager: TimerManaging {
         timer = nil
         wasStopped = true
         
-        // Disable watch screen always on
         Task { @MainActor in
             haptics.playStop()
             try? await Task.sleep(for: .seconds(0.5))
@@ -165,15 +164,71 @@ class TimerManager: TimerManaging {
         }
     }
     
-    private func updateTimer() {
+    private func handleTimerCompletion(finalDuration: TimeInterval) {
+            logger.info("handleTimerCompletion: beginning end of session sequence")
+            
+            // Stop the timer but don't stop the session yet
+            isRunning = false
+            timer?.invalidate()
+            timer = nil
+            wasStopped = true
+            
+            // Update state variables
+            elapsedTime = finalDuration
+            remainingTime = isTimeLimitEnabled ? TimeInterval(timeLimitMinutes * 60) : 0
+            wasReset = true
+            lastChimeMinute = 0
+            
+            Task { @MainActor in
+                if isSoundsEnabled {
+                    logger.info("handleTimerCompletion: playing finish sound")
+                    audioService.playSound(identifier: "session-end")
+                }
+                
+                if isVibrationEnabled {
+                    logger.info("handleTimerCompletion: playing triple success haptics")
+                    haptics.playSuccess()
+                    try? await Task.sleep(for: .seconds(0.5))
+                    haptics.playSuccess()
+                    try? await Task.sleep(for: .seconds(0.5))
+                    haptics.playSuccess()
+                    try? await Task.sleep(for: .seconds(0.5))
+                }
+                
+                logger.info("handleTimerCompletion: saving meditation session")
+                meditationTracker.saveMeditationSession(duration: finalDuration)
+                
+                logger.info("handleTimerCompletion: ending watch session")
+                sessionManager.stopSession()
+                
+                logger.info("handleTimerCompletion: end of session sequence complete")
+            }
+        }
+        
+        private func updateTimer() {
             guard let startTime = startTime else { return }
             
-            // Calculate elapsed time for both modes
             let elapsed = Date().timeIntervalSince(startTime)
             elapsedTime = elapsed
             
-            // Handle recurring chimes for both timer modes
-            if isRecurringChimeEnabled && remainingTime != 0{
+            if isTimeLimitEnabled {
+                remainingTime = max(TimeInterval(timeLimitMinutes * 60) - elapsed, 0)
+                
+                // Check if timer has reached zero
+                if remainingTime == 0 {
+                    let finalDuration = self.elapsedTime // Store duration
+                    logger.info("updateTimer: time limit reached, handling session completion")
+                    
+                    handleTimerCompletion(finalDuration: finalDuration)
+                    
+                    logger.info("updateTimer: stopping background audio")
+                    audioService.stopBackgroundAudio()
+                                     
+                    return
+                }
+            }
+            
+            if isRecurringChimeEnabled && (!isTimeLimitEnabled || remainingTime > 1.0) {
                 let currentMinute = Int(elapsedTime / 60)
                 if currentMinute >= (lastChimeMinute + chimeIntervalMinutes) {
                     logger.info("updateTimer: playing chime at \(self.chimeIntervalMinutes)")
@@ -188,41 +243,6 @@ class TimerManager: TimerManaging {
                         }
                     }
                     lastChimeMinute = currentMinute
-                }
-            }
-            
-            // Handle time limit specific logic
-            if isTimeLimitEnabled {
-                remainingTime = max(TimeInterval(timeLimitMinutes * 60) - elapsed, 0)
-                
-                // Check if timer has reached zero
-                if remainingTime == 0 {
-                    if isSoundsEnabled {
-                        logger.info("endOfSession: play finish sound")
-                        Task { @MainActor in
-                            audioService.playSound(identifier: "session-end")
-                        }
-                    if isVibrationEnabled {
-                        logger.info( "endOfSession: play success haptics")
-                        Task {
-                            haptics.playSuccess()
-                            try? await Task.sleep(nanoseconds: 0_500_000_000)
-                            haptics.playSuccess()
-                            try? await Task.sleep(nanoseconds: 0_500_000_000)
-                            haptics.playSuccess()
-                        }
-                        }
-                    }
-                    let finalDuration = self.elapsedTime // Store duration
-                    logger.info("updateTimer: saving session to Health and resetting")
-                    Task { @MainActor in
-                        meditationTracker.saveMeditationSession(duration: finalDuration)
-                    }
-                    stopTimer()
-                    resetTimer()
-                    logger.info("updateTimer: end of session")
-                    
-                    return
                 }
             }
         }
