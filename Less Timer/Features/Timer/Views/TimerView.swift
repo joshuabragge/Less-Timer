@@ -89,6 +89,9 @@ struct TimerView: View {
         .animation(.easeInOut, value: timerManager.isRunning)
         .onAppear {
             timerManager.refreshStorageVariables()
+            if !timerManager.isRunning {
+                           timerManager.resetTimer()
+                       }
         }
     }
     

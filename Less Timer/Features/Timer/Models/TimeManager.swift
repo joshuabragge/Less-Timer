@@ -105,7 +105,7 @@ class TimerManager: TimerManaging {
                 logger.info("startTimer: Open ended medidation")
             }
             
-            timer = Timer.scheduledTimer(withTimeInterval: 0.75, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 0.33, repeats: true) { [weak self] _ in
                 self?.updateTimer()
             }
             RunLoop.current.add(timer!, forMode: .common)
