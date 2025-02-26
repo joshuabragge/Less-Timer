@@ -32,7 +32,7 @@ struct TimerView: View {
                             /// Pending start open ended view
                             Image(systemName: "infinity")
                                 .font(.system(size: 60))
-                                .foregroundColor(Color("primaryFont"))
+                                .foregroundColor(Color.adaptivePrimaryFont)
                         }
                         else {
                             /// Pending start timed view

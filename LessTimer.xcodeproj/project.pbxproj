@@ -47,6 +47,7 @@
 				Features/Health/Models/MeditationSession.swift,
 				Features/Health/Models/MeditationTracker.swift,
 				Features/Health/Services/HealthKitService.swift,
+				Features/Settings/Services/AdaptiveColors.swift,
 				Features/Timer/Models/TimeFormatter.swift,
 				Features/Timer/Models/TimeManager.swift,
 				Features/Timer/Services/AudioServiceProtocol.swift,
