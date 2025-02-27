@@ -14,16 +14,18 @@ struct ContentView: View {
     var body: some View {
         if showIcon && firstLaunch {
             ZStack() {
-                Color.black
+                Color.primaryBackground
                 .ignoresSafeArea()
 
                 Spacer()
                 Image("less-timer-icon-clear.png")
                     .resizable()
                     .frame(width: 120, height: 120)
-                    .foregroundColor(.black)
+                    //.foregroundColor(.primaryFont)
+                    .colorMultiply(Color.primaryFont)
                     .opacity(showIcon ? 1 : 0)
                     .transition(.opacity)
+                
                 Spacer()
             }
             .onAppear {
@@ -71,7 +73,7 @@ struct ContentView: View {
     
     private func updateNavigationBarAppearance() {
         let appearance = UINavigationBarAppearance()
-        let titleColor = colorScheme == .dark ? UIColor.white : UIColor.black
+        let titleColor = UIColor(named: "primaryFont") ?? (colorScheme == .dark ? UIColor.white : UIColor.black)
         
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.primaryFont]
         appearance.titleTextAttributes = [.foregroundColor: UIColor.primaryFont]
