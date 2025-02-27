@@ -89,6 +89,42 @@ struct ProgressCircle: View {
     }
 }
 
+struct InfinitySymbolView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+    @Environment(\.displayScale) var displayScale
+    
+    private var isWatch: Bool {
+        displayScale >= 2.0 && sizeClass == .compact
+    }
+    
+    private var config: TimerConfig {
+        isWatch ? .iOS : .watch
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                // Empty circle to maintain the same space as ProgressCircle
+                Circle()
+                    .stroke(lineWidth: 4)
+                    .opacity(0)
+                    .padding(config.circlePadding)
+                
+                // Center the infinity symbol
+                VStack(alignment: .center, spacing: config.spacing) {
+                    Image(systemName: "infinity")
+                        .font(.system(size: config.fontSize, weight: .medium, design: .rounded))
+                        .foregroundColor(Color.adaptivePrimaryFont)
+                        .frame(height: config.textHeight)
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .frame(height: config.frameHeight)
+        .padding(config.viewPadding)
+    }
+}
+
 private struct TimerConfig {
     let frameHeight: CGFloat
     let fontSize: CGFloat

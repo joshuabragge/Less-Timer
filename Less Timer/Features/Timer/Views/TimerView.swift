@@ -30,9 +30,7 @@ struct TimerView: View {
                     else if !timerManager.isRunning && timerManager.elapsedTime == 0 {
                         if !isTimeLimitEnabled {
                             /// Pending start open ended view
-                            Image(systemName: "infinity")
-                                .font(.system(size: 60))
-                                .foregroundColor(Color.adaptivePrimaryFont)
+                            InfinitySymbolView()
                         }
                         else {
                             /// Pending start timed view
