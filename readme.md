@@ -17,6 +17,12 @@ A minimalist meditation timer focused on simplicity and mindfulness.
   * Toggle sounds on/off
   * Optional vibration feedback
   * Recurring chime intervals
+ 
+## Support
+
+For support, please visit our [support page](https://joshuabragge.github.io/less-timer/) or email me directly at joshuabragge@protonmail.com.
+
+You can also [create an issue](https://github.com/joshuabragge/Less-Timer/issues) on GitHub for any bugs or feature requests.
 
 ## Installation
 
