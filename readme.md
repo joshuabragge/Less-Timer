@@ -20,7 +20,7 @@ A minimalist meditation timer focused on simplicity and mindfulness.
  
 ## Support
 
-For support, please visit our [support page](https://joshuabragge.github.io/less-timer/) or email me directly at joshuabragge@protonmail.com.
+For support, please visit our [support page](https://joshuabragge.github.io/Less-Timer/) or email me directly at joshuabragge@protonmail.com.
 
 You can also [create an issue](https://github.com/joshuabragge/Less-Timer/issues) on GitHub for any bugs or feature requests.
 
