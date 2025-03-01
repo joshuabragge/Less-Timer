@@ -111,7 +111,7 @@ struct WatchTimerView: View {
                     Label("Settings", systemImage: "gear")
                 }
         }.onAppear {
-            //timerManager.refreshStorageVariables()
+            timerManager.refreshStorageVariables() // gets wonky if changing settings + running
         }
     }
     private func saveSession() {

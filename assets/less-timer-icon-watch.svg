@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <!-- Definitions for edge glow effect -->
+  <defs>
+    <!-- Radial gradient for edge glow -->
+    <radialGradient id="edgeGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#1a1a1a" />
+      <stop offset="75%" stop-color="#1a1a1a" />
+      <stop offset="90%" stop-color="#333333" />
+      <stop offset="100%" stop-color="#444444" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background with rounded corners and edge glow -->
+  <rect width="180" height="180" fill="url(#edgeGlow)" rx="45" ry="45"/>
+  
+  <!-- Asymmetric less than symbol -->
+  <path d="M108,45 L72,90 L100,135" 
+        stroke="#f0f0f0" 
+        stroke-width="12" 
+        stroke-linecap="round"
+        fill="none"/>
+</svg>
