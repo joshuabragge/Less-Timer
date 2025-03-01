@@ -42,9 +42,32 @@
     
     <div class="contact-box">
         <h2>Need Help?</h2>
-        <p>We're here to assist you with any questions or issues you might have with our meditation timer app.</p>
-        <p><strong>Email Support:</strong> <a href="mailto:joshuabragge@protonmail.com">joshuabragge@protonmail.com</a></p>
-        <a href="https://github.com/yourusername/yourrepository/issues/new" class="button">Report an Issue</a>
+        <p>We're here to assist you with any questions or issues you might have with Less Timer. You can reach us in several ways:</p>
+        
+        <h3>Email Support</h3>
+        <p><strong>Email:</strong> <a href="mailto:joshuabragge@protonmail.com">joshuabragge@protonmail.com</a></p>
+        
+        <h3>Report on GitHub</h3>
+        <p>For technical issues or feature requests:</p>
+        <a href="https://github.com/joshuabragge/Less-Timer/issues/new" class="button">Report an Issue on GitHub</a>
+        
+        <h3>Contact Form</h3>
+        <p>Send us a message directly using this form:</p>
+        <form action="https://formspree.io/f/xqaerbwa" method="POST">
+          <div style="margin-bottom: 15px;">
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" name="email" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" name="subject" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required>
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;" required></textarea>
+          </div>
+          <button type="submit" class="button">Send Message</button>
+        </form>
     </div>
     
     <h2>Frequently Asked Questions</h2>
@@ -53,13 +76,19 @@
     <p>Simply tap the play button to start your meditation session. You can pause at any time by tapping the pause button.</p>
     
     <h3>Can I set a time limit for my meditation?</h3>
-    <p>Yes! Go to settings and enable "Time Limit". You can then set your desired meditation duration.</p>
+    <p>Yes! Less Timer offers optional time limits from 1 to 60 minutes. Go to settings to enable and customize your time limit.</p>
     
-    <h3>How do I save my meditation sessions?</h3>
-    <p>Sessions automatically save to Apple Health at the end of a timed session. For open ended sessions or ending timed sessions early, pause and stop the timer then tap the heart icon to save your session to Apple Health.</p>
+    <h3>Does the app have interval chimes?</h3>
+    <p>Yes, Less Timer offers customizable recurring chimes at 1, 2, 5, 10, or 15-minute intervals to help maintain awareness during longer sessions.</p>
     
-    <h3>Where can I view my meditation history?</h3>
-    <p>Sessions are all logged into Apple Health.</p>
+    <h3>How does the Apple Health integration work?</h3>
+    <p>Less Timer can optionally integrate with Apple HealthKit to record your mindfulness minutes. This feature is completely optional and is the only way the app stores your meditation history. You can enable or disable this in the app settings.</p>
+    
+    <h3>Can I use the app without sounds?</h3>
+    <p>Absolutely! You can toggle sounds on/off in the settings. You can also enable or disable vibration feedback based on your preference.</p>
+    
+    <h3>Does Less Timer collect my data?</h3>
+    <p>No. Less Timer takes your privacy seriously. We don't collect any data, all preferences are stored locally on your device, and we use no third-party analytics. The optional HealthKit integration only writes data to your Health app with your permission.</p>
     
     <h2>Known Issues</h2>
     <p>Visit our <a href="https://github.com/joshuabragge/Less-Timer/issues">GitHub Issues page</a> to see current known issues or report new ones.</p>
@@ -67,5 +96,6 @@
     <h2>Version Information</h2>
     <p>Current Version: 1.0.0</p>
     <p>If you're experiencing an issue, please include your app version when contacting support.</p>
+
 </body>
 </html>
